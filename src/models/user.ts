@@ -1,5 +1,5 @@
 import { attribute, table } from "@aws/dynamodb-data-mapper-annotations"
-import { embed } from "@aws/dynamodb-data-mapper";
+import { embed, DataMapper } from "@aws/dynamodb-data-mapper";
 import { Job } from "./job";
 
 /**
@@ -117,7 +117,7 @@ export class User {
     * @param this - context
     */
     // static async findAllUsers(this: ModelType<User>) {
-    //     return await this.find({})
+    //     return for await (const user)
     // }
 
     // // Find a user based on the name given
