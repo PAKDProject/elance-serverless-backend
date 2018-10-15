@@ -1,6 +1,9 @@
 import { attribute, table } from "@aws/dynamodb-data-mapper-annotations"
-import { embed, DataMapper } from "@aws/dynamodb-data-mapper";
-import { Job } from "./job";
+import { embed, DataMapper } from "@aws/dynamodb-data-mapper"
+import { Job } from "./job"
+import DynamoDB = require('aws-sdk/clients/dynamodb')
+const client = new DynamoDB({region: 'eu-west-1'})
+const mapper = new DataMapper({client})
 
 /**
  * Class for Skills
@@ -116,9 +119,12 @@ export class User {
     * Default method for finding all Users
     * @param this - context
     */
-    // static async findAllUsers(this: ModelType<User>) {
-    //     return for await (const user)
-    // }
+    static async findAllUsers(this: User) {
+        let userArray = Array<User>()
+        for await (const user of mapper.scan({valueConstructor: User})){
+            userArray.push(user)
+        }
+    }
 
     // // Find a user based on the name given
     // static async findUserByName(this: ModelType<User>, name: string) {
