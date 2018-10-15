@@ -1,0 +1,1 @@
+{"version":3,"file":"baseRouter.js","sourceRoot":"","sources":["../../src/interfaces/baseRouter.ts"],"names":[],"mappings":"","sourcesContent":["import { Router } from \"express\";\n\n/**\n * @interface BaseRouter interface used as a template for controllers\n */\nexport interface BaseRouter {\n    basePath: string,\n    returnRouter(): Router\n}"]}
