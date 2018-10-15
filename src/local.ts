@@ -1,3 +1,3 @@
 import { App } from "./lib/createServer";
 
-App.listen(3000)
+new App(3000).startLocal()
