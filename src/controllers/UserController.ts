@@ -25,8 +25,21 @@ export class UserController implements BaseRouter {
     returnRouter() : Router {
         return Router()
             .get('/', (req: Request, res: Response) => {
-                const user = new User()
-                let users = user.findAllUsers()
+                // const user = new User()
+                // let users = user.findAllUsers()
+                let users = []
+                users.push([
+                    {
+                        id: "1",
+                        firstName: "Alan",
+                        lastName: "test"
+                    },
+                    {
+                        id: "2",
+                        firstName: "Bob",
+                        lastName: "Dylan"
+                    }
+                ])
                 //if (users.length === 0) res.status(404).send('No users found.')
                 res.status(200).json({msg: "Users found.", users})
             })

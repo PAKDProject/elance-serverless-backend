@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import * as express from 'express'
-import { default as routes } from "../routes"
+import { default as routes } from "../controllers"
 import * as bodyParser from 'body-parser'
 import { info } from "../helpers/logger"
 
