@@ -4,7 +4,7 @@
   "description": "Serverless AWS backend for project elenace",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node dist/local.ts",
+    "start": "npm run build && node dist/local.js",
     "start:dev": "nodemon",
     "build:dev": "ts-node src/local.ts",
     "build": "tsc",
