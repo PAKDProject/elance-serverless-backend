@@ -27,4 +27,5 @@ functions:
       - http: 'ANY {proxy+}'
 
 plugins:
+  - serverless-dynamodb-local
   - serverless-offline

@@ -55,7 +55,7 @@ export class SocialLink {
 * @extends AWS-SDK
 */
 @table('users')
-export class User {
+export class User{
 
     @attribute()
     email?: string
@@ -119,11 +119,12 @@ export class User {
     * Default method for finding all Users
     * @param this - context
     */
-    static async findAllUsers(this: User) {
+    async findAllUsers(this: User) {
         let userArray = Array<User>()
         for await (const user of mapper.scan({valueConstructor: User})){
             userArray.push(user)
         }
+        return userArray
     }
 
     // // Find a user based on the name given
@@ -147,4 +148,7 @@ export class User {
     //     let o_id = new ObjectId(id)
     //     return await this.deleteOne({ _id: o_id })
     // }
+
 }
+export const UserModel = new User()
+

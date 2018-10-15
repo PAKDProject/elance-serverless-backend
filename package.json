@@ -30,6 +30,7 @@
   "devDependencies": {
     "@types/aws-serverless-express": "^3.3.0",
     "@types/mocha": "^5.2.5",
+    "serverless-dynamodb-local": "^0.2.35",
     "serverless-offline": "^3.27.0"
   }
 }
