@@ -1,5 +1,16 @@
-import DDb = require('aws-sdk/clients/dynamodb')
+import DynamoDb = require('aws-sdk/clients/dynamodb')
 
-export class DynamoDb {
-    client = new DDb({region: 'eu-west-1'})
+export const USERS_TABLE = process.env.USERS_TABLE
+const IS_OFFLINE = process.env.IS_OFFLINE
+
+export let dynamoDb;
+if (IS_OFFLINE === 'true'){
+    dynamoDb = new DynamoDb.DocumentClient({
+        region: 'localhost',
+        endpoint: 'http://localhost:8000'
+    });
+    console.log(dynamoDb)
+}
+else{
+    dynamoDb = new DynamoDb.DocumentClient();
 }

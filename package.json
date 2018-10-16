@@ -1,7 +1,7 @@
 {
   "name": "serverless-test",
   "version": "1.0.0",
-  "description": "Serverless AWS backend for project elenace",
+  "description": "Serverless AWS backend for project E-lance",
   "main": "index.js",
   "scripts": {
     "start": "npm run build && node dist/local.js",

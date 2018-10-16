@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-const routes_1 = require("../routes");
+const controllers_1 = require("../controllers");
 const bodyParser = require("body-parser");
 const logger_1 = require("../helpers/logger");
 class App {
     constructor(port) {
         this.app = express();
         this.setRoutes = () => {
-            routes_1.default.forEach(route => {
+            controllers_1.default.forEach(route => {
                 this.app.use(route.basePath, route.returnRouter());
             });
         };

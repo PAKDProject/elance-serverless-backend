@@ -44,4 +44,10 @@ export declare class User {
     tagline?: string;
     contacts?: Array<User>;
     constructor(email?: string, fName?: string, lName?: string, dob?: Date, summary?: string, skills?: Skill[], educationItems?: EducationItem[], activeJobs?: Job[], jobHistory?: Job[], avatarUrl?: string, backgroundUrl?: string, socialLinks?: SocialLink[], tagline?: string, contacts?: User[]);
+    /**
+    * Default method for finding all Users
+    * @param this - context
+    */
+    findAllUsers(this: User): Promise<User[]>;
 }
+export declare const UserModel: User;

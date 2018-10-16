@@ -2,11 +2,27 @@
 
 service: my-express-application
 
+custom:
+  tableName: 'users'
+
 provider:
   name: aws
   runtime: nodejs8.10
   stage: dev
   region: eu-west-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - { "Fn::GetAtt": ["UsersDynamoDBTable", "Arn" ] }
+  environment:
+    USERS_TABLE: ${self:custom.tableName}
 
 package:
   exclude:
@@ -20,24 +36,27 @@ package:
     - package-lock.json
     - node_modules/**
 
+functions:
+  app:
+    handler: dist/serverless.handler
+    events:
+      - http: 'ANY {proxy+}'
+
 resources:
   Resources:
-    usersTable:
-      Type: AWS::DynamoDB::Table
+    UsersDynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
       Properties:
-        TableName: users
         AttributeDefinitions:
           - AttributeName: email
             AttributeType: S
         KeySchema:
           - AttributeName: email
             KeyType: HASH
-
-functions:
-  app:
-    handler: dist/serverless.handler
-    events:
-      - http: 'ANY {proxy+}'
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.tableName}
 
 plugins:
   - serverless-dynamodb-local
