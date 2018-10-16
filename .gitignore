@@ -1,2 +1,7 @@
 node_modules
+dist
 .vscode
+*.log
+.serverless
+circleci.exe
+.dynamodb

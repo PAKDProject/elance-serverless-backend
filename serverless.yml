@@ -8,6 +8,31 @@ provider:
   stage: dev
   region: eu-west-1
 
+package:
+  exclude:
+    - src/**
+    - .vscode
+    - tsconfig.json
+    - nodemon.json
+  include: 
+    - dist/**
+    - package.json
+    - package-lock.json
+    - node_modules/**
+
+resources:
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: users
+        AttributeDefinitions:
+          - AttributeName: email
+            AttributeType: S
+        KeySchema:
+          - AttributeName: email
+            KeyType: HASH
+
 functions:
   app:
     handler: dist/serverless.handler
@@ -15,4 +40,5 @@ functions:
       - http: 'ANY {proxy+}'
 
 plugins:
+  - serverless-dynamodb-local
   - serverless-offline

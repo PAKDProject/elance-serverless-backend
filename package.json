@@ -4,10 +4,12 @@
   "description": "Serverless AWS backend for project elenace",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node dist/local.ts",
+    "start": "npm run build && node dist/local.js",
     "start:dev": "nodemon",
     "build:dev": "ts-node src/local.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "deploy": "npm run build && sls deploy",
+    "test": "npm run build && mocha dist/tests/**/*.spec.js"
   },
   "author": "Paul K, Alan J, Killian K, Daire F",
   "license": "ISC",
@@ -20,16 +22,21 @@
     "aws-sdk": "^2.334.0",
     "aws-serverless-express": "^3.3.5",
     "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
     "colors": "^1.3.2",
     "express": "^4.16.4",
     "mocha": "^5.2.0",
+    "node-fetch": "^2.2.0",
     "nodemon": "^1.18.4",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.3"
   },
   "devDependencies": {
     "@types/aws-serverless-express": "^3.3.0",
+    "@types/chai": "^4.1.6",
     "@types/mocha": "^5.2.5",
+    "@types/node-fetch": "^2.1.2",
+    "serverless-dynamodb-local": "^0.2.35",
     "serverless-offline": "^3.27.0"
   }
 }
