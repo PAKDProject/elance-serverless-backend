@@ -1,1 +1,0 @@
-{"version":3,"file":"local.js","sourceRoot":"","sources":["../src/local.ts"],"names":[],"mappings":";;AAAA,qDAAyC;AAEzC,IAAI,kBAAG,CAAC,IAAI,CAAC,CAAC,UAAU,EAAE,CAAA","sourcesContent":["import { App } from \"./lib/createServer\";\n\nnew App(3000).startLocal()"]}
