@@ -1,4 +1,4 @@
-import { HelloController } from "./HelloWorldController";
+import { HelloController } from "./HelloController";
 import { UserController } from "./UserController";
 
 // All backend routes listed below

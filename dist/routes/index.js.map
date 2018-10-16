@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../src/routes/index.ts"],"names":[],"mappings":";;AAAA,kCAAkC;AAClC,uDAAoD;AACpD,kBAAe;IACX,IAAI,iCAAe,EAAE;CACxB,CAAA","sourcesContent":["// All backend routes listed below\nimport { HelloController } from \"./HelloController\";\nexport default [\n    new HelloController()\n]"]}

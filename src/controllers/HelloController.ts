@@ -24,9 +24,10 @@ export class HelloController implements BaseRouter {
     returnRouter() : Router {
         return Router()
             .get('/', (req: Request, res: Response) => {
-                res.send(JSON.stringify({
-                    message: "I fucking made it!"
-                })).status(200)
+                res.status(200).send('Hello World!')
+            })
+            .get('/:name', (req: Request, res: Response) => {
+                res.status(200).send('Hello ' + req.params.name)
             })
     }
 }
