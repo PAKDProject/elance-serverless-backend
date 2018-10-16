@@ -12,4 +12,4 @@
         serverless config credentials --provider aws --key <your-key-here> --secret <your-secret-key-here>
         ```
 1. Install the local DynamoDb with `sls dynamodb install`
-1. Run serverless locally with `sls offline`
+1. Run serverless locally with `sls offline start`
