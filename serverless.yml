@@ -20,6 +20,19 @@ package:
     - package-lock.json
     - node_modules/**
 
+resources:
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: users
+        AttributeDefinitions:
+          - AttributeName: email
+            AttributeType: S
+        KeySchema:
+          - AttributeName: email
+            KeyType: HASH
+
 functions:
   app:
     handler: dist/serverless.handler
