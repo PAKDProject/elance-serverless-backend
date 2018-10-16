@@ -1,4 +1,3 @@
-import { Request, Response } from "express"
 import * as express from 'express'
 import { default as routes } from "../controllers"
 import * as bodyParser from 'body-parser'
@@ -10,8 +9,8 @@ export class App {
 
     constructor(port?:number){
         this.port = port || 3000
-        this.setRoutes()
         this.setupBodyParsing()
+        this.setRoutes()
     }
 
     private setRoutes = () => {

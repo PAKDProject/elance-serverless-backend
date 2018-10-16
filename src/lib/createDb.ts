@@ -8,8 +8,7 @@ if (IS_OFFLINE === 'true'){
     dynamoDb = new DynamoDb.DocumentClient({
         region: 'localhost',
         endpoint: 'http://localhost:8000'
-    });
-    console.log(dynamoDb)
+    })
 }
 else{
     dynamoDb = new DynamoDb.DocumentClient();

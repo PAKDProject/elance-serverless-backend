@@ -25,8 +25,8 @@ class App {
             });
         };
         this.port = port || 3000;
-        this.setRoutes();
         this.setupBodyParsing();
+        this.setRoutes();
     }
 }
 exports.App = App;
