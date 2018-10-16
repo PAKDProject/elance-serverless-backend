@@ -13,3 +13,4 @@ if (IS_OFFLINE === 'true'){
 else{
     dynamoDb = new DynamoDb.DocumentClient();
 }
+

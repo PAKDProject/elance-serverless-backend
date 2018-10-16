@@ -1,7 +1,8 @@
-import { Router, Response, Request } from 'express'
+import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
 import { User } from '../models/user';
 import { USERS_TABLE, dynamoDb } from '../lib/createDb';
+import { asyncRoutes } from '../middleware/asyncRoutes';
 
 /**
 * @class UserController used to control the user route
@@ -25,11 +26,17 @@ export class UserController implements BaseRouter {
     */
     returnRouter() : Router {
         return Router()
-            .get('/:userId', (req: Request, res: Response) => {
+            .get('/', asyncRoutes(async (req: Request, res: Response, next: NextFunction) => {
+                res.send('lol not working yet')
+                // let users = await User.findAllUsers()
+                // if (users.length === 0) res.status(404).json({message: 'No users found'})
+                // else res.status(200).json({message: "Users found", users})
+            }))
+            .get('/:email', (req: Request, res: Response) => {
                 const params = {
                     TableName: USERS_TABLE,
                     Key: {
-                        userId: req.params.userId
+                        email: req.params.email
                     }
                 }
                 dynamoDb.get(params, (error, result) => {
@@ -38,24 +45,24 @@ export class UserController implements BaseRouter {
                         res.status(400).json({error: 'Could not retrieve user'})
                     }
                     if (result.Item) {
-                        const {userId, name} = result.Item
-                        res.status(200).json({userId, name})
+                        const {email, name} = result.Item
+                        res.status(200).json({email, name})
                     } else {
                         res.status(404).json({error: 'User not found'})
                     }
                 })
             })
             .post('/', (req: Request, res: Response) => {
-                const {userId, name} = req.body
-                if (typeof userId !== 'string') {
-                    res.status(400).json({error: '"userId" must be of type "string"'})
+                const {email, name} = req.body
+                if (typeof email !== 'string') {
+                    res.status(400).json({error: '"email" must be of type "string"'})
                 } else if (typeof name !== 'string') {
                     res.status(400).json({error: '"name" must be of type "string"'})
                 }
                 const params = {
                     TableName: USERS_TABLE,
                     Item: {
-                        userId: userId,
+                        email: email,
                         name: name
                     }
                 }
@@ -64,7 +71,7 @@ export class UserController implements BaseRouter {
                         console.log(error)
                         res.status(400).json({error: 'Could not create user'})
                     }
-                    res.status(201).json({userId, name})
+                    res.status(201).json({email, name})
                 })
             })
     }
