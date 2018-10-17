@@ -46,7 +46,7 @@ export class UserController implements BaseRouter {
                     }
                     if (result.Item) {
                         const {email, name} = result.Item
-                        res.status(200).json({email, name})
+                        res.status(200).json({message:'User found', user:{email, name}})
                     } else {
                         res.status(404).json({error: 'User not found'})
                     }
@@ -71,7 +71,7 @@ export class UserController implements BaseRouter {
                         console.log(error)
                         res.status(400).json({error: 'Could not create user'})
                     }
-                    res.status(201).json({email, name})
+                    res.status(201).json({message: "User created",user:{email: email, name:name}})
                 })
             })
     }
