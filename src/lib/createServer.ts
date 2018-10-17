@@ -2,6 +2,8 @@ import * as express from 'express'
 import { default as routes } from "../controllers"
 import * as bodyParser from 'body-parser'
 import { info } from "../helpers/logger"
+import * as cors from 'cors'
+import { config } from "dotenv";
 
 export class App {
     private port: number
@@ -10,7 +12,9 @@ export class App {
     constructor(port?:number){
         this.port = port || 3000
         this.setupBodyParsing()
+        this.allowCors()
         this.setRoutes()
+        config()
     }
 
     private setRoutes = () => {
@@ -22,6 +26,10 @@ export class App {
     private setupBodyParsing = () => {
         this.app.use(bodyParser.json())
         this.app.use(bodyParser.urlencoded({extended: true}))
+    }
+
+    private allowCors = () => {
+        this.app.use(cors())
     }
 
     public getApp = () => {

@@ -1,4 +1,4 @@
-import DynamoDb = require('aws-sdk/clients/dynamodb')
+import { DynamoDB } from "aws-sdk";
 import { TypeDynamo } from "type-dynamo";
 
 export const USERS_TABLE = process.env.USERS_TABLE
