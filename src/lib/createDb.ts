@@ -15,4 +15,4 @@ const IS_OFFLINE = process.env.IS_OFFLINE
 //     dynamoDb = new DynamoDb.DocumentClient();
 // }
 
-export const typeDynamo = new TypeDynamo({region: 'eu-west-1'});
+export const typeDynamo = new TypeDynamo({region: 'localhost', endpoint: 'http://localhost:8000'});
