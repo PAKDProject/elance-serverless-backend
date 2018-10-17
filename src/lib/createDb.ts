@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import { DynamoDB } from "aws-sdk";
-=======
->>>>>>> 20e004520a3187646b44e919c62ba82b53ed1fb0
 import { TypeDynamo } from "type-dynamo";
 
 export const USERS_TABLE = process.env.USERS_TABLE
