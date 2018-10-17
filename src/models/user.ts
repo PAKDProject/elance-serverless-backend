@@ -49,10 +49,22 @@ export class User {
 export const UserRepo = typeDynamo.define(User, {
     tableName: 'users-table-dev',
     partitionKey: 'email'
+}).withGlobalIndex({
+    indexName: 'fNameIndex',
+    partitionKey: 'fName',
+    projectionType: 'ALL'
+}).withGlobalIndex({
+    indexName: 'lNameIndex',
+    partitionKey: 'lName',
+    projectionType: 'ALL'
 }).getInstance();
 
 export const findAllUsers = async () => await UserRepo.find().allResults().execute();
 
-export const findUserByEmail= async (email: string) => await UserRepo.find({email:email}).execute();
+export const findUserByEmail = async (email: string) => await UserRepo.find({email:email}).execute();
+
+export const findUsersByFName = async (query: object) => await UserRepo.onIndex.fNameIndex.find(query).allResults().execute();
+
+export const findUsersByLName = async (query: object) => await UserRepo.onIndex.LNameIndex.find(query).allResults().execute();
 
 export const postNewUser = async (newUser: User) => await UserRepo.save(newUser).execute();
