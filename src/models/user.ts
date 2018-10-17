@@ -1,149 +1,70 @@
-import { attribute, table } from "@aws/dynamodb-data-mapper-annotations"
-import { embed } from "@aws/dynamodb-data-mapper"
-import { Job } from "./job"
+import { typeDynamo } from "../lib/createDb";
+import { Job } from "./job";
 
 /**
  * Class for Skills
  */
-export class Skill {
-    @attribute()
-    title?: string
-
-    @attribute()
-    description?: string
+class Skill {
+    title?: string;
+    description?: string;
 }
 
 /**
  * Class for Education Items
  */
-export class EducationItem {
-    @attribute()
-    degreeTitle?: string
-
-    @attribute()
-    startYear?: string
-
-    @attribute()
-    endYear?: string
-
-    @attribute()
-    collegeName?: string
-
-    @attribute()
-    grade?: string
-
-    @attribute()
-    description?: string
+class EducationItem {
+    degreeTitle?: string;
+    startYear?: string;
+    endYear?: string;
+    collegeName?: string;
+    grade?: string;
+    description?: string;
 }
 
 /**
  * Class for Social Links
  */
-export class SocialLink {
-    @attribute()
-    name?: string
-
-    @attribute()
-    linkUrl?: string
+class SocialLink {
+    name?: string;
+    linkUrl?: string;
 }
 
-/**
-* Model class for User
-* @extends AWS-SDK
-*/
-@table('users-table-dev')
-export class User{
-
-    @attribute()
-    email?: string
-
-    @attribute()
-    fName?: string
-
-    @attribute()
-    lName?: string
-
-    @attribute()
-    dob?: Date
-
-    @attribute()
-    summary?: string
-
-    @attribute({memberType: embed(Skill)})
-    skills?: Array<Skill>
-
-    @attribute({memberType: embed(EducationItem)})
-    educationItems?: Array<EducationItem>
-
-    @attribute({memberType: embed(Job)})
-    activeJobs?: Array<Job>
-
-    @attribute({memberType: embed(Job)})
-    jobHistory?: Array<Job>
-
-    @attribute()
-    avatarUrl?: string
-
-    @attribute()
-    backgroundUrl?: string
-
-    @attribute({memberType: embed(SocialLink)})
-    socialLinks?: Array<SocialLink>
-
-    @attribute()
-    tagline?: string
-
-    @attribute({memberType: embed(User)})
-    contacts?: Array<User>
-
-    constructor(email?: string, fName?: string, lName?: string, dob?: Date, summary?: string, skills?: Skill[], educationItems?: EducationItem[], activeJobs?: Job[], jobHistory?: Job[], avatarUrl?: string, backgroundUrl?: string, socialLinks?: SocialLink[], tagline?: string, contacts?: User[]) {
-        this.email = email
-        this.fName = fName
-        this.lName = lName
-        this.dob = dob
-        this.summary = summary
-        this.skills = skills
-        this.educationItems = educationItems
-        this.activeJobs = activeJobs
-        this.jobHistory = jobHistory
-        this.avatarUrl = avatarUrl
-        this.backgroundUrl = backgroundUrl
-        this.socialLinks = socialLinks
-        this.tagline = tagline
-        this.contacts = contacts
-    }
-    /**
-    * Default method for finding all Users
-    * @param this - context
-    */
-    // static async findAllUsers() {
-    //     let userArray = Array<User>()
-    //     for await (const user of mapper.scan({valueConstructor: User})){
-    //         userArray.push(user)
-    //     }
-    //     return userArray
-    // }
-
-    // // Find a user based on the name given
-    // static async findUserByName(this: ModelType<User>, name: string) {
-    //     return await this.findOne({ name: name })
-    // }
-
-    // // Find a user based on the ID given
-    // static async findUserById(this: ModelType<User>, id: string) {
-    //     let o_id = new ObjectId(id)
-    //     return await this.findOne({ _id: o_id })
-    // }
-
-    // // Query the user collection
-    // static async findUsersByQuery(this: ModelType<User>, query: object) {
-    //     return await this.find(query)
-    // }
-
-    // // Delete a user based on the ID given
-    // static async deleteUserById(this: ModelType<User>, id: string) {
-    //     let o_id = new ObjectId(id)
-    //     return await this.deleteOne({ _id: o_id })
-    // }
-
+export class User {
+    email?: string;
+    fName?: string;
+    lName?: string;
+    dob?: Date;
+    summary?: string;
+    skills?: Array<Skill>;
+    educationItems?: Array<EducationItem>;
+    activeJobs?: Array<Job>;
+    jobHistory?: Array<Job>;
+    avatarUrl?: string;
+    backgroundUrl?: string;
+    socialLinks?: Array<SocialLink>;
+    tagline?: string;
+    contacts?: Array<User>;
 }
+
+export const UserRepo = typeDynamo.define(User, {
+    tableName: 'users-table-dev',
+    partitionKey: 'email'
+}).withGlobalIndex({
+    indexName: 'fNameIndex',
+    partitionKey: 'fName',
+    projectionType: 'ALL'
+}).withGlobalIndex({
+    indexName: 'lNameIndex',
+    partitionKey: 'lName',
+    projectionType: 'ALL'
+}).getInstance();
+
+export const findAllUsers = async () => await UserRepo.find().allResults().execute();
+
+export const findUserByEmail = async (email: string) => await UserRepo.find({email:email}).execute();
+
+export const findUsersByFName = async (query: object) => await UserRepo.onIndex.fNameIndex.find(query).allResults().execute();
+
+export const findUsersByLName = async (query: object) => await UserRepo.onIndex.LNameIndex.find(query).allResults().execute();
+
+export const postNewUser = async (newUser: User) => await UserRepo.save(newUser).execute();

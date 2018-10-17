@@ -4,12 +4,12 @@
   "description": "Serverless AWS backend for project E-lance",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node dist/local.js",
+    "start": "yarn build && sls offline start",
     "start:dev": "nodemon",
     "build:dev": "ts-node src/local.ts",
     "build": "tsc",
-    "deploy": "npm run build && sls deploy",
-    "test": "npm run build && mocha dist/tests/**/*.spec.js"
+    "deploy": "yarn build && sls deploy",
+    "test": "yarn build && mocha dist/tests/**/*.spec.js"
   },
   "author": "Paul K, Alan J, Killian K, Daire F",
   "license": "ISC",

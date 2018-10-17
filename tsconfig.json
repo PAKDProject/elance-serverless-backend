@@ -8,6 +8,7 @@
       "strict": false,
       "declaration": true,
       "sourceMap": true,
+      "skipLibCheck": true,
       "inlineSources": true,
       "types": ["node", "mocha"],
       "experimentalDecorators": true,
@@ -19,5 +20,8 @@
     },
     "include": [
       "src/**/*"
-    ]
+    ],
+    "exclude": [
+      "node_modules"
+    ],
   }

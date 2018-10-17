@@ -1,7 +1,11 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
+<<<<<<< HEAD
 import { User } from '../models/user';
 import { USERS_TABLE } from '../lib/createDb';
+=======
+import { postNewUser, findAllUsers, findUserByEmail, findUsersByFName, findUsersByLName } from '../models/user';
+>>>>>>> 20e004520a3187646b44e919c62ba82b53ed1fb0
 import { asyncRoutes } from '../middleware/asyncRoutes';
 
 /**
@@ -27,11 +31,31 @@ export class UserController implements BaseRouter {
     returnRouter() : Router {
         return Router()
             .get('/', asyncRoutes(async (req: Request, res: Response, next: NextFunction) => {
-                res.send('lol not working yet')
-                // let users = await User.findAllUsers()
-                // if (users.length === 0) res.status(404).json({message: 'No users found'})
-                // else res.status(200).json({message: "Users found", users})
+                const users = await findAllUsers();
+                if(users.data.length !== 0) res.status(200).json({message:'Users found', users: users.data});
+                else res.status(404).json({message: 'No users found'});
             }))
+            .get('/:email', asyncRoutes(async (req: Request, res: Response, next: NextFunction) => {
+                const user = await findUserByEmail(req.params.email);
+                if(user.data) res.status(200).json({message: "User found", user: user.data});
+                else res.status(404).json({message: "User not found"});
+            }))
+            .get('/fname/:fname', asyncRoutes(async (req: Request, res: Response, next: NextFunction) => {
+                const users = await findUsersByFName(req.params.fname);
+                if(users.data.length !== 0) res.status(200).json({message: 'Users found', users: users.data});
+                else res.status(404).json({message: 'No users found'});
+            }))
+            .get('/lname/:lname', asyncRoutes(async (req: Request, res: Response, next: NextFunction) => {
+                const users = await findUsersByLName(req.params.lname);
+                if(users.data.length !== 0) res.status(200).json({message: 'Users found', users: users.data});
+                else res.status(404).json({message: 'No users found'});
+            }))
+            .post('/', asyncRoutes(async (req: Request, res: Response, next: NextFunction) => {
+                const user = await postNewUser(req.body);
+                if(user) res.status(201).json({message:'User created',user:user.data});
+                else res.status(400).json({message: 'Something went wrong. User not created'});
+            }))
+<<<<<<< HEAD
             .get('/:email', (req: Request, res: Response) => {
                 const params = {
                     TableName: USERS_TABLE,
@@ -74,5 +98,7 @@ export class UserController implements BaseRouter {
                 //     res.status(201).json({message: "User created",user:{email: email, name:name}})
                 // })
             })
+=======
+>>>>>>> 20e004520a3187646b44e919c62ba82b53ed1fb0
     }
 }
