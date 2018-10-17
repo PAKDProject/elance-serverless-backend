@@ -3,7 +3,8 @@ import * as AWS from 'aws-sdk'
 import { config } from "dotenv";
 import { error } from '../helpers/logger';
 
-export let LoginUser = (Username: string, Password: string): string => {
+export let LoginUser = async(Username: string, Password: string) => {
+    let jwt = null
     const userPool: CognitoUserPool = new CognitoUserPool({ UserPoolId: process.env.POOL_ID, ClientId: process.env.APP_CLIENT_ID })
     let auth: AuthenticationDetails = new AuthenticationDetails({
         Username,
@@ -14,19 +15,20 @@ export let LoginUser = (Username: string, Password: string): string => {
         Pool: userPool
     })
 
-    cognitoUser.authenticateUser(auth, {
-        onSuccess: (result) => {
-            const jwt = result.getAccessToken().getJwtToken()
-
-            return jwt;
-        },
-        onFailure: (result) => {
-            error(result.message)
-            return null;
-        }
+    jwt = await new Promise((resolve, reject) => {
+        cognitoUser.authenticateUser(auth, {
+            onSuccess: (result) => {
+                let token = result.getAccessToken().getJwtToken()
+                resolve(token)
+            },
+            onFailure: (result) => {
+                error(result.message)
+                reject(null)
+            }
+        }) 
     })
 
-    return
+    return jwt
 }
 
 export let RegisterUser = (email: string, password: string, firstName: string, surname: string): any => {

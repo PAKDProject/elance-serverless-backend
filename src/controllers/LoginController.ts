@@ -1,6 +1,8 @@
 import { Router, Response, Request } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
 import { LoginUser, RegisterUser, ConfirmRegistration } from '../lib/userCheck';
+import { asyncRoutes } from '../middleware/asyncRoutes';
+import { NextFunction } from 'connect';
 
 /**
 * @class LoginController used to control login route
@@ -24,19 +26,22 @@ export class LoginController implements BaseRouter {
     */
     returnRouter() : Router {
         return Router()
-            .post('/login', (req: Request, res: Response) => {
+            .post('/login', asyncRoutes(async(req: Request, res: Response, next: NextFunction) => {
                 let { email, password } = req.body;
 
-                let jwt = LoginUser(email, password);
-
+                let jwt = await LoginUser(email, password);
                 if(jwt === null)
                     res.status(403).send(JSON.stringify({
                         message: 'User failed to login!'
                     }))
                 else {
-                    res.redirect('https://vle.itsligo.ie/')
+                    res.status(200).send(JSON.stringify({
+                        jwt,
+                        email,
+                        message: 'User logged in successfully!'
+                    }))
                 }
-            })
+            }))
             .post('/register', (req: Request, res: Response) => {
                 let { email, name, family_name, password } = req.body
                 
@@ -44,7 +49,10 @@ export class LoginController implements BaseRouter {
                 let response = RegisterUser(email, password, name, family_name)
 
                 if(response === undefined){
-                    res.redirect('https://facebook.com')
+                    res.status(201).send(JSON.stringify({
+                        message: 'User registered successfully!',
+                        email
+                    }))
                 }
                 else
                     res.status(400).send(process.env.NODE_ENV == 'development' ? response.stack : 'Failed to register')
@@ -56,7 +64,7 @@ export class LoginController implements BaseRouter {
 
                 console.log(result)
                 if(result === undefined)
-                    res.status(200).send(JSON.stringify({
+                    res.status(201).send(JSON.stringify({
                         message: 'User confirmed!'
                     }))
                 else{
