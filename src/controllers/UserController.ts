@@ -1,6 +1,6 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
-import { User, postNewUser, findAllUsers } from '../models/user';
+import { User, postNewUser, findAllUsers, findUserByEmail } from '../models/user';
 import { USERS_TABLE } from '../lib/createDb';
 import { asyncRoutes } from '../middleware/asyncRoutes';
 
@@ -28,14 +28,17 @@ export class UserController implements BaseRouter {
         return Router()
             .get('/', asyncRoutes(async (req: Request, res: Response, next: NextFunction) => {
                 let users = await findAllUsers();
-                if(users.data.length > 0) res.status(200).json({message:'Users found',users:users});
+                if(users.data.length > 0) res.status(200).json({message:'Users found',users:users.data});
                 else res.status(404).json({message: 'No users found'});
             }))
             .get('/:email', asyncRoutes(async (req: Request, res: Response, next: NextFunction) => {
+                let user = await findUserByEmail(req.params.email);
+                if(user.data) res.status(200).json({message: "User found", user: user.data});
+                else res.status(404).json({message: "User not found"});
             }))
             .post('/', asyncRoutes(async (req: Request, res: Response, next: NextFunction) => {
                 let user = await postNewUser(req.body);
-                if(user) res.status(201).json({message:'User created',user:user});
+                if(user) res.status(201).json({message:'User created',user:user.data});
                 else res.status(400).json({message: 'Something went wrong. User not created'});
             }))
     }

@@ -53,4 +53,6 @@ export const UserRepo = typeDynamo.define(User, {
 
 export const findAllUsers = async () => await UserRepo.find().allResults().execute();
 
+export const findUserByEmail= async (email: string) => await UserRepo.find({email:email}).execute();
+
 export const postNewUser = async (newUser: User) => await UserRepo.save(newUser).execute();
