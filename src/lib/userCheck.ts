@@ -1,10 +1,6 @@
 import { CognitoUserPool, AuthenticationDetails, CognitoUser, CognitoUserAttribute } from 'amazon-cognito-identity-js';
-import * as AWS from 'aws-sdk'
-import { config } from "dotenv";
-import { error } from '../helpers/logger';
 
-export let LoginUser = async(Username: string, Password: string) => {
-    let jwt = null
+export let LoginUser = (Username: string, Password: string) => {
     const userPool: CognitoUserPool = new CognitoUserPool({ UserPoolId: process.env.POOL_ID, ClientId: process.env.APP_CLIENT_ID })
     let auth: AuthenticationDetails = new AuthenticationDetails({
         Username,
@@ -15,23 +11,20 @@ export let LoginUser = async(Username: string, Password: string) => {
         Pool: userPool
     })
 
-    jwt = await new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         cognitoUser.authenticateUser(auth, {
             onSuccess: (result) => {
                 let token = result.getAccessToken().getJwtToken()
                 resolve(token)
             },
             onFailure: (result) => {
-                error(result.message)
-                reject(null)
+                reject(result)
             }
         }) 
     })
-
-    return jwt
 }
 
-export let RegisterUser = (email: string, password: string, firstName: string, surname: string): any => {
+export let RegisterUser = (email: string, password: string, firstName: string, surname: string) => {
     const userPool: CognitoUserPool = new CognitoUserPool({ UserPoolId: process.env.POOL_ID, ClientId: process.env.APP_CLIENT_ID })
     let registrationAttr: CognitoUserAttribute[] = [
         new CognitoUserAttribute({
@@ -48,14 +41,14 @@ export let RegisterUser = (email: string, password: string, firstName: string, s
         })
     ]
 
-    userPool.signUp(email, password, registrationAttr, null, (err, result) => {
+    return new Promise((resolve, reject) => {
+        userPool.signUp(email, password, registrationAttr, null, (err) => {
         if (err)
-            return err
+            reject(err)
         else
-            return true
+            resolve()
+        })
     })
-
-    return
 }
 
 export let ConfirmRegistration = (Username: string, confirmationCode: string) => {
@@ -65,11 +58,12 @@ export let ConfirmRegistration = (Username: string, confirmationCode: string) =>
         Pool: userPool
     })
 
-    cognitoUser.confirmRegistration(confirmationCode, true, (err, results) => {
-        if(err)
-            return err
-        else
-            return 
-    })   
-    return
+    return new Promise((resolve, reject) => {
+        cognitoUser.confirmRegistration(confirmationCode, true, (err) => {
+            if(err)
+                reject(err)
+            else
+                resolve() 
+        })   
+    })
 }

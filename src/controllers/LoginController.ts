@@ -24,54 +24,96 @@ export class LoginController implements BaseRouter {
     * Returns a configured router for the route
     * @returns Router
     */
-    returnRouter() : Router {
+    returnRouter(): Router {
         return Router()
-            .post('/login', asyncRoutes(async(req: Request, res: Response, next: NextFunction) => {
+            .post('/login', async (req: Request, res: Response, next: NextFunction) => {
                 let { email, password } = req.body;
 
-                let jwt = await LoginUser(email, password);
-                if(jwt === null)
-                    res.status(403).send(JSON.stringify({
-                        message: 'User failed to login!'
-                    }))
-                else {
+                try {
+                    if (email === undefined || password === undefined) {
+                        try {
+                            let data = JSON.parse(req.body.data)
+                            email = data.email
+                            password = data.password
+                        }
+                        catch{
+                            throw Error(JSON.stringify({
+                                message: "No credentials present"
+                            }))
+                        }
+                    }
+
+                    let jwt = await LoginUser(email, password);
                     res.status(200).send(JSON.stringify({
                         jwt,
                         email,
                         message: 'User logged in successfully!'
                     }))
+                } catch (error) {
+                    res.status(403).send(JSON.stringify({
+                        message: error.message
+                    }))
+                    next(JSON.stringify(error))
                 }
-            }))
-            .post('/register', (req: Request, res: Response) => {
+            })
+            .post('/register', async (req: Request, res: Response, next: NextFunction) => {
                 let { email, name, family_name, password } = req.body
-                
-                console.log(email, name, family_name, password)
-                let response = RegisterUser(email, password, name, family_name)
 
-                if(response === undefined){
+                if (email === undefined || password === undefined || name === undefined || family_name === undefined) {
+                    try {
+                        let data = JSON.parse(req.body.data)
+                        email = data.email
+                        password = data.password
+                        name = data.name
+                        family_name = data.family_name
+                    }
+                    catch{
+                        throw Error(JSON.stringify({
+                            message: "Data missing!"
+                        }))
+                    }
+                }
+                try {
+                    await RegisterUser(email, password, name, family_name)
                     res.status(201).send(JSON.stringify({
                         message: 'User registered successfully!',
-                        email
+                        email,
+                        name,
+                        family_name
                     }))
+                } catch (error) {
+                    res.status(400).send(JSON.stringify({
+                        error
+                    }))
+                    next(error)
                 }
-                else
-                    res.status(400).send(process.env.NODE_ENV == 'development' ? response.stack : 'Failed to register')
             })
-            .post('/confirm', (req: Request, res: Response) => {
+            .post('/confirm', asyncRoutes(async (req: Request, res: Response, next: NextFunction) => {
                 let { email, confirmationCode } = req.body
 
-                let result = ConfirmRegistration(email, confirmationCode)
-
-                console.log(result)
-                if(result === undefined)
+                if(email === undefined || confirmationCode === undefined){
+                    try {
+                        let data = JSON.parse(req.body.data)
+                        email = data.email
+                        confirmationCode = data.confirmationCode
+                    }
+                    catch{
+                        throw Error(JSON.stringify({
+                            message: "Data missing!"
+                        }))
+                    }
+                }
+                try {
+                    await ConfirmRegistration(email, confirmationCode)
                     res.status(201).send(JSON.stringify({
                         message: 'User confirmed!'
                     }))
-                else{
+                } catch (error) {
                     res.status(400).send({
-                        message: 'User not confirmed! Wrong confirmation code entered!'
+                        message: error.message
                     })
+                    next(error)
                 }
-            })
+            }))
     }
 }
