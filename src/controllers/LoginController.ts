@@ -108,7 +108,7 @@ export class LoginController implements BaseRouter {
                     }
                     catch{
                         throw Error(JSON.stringify({
-                            message: "Data missing!"
+                            message: "Data missing from request!"
                         }))
                     }
                 }
