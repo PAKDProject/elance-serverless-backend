@@ -29,6 +29,7 @@ export class UserController implements BaseRouter {
             .get('/', async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     let users = await findAllUsers();
+                    if(users.data.length === 0) res.status(404).json({message: 'No users in collection'})
                     res.status(200).json({message:'Users found', users: users.data});
                 } catch (error) {
                     res.status(404).json({message: 'Something went wrong. Users not found', error: error});
