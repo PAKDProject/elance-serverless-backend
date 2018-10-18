@@ -68,3 +68,7 @@ export const findUsersByFName = async (query: object) => await UserRepo.onIndex.
 export const findUsersByLName = async (query: object) => await UserRepo.onIndex.LNameIndex.find(query).allResults().execute();
 
 export const postNewUser = async (newUser: User) => await UserRepo.save(newUser).execute();
+
+export const updateUser = async (email: string, userChanges: Partial<User>) => await UserRepo.update({email, ...userChanges}).execute();
+
+export const deleteUser = async (email: string) => await UserRepo.delete({email:email}).execute();

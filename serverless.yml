@@ -53,12 +53,35 @@ resources:
         AttributeDefinitions:
           - AttributeName: email
             AttributeType: S
+          - AttributeName: lName
+            AttributeType: S
+          - AttributeName: fName
+            AttributeType: S
         KeySchema:
           - AttributeName: email
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
+        GlobalSecondaryIndexes:
+        - IndexName: fNameIndex
+          KeySchema:
+          - AttributeName: fName
+            KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
+        - IndexName: lNameIndex
+          KeySchema:
+          - AttributeName: lName
+            KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
         TableName: ${self:custom.tableName}
 
 plugins:
