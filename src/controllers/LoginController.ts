@@ -38,7 +38,7 @@ export class LoginController implements BaseRouter {
                         }
                         catch{
                             throw Error(JSON.stringify({
-                                message: "No credentials present"
+                                message: "Email and password are required!"
                             }))
                         }
                     }
@@ -50,10 +50,19 @@ export class LoginController implements BaseRouter {
                         message: 'User logged in successfully!'
                     }))
                 } catch (error) {
+                    let message
+
+                    if(error.name === 'Error')
+                        message = 'Internal Error! Try again later!'
+                    else if(error.name === 'InvalidParameterException')
+                        message = 'Email and password are required!'
+                    else
+                        message = error.message
+
                     res.status(403).send(JSON.stringify({
-                        message: error.message
+                        message
                     }))
-                    next(JSON.stringify(error))
+                    next(error)
                 }
             })
             .post('/register', async (req: Request, res: Response, next: NextFunction) => {
@@ -69,7 +78,7 @@ export class LoginController implements BaseRouter {
                     }
                     catch{
                         throw Error(JSON.stringify({
-                            message: "Data missing!"
+                            message: "Data missing from request!"
                         }))
                     }
                 }
