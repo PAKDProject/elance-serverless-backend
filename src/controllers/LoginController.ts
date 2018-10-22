@@ -1,7 +1,6 @@
-import { Router, Response, Request } from 'express'
+import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
-import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode } from '../lib/userCheck';
-import { NextFunction } from 'connect';
+import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode, ValidateToken } from '../lib/userCheck';
 
 /**
 * @class LoginController used to control login route
@@ -209,6 +208,30 @@ export class LoginController implements BaseRouter {
                     })
                     next(error)
                 }               
+            })
+            .post('/validatetoken', async(req: Request, res: Response, next: NextFunction) => {
+                let { jwt } = req.body
+
+                if(jwt === undefined) {
+                    try {
+                        let data = JSON.parse(req.body.data)
+                        jwt = data.jwt
+                    } catch (error) {
+                        throw Error(JSON.stringify({
+                            message: "JWT missing in the request!"
+                        }))
+                    }
+                }
+
+                let decoded = ValidateToken(jwt)
+                if(decoded !== undefined){
+                    res.send(decoded)
+                }
+                else{
+                    res.status(403).send(JSON.stringify({
+                        message: 'Incorrect token!'
+                    }))
+                }
             })
     }
 }
