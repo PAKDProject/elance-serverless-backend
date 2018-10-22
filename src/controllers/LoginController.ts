@@ -1,7 +1,6 @@
 import { Router, Response, Request } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
 import { LoginUser, RegisterUser, ConfirmRegistration } from '../lib/userCheck';
-import { asyncRoutes } from '../middleware/asyncRoutes';
 import { NextFunction } from 'connect';
 
 /**
@@ -97,7 +96,7 @@ export class LoginController implements BaseRouter {
                     next(error)
                 }
             })
-            .post('/confirm', asyncRoutes(async (req: Request, res: Response, next: NextFunction) => {
+            .post('/confirm', async (req: Request, res: Response, next: NextFunction) => {
                 let { email, confirmationCode } = req.body
 
                 if(email === undefined || confirmationCode === undefined){
@@ -123,6 +122,6 @@ export class LoginController implements BaseRouter {
                     })
                     next(error)
                 }
-            }))
+            })
     }
 }
