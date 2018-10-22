@@ -1,6 +1,6 @@
 import { Router, Response, Request } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
-import { LoginUser, RegisterUser, ConfirmRegistration } from '../lib/userCheck';
+import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode } from '../lib/userCheck';
 import { asyncRoutes } from '../middleware/asyncRoutes';
 import { NextFunction } from 'connect';
 
@@ -50,8 +50,10 @@ export class LoginController implements BaseRouter {
                         message: 'User logged in successfully!'
                     }))
                 } catch (error) {
+                    console.log(error)
                     res.status(403).send(JSON.stringify({
-                        message: error.message
+                        message: error.message,
+                        code: error.code
                     }))
                     next(JSON.stringify(error))
                 }
@@ -83,15 +85,15 @@ export class LoginController implements BaseRouter {
                     }))
                 } catch (error) {
                     res.status(400).send(JSON.stringify({
-                        error
+                        message: error.message
                     }))
-                    next(error)
+                    next(JSON.stringify(error))
                 }
             })
             .post('/confirm', asyncRoutes(async (req: Request, res: Response, next: NextFunction) => {
                 let { email, confirmationCode } = req.body
 
-                if(email === undefined || confirmationCode === undefined){
+                if (email === undefined || confirmationCode === undefined) {
                     try {
                         let data = JSON.parse(req.body.data)
                         email = data.email
@@ -103,6 +105,7 @@ export class LoginController implements BaseRouter {
                         }))
                     }
                 }
+
                 try {
                     await ConfirmRegistration(email, confirmationCode)
                     res.status(201).send(JSON.stringify({
@@ -115,5 +118,90 @@ export class LoginController implements BaseRouter {
                     next(error)
                 }
             }))
+            .post('/forgot/start', async (req: Request, res: Response, next: NextFunction) => {
+                let { email } = req.body
+                if (email === undefined) {
+                    try {
+                        let data = JSON.parse(req.body.data)
+                        email = data.email
+
+                        if(email === undefined)
+                            throw Error()
+                    } catch (error) {
+                        throw Error(JSON.stringify({
+                            message: "Email is missing!"
+                        }))
+                    }
+                }
+
+                try {
+                    await ForgotPasswordStart(email)
+                    res.status(200).send({
+                        message: "Forgot password procedure started."
+                    })
+                } catch (error) {
+                    res.status(400).send({
+                        message: error.message
+                    })
+                    next(error)
+                }
+            })
+            .post('/forgot/verify', async (req: Request, res: Response, next: NextFunction) => {
+                let { email, newPassword, confirmCode } = req.body
+
+                if (email === undefined || newPassword === undefined || confirmCode === undefined) {
+                    try {
+                        let data = JSON.parse(req.body.data)
+                        email = data.email
+                        newPassword = data.newPassword
+                        confirmCode = data.confirmCode
+                    }
+                    catch (error) {
+                        throw Error(JSON.stringify({
+                            message: "A field is missing"
+                        }))
+                    }
+                }
+
+                try {
+                    await ForgotPasswordVerify(email, newPassword, confirmCode)
+                    res.status(201).send({
+                        message: "Password changed succesfully"
+                    })
+                }
+                catch (error) {
+                    res.status(400).send({
+                        message: error.message
+                    })
+                    next(error)
+                }
+            })
+            .post('/revalidate', async(req: Request, res: Response, next: NextFunction) => {
+                let { email } = req.body
+
+                if(email === undefined) {
+                    try{
+                        let data = JSON.parse(req.body.data)
+                        email = data.email
+                    }
+                    catch (error) {
+                        throw Error(JSON.stringify({
+                            message: "Email is missing!"
+                        }))
+                    }
+                }
+                
+                try {
+                    await ResendValidationCode(email) 
+                    res.status(200).send({
+                        message: "Verification email sent!"
+                    })
+                } catch (error) {
+                    res.status(403).send({
+                        message: error.message
+                    })
+                    next(error)
+                }               
+            })
     }
 }

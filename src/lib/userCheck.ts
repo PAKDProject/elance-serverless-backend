@@ -20,7 +20,7 @@ export let LoginUser = (Username: string, Password: string) => {
             onFailure: (result) => {
                 reject(result)
             }
-        }) 
+        })
     })
 }
 
@@ -43,10 +43,10 @@ export let RegisterUser = (email: string, password: string, firstName: string, s
 
     return new Promise((resolve, reject) => {
         userPool.signUp(email, password, registrationAttr, null, (err) => {
-        if (err)
-            reject(err)
-        else
-            resolve()
+            if (err)
+                reject(err)
+            else
+                resolve()
         })
     })
 }
@@ -60,10 +60,55 @@ export let ConfirmRegistration = (Username: string, confirmationCode: string) =>
 
     return new Promise((resolve, reject) => {
         cognitoUser.confirmRegistration(confirmationCode, true, (err) => {
-            if(err)
+            if (err)
                 reject(err)
             else
-                resolve() 
-        })   
+                resolve()
+        })
+    })
+}
+
+export let ForgotPasswordStart = (Username: string) => {
+    const userPool: CognitoUserPool = new CognitoUserPool({ UserPoolId: process.env.POOL_ID, ClientId: process.env.APP_CLIENT_ID })
+    const cognitoUser: CognitoUser = new CognitoUser({
+        Username,
+        Pool: userPool
+    })
+
+    return new Promise((resolve, reject) => {
+        cognitoUser.forgotPassword({
+            onSuccess: (data) => resolve(),
+            onFailure: (err) => reject(err)
+        })
+    })
+}
+
+export let ForgotPasswordVerify = (Username: string, newPassword: string, verificationCode: string) => {
+    const userPool: CognitoUserPool = new CognitoUserPool({ UserPoolId: process.env.POOL_ID, ClientId: process.env.APP_CLIENT_ID })
+    const cognitoUser: CognitoUser = new CognitoUser({
+        Username,
+        Pool: userPool
+    })
+
+    return new Promise((resolve, reject) => {
+        cognitoUser.confirmPassword(verificationCode, newPassword, {
+            onSuccess: () => resolve(),
+            onFailure: (err) => reject(err)
+        })
+    })
+}
+
+export let ResendValidationCode = (Username: string) => {
+    const userPool: CognitoUserPool = new CognitoUserPool({ UserPoolId: process.env.POOL_ID, ClientId: process.env.APP_CLIENT_ID })
+    const cognitoUser: CognitoUser = new CognitoUser({
+        Username,
+        Pool: userPool
+    })
+
+    return new Promise((resolve, reject) => {
+        cognitoUser.resendConfirmationCode((err) => {
+            if (err) reject(err)
+            resolve()
+        })
     })
 }
