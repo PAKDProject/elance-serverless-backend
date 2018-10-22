@@ -1,7 +1,6 @@
 import { Router, Response, Request } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
 import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode } from '../lib/userCheck';
-import { asyncRoutes } from '../middleware/asyncRoutes';
 import { NextFunction } from 'connect';
 
 /**
@@ -38,7 +37,7 @@ export class LoginController implements BaseRouter {
                         }
                         catch{
                             throw Error(JSON.stringify({
-                                message: "No credentials present"
+                                message: "Email and password are required!"
                             }))
                         }
                     }
@@ -50,12 +49,20 @@ export class LoginController implements BaseRouter {
                         message: 'User logged in successfully!'
                     }))
                 } catch (error) {
-                    console.log(error)
+                    let message
+
+                    if(error.name === 'Error')
+                        message = 'Internal Error! Try again later!'
+                    else if(error.name === 'InvalidParameterException')
+                        message = 'Email and password are required!'
+                    else
+                        message = error.message
+
                     res.status(403).send(JSON.stringify({
-                        message: error.message,
+                        message,
                         code: error.code
                     }))
-                    next(JSON.stringify(error))
+                    next(error)
                 }
             })
             .post('/register', async (req: Request, res: Response, next: NextFunction) => {
@@ -71,7 +78,7 @@ export class LoginController implements BaseRouter {
                     }
                     catch{
                         throw Error(JSON.stringify({
-                            message: "Data missing!"
+                            message: "Data missing from request!"
                         }))
                     }
                 }
@@ -90,7 +97,7 @@ export class LoginController implements BaseRouter {
                     next(JSON.stringify(error))
                 }
             })
-            .post('/confirm', asyncRoutes(async (req: Request, res: Response, next: NextFunction) => {
+            .post('/confirm', async (req: Request, res: Response, next: NextFunction) => {
                 let { email, confirmationCode } = req.body
 
                 if (email === undefined || confirmationCode === undefined) {
@@ -101,7 +108,7 @@ export class LoginController implements BaseRouter {
                     }
                     catch{
                         throw Error(JSON.stringify({
-                            message: "Data missing!"
+                            message: "Data missing from request!"
                         }))
                     }
                 }
@@ -117,7 +124,7 @@ export class LoginController implements BaseRouter {
                     })
                     next(error)
                 }
-            }))
+            })
             .post('/forgot/start', async (req: Request, res: Response, next: NextFunction) => {
                 let { email } = req.body
                 if (email === undefined) {

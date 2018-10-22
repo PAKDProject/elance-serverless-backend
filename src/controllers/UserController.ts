@@ -1,8 +1,6 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
 import { postNewUser, findAllUsers, findUserByEmail, findUsersByFName, findUsersByLName, updateUser, deleteUser } from '../models/user';
-import { asyncRoutes } from '../middleware/asyncRoutes';
-import { attributeNotExists } from 'type-dynamo';
 
 /**
 * @class UserController used to control the user route
@@ -29,6 +27,7 @@ export class UserController implements BaseRouter {
             .get('/', async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     let users = await findAllUsers();
+                    if(users.data.length === 0) res.status(404).json({message: 'No users in collection'})
                     res.status(200).json({message:'Users found', users: users.data});
                 } catch (error) {
                     res.status(404).json({message: 'Something went wrong. Users not found', error: error});
@@ -46,7 +45,7 @@ export class UserController implements BaseRouter {
             })
             .get('/fname/:fname', async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const users = await findUsersByFName(req.params.fname);
+                    const users = await findUsersByFName(JSON.parse(decodeURIComponent(req.params.fname)));
                     res.status(200).json({message: 'Users found', users: users.data});
                 } catch (error) {
                     res.status(404).json({message: 'Something went wrong. User not found', error: error});
@@ -55,7 +54,7 @@ export class UserController implements BaseRouter {
             })
             .get('/lname/:lname', async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const users = await findUsersByLName(req.params.lname);
+                    const users = await findUsersByLName(JSON.parse(decodeURIComponent(req.params.lname)));
                     res.status(200).json({message: 'Users found', users: users.data});
                 } catch (error) {
                     res.status(404).json({message: 'Something went wrong. User not found', error: error});
