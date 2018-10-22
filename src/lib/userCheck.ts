@@ -1,4 +1,5 @@
 import { CognitoUserPool, AuthenticationDetails, CognitoUser, CognitoUserAttribute } from 'amazon-cognito-identity-js';
+import { verify, decode } from 'jsonwebtoken'
 
 export let LoginUser = (Username: string, Password: string) => {
     const userPool: CognitoUserPool = new CognitoUserPool({ UserPoolId: process.env.POOL_ID, ClientId: process.env.APP_CLIENT_ID })
@@ -14,7 +15,7 @@ export let LoginUser = (Username: string, Password: string) => {
     return new Promise((resolve, reject) => {
         cognitoUser.authenticateUser(auth, {
             onSuccess: (result) => {
-                let token = result.getAccessToken().getJwtToken()
+                let token = result.getIdToken().getJwtToken()
                 resolve(token)
             },
             onFailure: (result) => {
@@ -111,4 +112,8 @@ export let ResendValidationCode = (Username: string) => {
             resolve()
         })
     })
+}
+
+export let ValidateToken = (token: string) => {
+    return decode(token)
 }
