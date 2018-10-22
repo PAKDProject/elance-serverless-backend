@@ -1,8 +1,6 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
 import { postNewUser, findAllUsers, findUserByEmail, findUsersByFName, findUsersByLName, updateUser, deleteUser } from '../models/user';
-import { asyncRoutes } from '../middleware/asyncRoutes';
-import { attributeNotExists } from 'type-dynamo';
 
 /**
 * @class UserController used to control the user route
