@@ -44,6 +44,6 @@
     "@types/mocha": "^5.2.5",
     "@types/node-fetch": "^2.1.2",
     "serverless-dynamodb-local": "^0.2.35",
-    "serverless-offline": "^3.27.0"
+    "serverless-offline": "^3.28.1"
   }
 }

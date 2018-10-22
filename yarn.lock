@@ -2797,10 +2797,10 @@ serverless-dynamodb-local@^0.2.35:
     dynamodb-localhost "^0.0.6"
     lodash "^4.17.0"
 
-serverless-offline@^3.27.0:
-  version "3.27.0"
-  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-3.27.0.tgz#de30731097572452f3bb4bd18c2a7c921e24e423"
-  integrity sha512-2/+VJ+dORzcD7qyxFxmXANSH/tYTphYH2f3lUqlBylV/zY0imq639qtD4oE8KQX9AixAQL3hfCOrc7E4HZR6IQ==
+serverless-offline@^3.28.1:
+  version "3.28.1"
+  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-3.28.1.tgz#188158e1cd4aa54c35f372b51175f2363a81cecd"
+  integrity sha512-4bYgolweNUC1ax8SDtKUs775qW6yv7yXA0QZCQBT48UXfoIeobtpbBbLSd2lUMlX34BJQnsfViubwL3QP7prAQ==
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/register" "^7.0.0"
