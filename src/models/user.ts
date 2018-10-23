@@ -65,7 +65,7 @@ export const findUserByEmail = async (email: string) => await UserRepo.find({ema
 
 export const findUsersByFName = async (query: object) => await UserRepo.onIndex.fNameIndex.find(query).allResults().execute();
 
-export const findUsersByLName = async (query: object) => await UserRepo.onIndex.LNameIndex.find(query).allResults().execute();
+export const findUsersByLName = async (query: object) => await UserRepo.onIndex.lNameIndex.find(query).allResults().execute();
 
 export const postNewUser = async (newUser: User) => await UserRepo.save(newUser).execute();
 

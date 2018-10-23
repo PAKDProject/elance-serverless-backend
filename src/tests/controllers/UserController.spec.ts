@@ -1,4 +1,4 @@
-import { describe, it, before, after } from "mocha"
+import { describe, it, after } from "mocha"
 import { expect } from "chai"
 import { default as fetch } from "node-fetch";
 
@@ -12,7 +12,7 @@ describe("Testing User Controller", () => {
             expect(json).to.not.be.null;
             expect(json.users.length).greaterThan(0);
             expect(json.message).to.eql('Users found');
-            done()
+            done();
         }).catch(err => {
             done(err);
         });
@@ -25,6 +25,32 @@ describe("Testing User Controller", () => {
             expect(json).to.not.be.null;
             expect(json.message).to.eql('User found');
             expect(json).to.have.property('user').not.null;
+            done();
+        }).catch(err => {
+            done(err);
+        });
+    });
+
+    it('Should search users by their first name at GET /fname/{query}', done => {
+        fetch(url + 'fname/' + encodeURIComponent(JSON.stringify({fName: "killian"})))
+        .then(res => res.json())
+        .then(json => {
+            expect(json).to.not.be.null;
+            expect(json.message).to.eql('Users found');
+            expect(json.users.length).greaterThan(0);
+            done();
+        }).catch(err => {
+            done(err);
+        });
+    });
+
+    it('Should search users by their last name at GET /lname/{query}', done => {
+        fetch(url + 'lname/' + encodeURIComponent(JSON.stringify({lName: "finn"})))
+        .then(res => res.json())
+        .then(json => {
+            expect(json).to.not.be.null;
+            expect(json.message).to.eql('Users found');
+            expect(json.users.length).greaterThan(0);
             done();
         }).catch(err => {
             done(err);
