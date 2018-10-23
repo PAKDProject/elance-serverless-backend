@@ -1,9 +1,9 @@
-import { describe, it, after } from "mocha"
-import { expect } from "chai"
+import { describe, it, after } from "mocha";
+import { expect } from "chai";
 import { default as fetch } from "node-fetch";
 
 describe("Testing User Controller", () => {
-    let url: string = "http://localhost:3000/users/";
+    let url: string = 'http://localhost:3000/users/';
 
     it('Should return all users at GET /', done => {
         fetch(url, { method: 'GET' })
