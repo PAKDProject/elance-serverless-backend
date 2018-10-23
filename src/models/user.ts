@@ -4,7 +4,7 @@ import { Job } from "./job";
 /**
  * Class for Skills
  */
-export class Skill {
+class Skill {
     title: string;
     description: string;
 }
@@ -12,7 +12,7 @@ export class Skill {
 /**
  * Class for Education Items
  */
-export class EducationItem {
+class EducationItem {
     degreeTitle: string;
     startYear: string;
     endYear: string;
@@ -24,12 +24,12 @@ export class EducationItem {
 /**
  * Class for Social Links
  */
-export class SocialLink {
+class SocialLink {
     name: string;
     linkUrl: string;
 }
 
-export class User {
+class User {
     email: string;
     fName: string;
     lName: string;
@@ -46,7 +46,7 @@ export class User {
     contacts: Array<User>;
 }
 
-export const UserRepo = typeDynamo.define(User, {
+const UserRepo = typeDynamo.define(User, {
     tableName: 'users-table-dev',
     partitionKey: 'email'
 }).withGlobalIndex({
