@@ -1,6 +1,6 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
-import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode, ValidateToken } from '../lib/userCheck';
+import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode, ValidateToken, DecryptTokens } from '../lib/userCheck';
 
 /**
 * @class LoginController used to control login route
@@ -41,10 +41,14 @@ export class LoginController implements BaseRouter {
                         }
                     }
 
-                    let jwt = await LoginUser(email, password);
+                    let tokens = await LoginUser(email, password);
+                    console.log(tokens)
+                    
+                    let token = tokens as string
+                    // let decryptedToken = DecryptTokens(token)
+                    // console.log(decryptedToken)
                     res.status(200).send(JSON.stringify({
-                        jwt,
-                        email,
+                        jwt: tokens,
                         message: 'User logged in successfully!'
                     }))
                 } catch (error) {

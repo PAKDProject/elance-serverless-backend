@@ -1,5 +1,6 @@
 import { CognitoUserPool, AuthenticationDetails, CognitoUser, CognitoUserAttribute } from 'amazon-cognito-identity-js';
 import { verify, decode } from 'jsonwebtoken'
+import * as crypto from 'crypto-js'
 
 export let LoginUser = (Username: string, Password: string) => {
     const userPool: CognitoUserPool = new CognitoUserPool({ UserPoolId: process.env.POOL_ID, ClientId: process.env.APP_CLIENT_ID })
@@ -15,8 +16,24 @@ export let LoginUser = (Username: string, Password: string) => {
     return new Promise((resolve, reject) => {
         cognitoUser.authenticateUser(auth, {
             onSuccess: (result) => {
-                let token = result.getIdToken().getJwtToken()
-                resolve(token)
+                let idToken = result.getIdToken().getJwtToken()
+                // let refreshToken = result.getRefreshToken().getToken()
+                // let accessToken = result.getAccessToken().getJwtToken()
+                // console.log(ValidateToken(idToken))
+                // console.log(ValidateToken(refreshToken))
+                // console.log(ValidateToken(accessToken))
+
+                // let tokensPayload = JSON.stringify({
+                //     idToken,
+                //     refreshToken,
+                //     accessToken
+                // })
+
+                // console.log(tokensPayload)
+
+                // let token = EncryptTokens(tokensPayload)
+
+                resolve(idToken)
             },
             onFailure: (result) => {
                 reject(result)
@@ -112,6 +129,15 @@ export let ResendValidationCode = (Username: string) => {
             resolve()
         })
     })
+}
+
+export let EncryptTokens = (token: string) => {
+    let encrypted = crypto.AES.encrypt(token, process.env.SUPER_SECRET_CODE)
+    return encrypted.toString()
+}
+
+export let DecryptTokens = (token: string) => {
+    return crypto.AES.decrypt(token, process.env.SUPER_SECRET_CODE).toString(crypto.enc.Utf8)
 }
 
 export let ValidateToken = (token: string) => {
