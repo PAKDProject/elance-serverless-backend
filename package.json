@@ -4,12 +4,13 @@
   "description": "Serverless AWS backend for project E-lance",
   "main": "index.js",
   "scripts": {
-    "start": "yarn build && sls offline start",
+    "start": "yarn build && sls offline start --seed",
     "start:dev": "nodemon",
     "build:dev": "ts-node src/local.ts",
     "build": "tsc",
     "deploy": "yarn build && sls deploy",
-    "test": "mocha dist/tests/**/*.spec.js"
+    "test": "mocha dist/tests/**/*.spec.js",
+    "postinstall": "sed -i '4s/.*/var fetch = require(\"node-fetch\")/' ./node_modules/amazon-cognito-identity-js/lib/Client.js"
   },
   "author": "Paul K, Alan J, Killian K, Daire F",
   "license": "ISC",

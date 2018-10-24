@@ -1,6 +1,6 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
-import { postNewUser, findAllUsers, findUserByEmail, findUsersByFName, findUsersByLName, updateUser, deleteUser } from '../models/user';
+import * as UserModel  from '../models/user';
 
 /**
 * @class UserController used to control the user route
@@ -26,7 +26,7 @@ export class UserController implements BaseRouter {
         return Router()
             .get('/', async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    let users = await findAllUsers();
+                    let users = await UserModel.findAllUsers();
                     if(users.data.length === 0) res.status(404).json({message: 'No users in collection'})
                     res.status(200).json({message:'Users found', users: users.data});
                 } catch (error) {
@@ -36,7 +36,7 @@ export class UserController implements BaseRouter {
             })
             .get('/:email', async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const user = await findUserByEmail(req.params.email);
+                    const user = await UserModel.findUserByEmail(req.params.email);
                     if(user.data) res.status(200).json({message: "User found", user: user.data});
                 } catch (error) {
                     res.status(404).json({message: 'Something went wrong. User not found', error: error});
@@ -45,7 +45,7 @@ export class UserController implements BaseRouter {
             })
             .get('/fname/:fname', async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const users = await findUsersByFName(JSON.parse(decodeURIComponent(req.params.fname)));
+                    const users = await UserModel.findUsersByFName(JSON.parse(decodeURIComponent(req.params.fname)));
                     res.status(200).json({message: 'Users found', users: users.data});
                 } catch (error) {
                     res.status(404).json({message: 'Something went wrong. User not found', error: error});
@@ -54,7 +54,7 @@ export class UserController implements BaseRouter {
             })
             .get('/lname/:lname', async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const users = await findUsersByLName(JSON.parse(decodeURIComponent(req.params.lname)));
+                    const users = await UserModel.findUsersByLName(JSON.parse(decodeURIComponent(req.params.lname)));
                     res.status(200).json({message: 'Users found', users: users.data});
                 } catch (error) {
                     res.status(404).json({message: 'Something went wrong. User not found', error: error});
@@ -63,7 +63,7 @@ export class UserController implements BaseRouter {
             })
             .post('/', async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const user = await postNewUser(req.body);
+                    const user = await UserModel.postNewUser(req.body);
                     res.status(201).json({message:'User created',user:user.data});
                 } catch (error) {
                     res.status(400).json({message: 'Something went wrong. User not created', error:error});
@@ -72,7 +72,7 @@ export class UserController implements BaseRouter {
             })
             .put('/:email', async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const user = await updateUser(req.params.email, req.body)
+                    const user = await UserModel.updateUser(req.params.email, req.body)
                     res.status(200).json({message: 'User updated', user: user.data})
                 } catch (error) {
                     res.status(400).json({message: 'Something went wrong. User not updated', error:error})
@@ -81,7 +81,7 @@ export class UserController implements BaseRouter {
             })
             .delete('/:email', async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const user = await deleteUser(req.params.email);
+                    const user = await UserModel.deleteUser(req.params.email);
                     res.status(200).json({message:'User deleted', user: user.data})
                 } catch (error) {
                     res.status(400).json({message: 'Something went wrong. User not deleted', error:error})
