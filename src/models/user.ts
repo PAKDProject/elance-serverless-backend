@@ -43,7 +43,7 @@ class User {
     backgroundUrl: string;
     socialLinks: Array<SocialLink>;
     tagline: string;
-    contacts: Array<User>;
+    contacts: Array<String>;
 }
 
 const UserRepo = typeDynamo.define(User, {
