@@ -3,7 +3,8 @@
 service: my-express-application
 
 custom:
-  tableName: 'users-table-${self:provider.stage}'
+  userTable: 'users-table-${self:provider.stage}'
+  jobTable: 'jobs-table-${self:provider.stage}'
   dynamodb:
     start:
       migrate: true
@@ -29,8 +30,10 @@ provider:
         - dynamodb:DeleteItem
       Resource:
         - { "Fn::GetAtt": ["UsersDynamoDBTable", "Arn" ] }
+        - { "Fn::GetAtt": ["JobsDynamoDBTable", "Arn" ] }
   environment:
-    USERS_TABLE: ${self:custom.tableName}
+    USERS_TABLE: ${self:custom.userTable}
+    JOBS_TABLE: ${self:custom.jobTable}
 
 package:
   exclude:
@@ -87,7 +90,20 @@ resources:
           ProvisionedThroughput:
             ReadCapacityUnits: 1
             WriteCapacityUnits: 1
-        TableName: ${self:custom.tableName}
+        TableName: ${self:custom.userTable}
+    JobsDynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.jobTable}
 
 plugins:
   - serverless-dynamodb-local
