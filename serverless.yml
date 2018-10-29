@@ -9,6 +9,7 @@ custom:
     stages:
       - dev
     start:
+      port: 8000
       migrate: true
       inMemory: true
       seed: true
@@ -107,7 +108,7 @@ resources:
           - AttributeName: title
             AttributeType: S
           - AttributeName: payment
-            AttributeType: S
+            AttributeType: N
         KeySchema:
           - AttributeName: id
             KeyType: HASH
