@@ -1,21 +1,31 @@
 [
     {
-        "id": "1",
-        "title": "React web application for managing employee health",
-        "employer": "Kudos Health",
-        "description": "Looking for an unsuspecting student to do free labour for exposure.",
+        "id": "1a",
+        "title": "react web application for managing employee health",
+        "employer": "kudos health",
+        "description": "looking for an unsuspecting student to do free labour for exposure.",
         "datePosted": "29/10/2018",
         "isAccepted": false,
         "payment": 0
     },
     {
-        "id": "2",
-        "title": "Microsoft Dynamics 365 project for managing workflow",
-        "employer": "Codec",
-        "description": "Looking for a team of down-and-out students to suck the life out of.",
+        "id": "2b",
+        "title": "microsoft dynamics 365 project for managing workflow",
+        "employer": "codec",
+        "description": "looking for a team of down-and-out students to suck the life out of",
         "datePosted": "20/9/2018",
         "dateAccepted": "25/9/2018",
         "isAccepted": true,
         "payment": 69420
+    },
+    {
+        "id": "3c",
+        "title": "test",
+        "employer": "test employer",
+        "description": "test description",
+        "datePosted": "20/9/2018",
+        "dateAccepted": "25/9/2018",
+        "isAccepted": true,
+        "payment": 666999
     }
 ]

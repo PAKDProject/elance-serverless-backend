@@ -29,13 +29,13 @@ export const findAllJobs = async () => await JobRepo.find().allResults().execute
 
 export const findJobById = async (id: string) => await JobRepo.find({id:id}).execute();
 
-export const findJobByTitle = async (query: object) => await JobRepo.find(query).allResults().execute();
+export const findJobByTitle = async (query: object) => await JobRepo.onIndex.titleIndex.find(query).allResults().execute();
 
-export const findJobByPayment = async (query: object) => await JobRepo.find(query).allResults().execute();
+export const findJobByPayment = async (query: object) => await JobRepo.onIndex.paymentIndex.find(query).allResults().execute();
 
 export const postNewJob = async (newJob: Job) => await JobRepo.save(newJob).execute();
 
 export const updateJob = async (id: string, jobChanges: Partial<Job>) => await JobRepo.update({id, ...jobChanges}).execute();
 
-export const deleteUser = async (id: string) => await JobRepo.delete({id:id}).execute();
+export const deleteJob = async (id: string) => await JobRepo.delete({id:id}).execute();
 
