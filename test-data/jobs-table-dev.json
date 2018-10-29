@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "id": "1",
         "title": "React web application for managing employee health",
         "employer": "Kudos Health",
         "description": "Looking for an unsuspecting student to do free labour for exposure.",
@@ -9,7 +9,7 @@
         "payment": 0
     },
     {
-        "id": 2,
+        "id": "2",
         "title": "Microsoft Dynamics 365 project for managing workflow",
         "employer": "Codec",
         "description": "Looking for a team of down-and-out students to suck the life out of.",
