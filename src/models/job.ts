@@ -1,6 +1,6 @@
 import { typeDynamo } from "../lib/createDb";
 
-class Job {
+export class Job {
     id: string;
     title: string;
     employer: string;
