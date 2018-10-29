@@ -17,7 +17,9 @@ custom:
       test:
         sources:
           - table: 'users-table-${self:provider.stage}'
-            sources: [test-data/user-table-dev.json]
+            sources: [test-data/users-table-dev.json]
+          - table: 'jobs-table-${self:provider.stage}'
+            sources: [test-data/jobs-table-dev.json]            
 
 provider:
   name: aws
