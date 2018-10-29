@@ -4,7 +4,7 @@
   "description": "Serverless AWS backend for project E-lance",
   "main": "index.js",
   "scripts": {
-    "start": "yarn build && sls offline start --seed",
+    "start": "yarn build && sls offline start",
     "start:dev": "nodemon",
     "build:dev": "ts-node src/local.ts",
     "build": "tsc",
