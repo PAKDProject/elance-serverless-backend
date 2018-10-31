@@ -41,12 +41,9 @@ export class LoginController implements BaseRouter {
                         }
                     }
 
+                    //Get access_token and id_token from cognito
                     let tokens = await LoginUser(email, password);
-                    console.log(tokens)
-                    
-                    let token = tokens as string
-                    // let decryptedToken = DecryptTokens(token)
-                    // console.log(decryptedToken)
+
                     res.status(200).send(JSON.stringify({
                         jwt: tokens,
                         message: 'User logged in successfully!'
