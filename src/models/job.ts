@@ -10,6 +10,7 @@ export class Job {
     isAccepted: boolean;
     payment: number;
     progress: number;
+    location: string;
 }
 
 const JobRepo = typeDynamo.define(Job, {

@@ -34,9 +34,9 @@ export class UserController implements BaseRouter {
                 next(error);
             }
         })
-        .get('/:email', async (req: Request, res: Response, next: NextFunction) => {
+        .get('/:id', async (req: Request, res: Response, next: NextFunction) => {
             try {
-                const user = await UserModel.findUserByEmail(req.params.email);
+                const user = await UserModel.findUserById(req.params.id);
                 if(user.data) res.status(200).json({message: "User found", user: user.data});
             } catch (error) {
                 res.status(404).json({message: 'Something went wrong. User not found', error: error});
@@ -70,18 +70,18 @@ export class UserController implements BaseRouter {
                 next(error);
             }
         })
-        .put('/:email', async (req: Request, res: Response, next: NextFunction) => {
+        .put('/:id', async (req: Request, res: Response, next: NextFunction) => {
             try {
-                const user = await UserModel.updateUser(req.params.email, req.body)
+                const user = await UserModel.updateUser(req.params.id, req.body)
                 res.status(200).json({message: 'User updated', user: user.data})
             } catch (error) {
                 res.status(400).json({message: 'Something went wrong. User not updated', error:error})
                 next(error)
             }
         })
-        .delete('/:email', async (req: Request, res: Response, next: NextFunction) => {
+        .delete('/:id', async (req: Request, res: Response, next: NextFunction) => {
             try {
-                const user = await UserModel.deleteUser(req.params.email);
+                const user = await UserModel.deleteUser(req.params.id);
                 res.status(200).json({message:'User deleted', user: user.data})
             } catch (error) {
                 res.status(400).json({message: 'Something went wrong. User not deleted', error:error})
