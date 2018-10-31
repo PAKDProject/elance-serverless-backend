@@ -38,7 +38,7 @@ export class JobController implements BaseRouter {
         .get('/:id', async (req: Request, res: Response, next: NextFunction) => {
             try {
                 let job = await JobModel.findJobById(req.params.id);
-                if(job.data) res.status(200).json({message:'Jobs found', jobs: job.data});
+                if(job.data) res.status(200).json({message:'Job found', job: job.data});
             } catch (error) {
                 res.status(404).json({message: 'Something went wrong. Job not found', error: error});
                 next(error);
