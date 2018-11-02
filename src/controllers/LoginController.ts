@@ -55,7 +55,6 @@ export class LoginController implements BaseRouter {
                         secure: true
                     }).send(JSON.stringify({
                         tokens,
-                        email,
                         message: 'User logged in successfully!'
                     }))
                 } catch (error) {

@@ -30,6 +30,7 @@ class SocialLink {
 }
 
 class User {
+    id: string;
     email: string;
     fName: string;
     lName: string;
@@ -43,12 +44,12 @@ class User {
     backgroundUrl: string;
     socialLinks: Array<SocialLink>;
     tagline: string;
-    contacts: Array<User>;
+    contacts: Array<String>;
 }
 
 const UserRepo = typeDynamo.define(User, {
     tableName: 'users-table-dev',
-    partitionKey: 'email'
+    partitionKey: 'id'
 }).withGlobalIndex({
     indexName: 'fNameIndex',
     partitionKey: 'fName',
@@ -61,7 +62,7 @@ const UserRepo = typeDynamo.define(User, {
 
 export const findAllUsers = async () => await UserRepo.find().allResults().execute();
 
-export const findUserByEmail = async (email: string) => await UserRepo.find({ email: email }).execute();
+export const findUserById = async (id: string) => await UserRepo.find({ id: id }).execute();
 
 export const findUsersByFName = async (query: object) => await UserRepo.onIndex.fNameIndex.find(query).allResults().execute();
 
@@ -69,6 +70,6 @@ export const findUsersByLName = async (query: object) => await UserRepo.onIndex.
 
 export const postNewUser = async (newUser: User) => await UserRepo.save(newUser).execute();
 
-export const updateUser = async (email: string, userChanges: Partial<User>) => await UserRepo.update({ email, ...userChanges }).execute();
+export const updateUser = async (id: string, userChanges: Partial<User>) => await UserRepo.update({ id, ...userChanges }).execute();
 
-export const deleteUser = async (email: string) => await UserRepo.delete({ email: email }).execute();
+export const deleteUser = async (id: string) => await UserRepo.delete({ id: id }).execute();

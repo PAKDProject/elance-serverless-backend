@@ -18,8 +18,8 @@ describe("Testing User Controller", () => {
         });
     });
 
-    it('Should return one user at GET /{email}', done => {
-        fetch(url + 'killiankelly@elance.site', { method: 'GET' })
+    it('Should return one user at GET /{id}', done => {
+        fetch(url + 'd813c1eb-d73f-482f-b801-9519b664e706', { method: 'GET' })
         .then(res => res.json())
         .then(json => {
             expect(json).to.not.be.null;
@@ -58,7 +58,7 @@ describe("Testing User Controller", () => {
     });
 
     it('Should insert one user at POST /', done => {
-        fetch(url, {method: 'POST', body: JSON.stringify({email:'testemail@elance.site',fName:'jeff',lName:'bezos'}), headers:{'Content-Type':'application/json'}})
+        fetch(url, {method: 'POST', body: JSON.stringify({id:'d813c1eb-d73f-482f-b801-dadadasd', email:'testemail@elance.site',fName:'jeff',lName:'bezos'}), headers:{'Content-Type':'application/json'}})
         .then(res => res.json())
         .then(json => {
             expect(json).to.not.be.null;
@@ -70,8 +70,8 @@ describe("Testing User Controller", () => {
         });
     });
 
-    it('Should update one user at PUT /{email}', done => {
-        fetch(url + 'testemail@elance.site', {method: 'PUT', body: JSON.stringify({fName:'the', lName:'goat'}), headers:{'Content-Type':'application/json'}})
+    it('Should update one user at PUT /{id}', done => {
+        fetch(url + 'd813c1eb-d73f-482f-b801-9519b664e706', {method: 'PUT', body: JSON.stringify({fName:'the', lName:'goat'}), headers:{'Content-Type':'application/json'}})
         .then(res => res.json())
         .then(json => {
             expect(json).to.not.be.null;
@@ -83,8 +83,8 @@ describe("Testing User Controller", () => {
         });
     });
 
-    it('Should delete one user at DELETE /{email}', done => {
-        fetch(url + 'testemail@elance.site', {method: 'DELETE'})
+    it('Should delete one user at DELETE /{id}', done => {
+        fetch(url + 'd813c1eb-d73f-482f-b801-9519b664e706', {method: 'DELETE'})
         .then(res => res.json())
         .then(json => {
             expect(json).to.not.be.null;

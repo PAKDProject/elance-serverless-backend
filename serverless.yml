@@ -3,15 +3,24 @@
 service: my-express-application
 
 custom:
-  tableName: 'users-table-${self:provider.stage}'
+  userTable: 'users-table-${self:provider.stage}'
+  jobTable: 'jobs-table-${self:provider.stage}'
   dynamodb:
+    stages:
+      - dev
     start:
+      port: 8000
       migrate: true
+      inMemory: true
+      seed: true
+      convertEmptyValues: true
     seed:
       test:
         sources:
           - table: 'users-table-${self:provider.stage}'
-            sources: [test-data/user-table-dev.json]
+            sources: [test-data/users-table-dev.json]
+          - table: 'jobs-table-${self:provider.stage}'
+            sources: [test-data/jobs-table-dev.json]            
 
 provider:
   name: aws
@@ -29,8 +38,10 @@ provider:
         - dynamodb:DeleteItem
       Resource:
         - { "Fn::GetAtt": ["UsersDynamoDBTable", "Arn" ] }
+        - { "Fn::GetAtt": ["JobsDynamoDBTable", "Arn" ] }
   environment:
-    USERS_TABLE: ${self:custom.tableName}
+    USERS_TABLE: ${self:custom.userTable}
+    JOBS_TABLE: ${self:custom.jobTable}
 
 package:
   exclude:
@@ -56,14 +67,14 @@ resources:
       Type: 'AWS::DynamoDB::Table'
       Properties:
         AttributeDefinitions:
-          - AttributeName: email
+          - AttributeName: id
             AttributeType: S
           - AttributeName: lName
             AttributeType: S
           - AttributeName: fName
             AttributeType: S
         KeySchema:
-          - AttributeName: email
+          - AttributeName: id
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
@@ -87,7 +98,43 @@ resources:
           ProvisionedThroughput:
             ReadCapacityUnits: 1
             WriteCapacityUnits: 1
-        TableName: ${self:custom.tableName}
+        TableName: ${self:custom.userTable}
+    JobsDynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: title
+            AttributeType: S
+          - AttributeName: payment
+            AttributeType: N
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        GlobalSecondaryIndexes:
+        - IndexName: titleIndex
+          KeySchema:
+          - AttributeName: title
+            KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
+        - IndexName: paymentIndex
+          KeySchema:
+          - AttributeName: payment
+            KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
+        TableName: ${self:custom.jobTable}
 
 plugins:
   - serverless-dynamodb-local
