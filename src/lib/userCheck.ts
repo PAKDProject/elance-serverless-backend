@@ -1,5 +1,9 @@
-import { CognitoUserPool, AuthenticationDetails, CognitoUser, CognitoUserAttribute } from 'amazon-cognito-identity-js';
+import { CognitoUserPool, AuthenticationDetails, CognitoUser, CognitoUserAttribute, CognitoRefreshToken } from 'amazon-cognito-identity-js';
 import { decode } from 'jsonwebtoken'
+import { CognitoIdentityServiceProvider } from 'aws-sdk'
+import { ICognitoRefreshResponse, IAccessToken } from '../interfaces/IAWSResponse';
+import * as jwt from 'jsonwebtoken'
+import { findRefreshTokenForUser } from '../models/token';
 
 export let LoginUser = (Username: string, Password: string) => {
     const userPool: CognitoUserPool = new CognitoUserPool({ UserPoolId: process.env.POOL_ID, ClientId: process.env.APP_CLIENT_ID })
@@ -15,8 +19,17 @@ export let LoginUser = (Username: string, Password: string) => {
     return new Promise((resolve, reject) => {
         cognitoUser.authenticateUser(auth, {
             onSuccess: (result) => {
-                let token = result.getIdToken().getJwtToken()
-                resolve(token)
+                let access_token = result.getAccessToken().getJwtToken()
+                let id_token = result.getIdToken().getJwtToken()
+                let refreshToken = result.getRefreshToken().getToken()
+
+                //save refresh - todo
+
+                let tokens = {
+                    access_token,
+                    id_token
+                }
+                resolve(tokens)
             },
             onFailure: (result) => {
                 reject(result)
@@ -114,6 +127,40 @@ export let ResendValidationCode = (Username: string) => {
     })
 }
 
-export let ValidateToken = (token: string) => {
-    return decode(token)
+export let ValidateToken = (token: string): boolean => {
+    return true
+}
+
+export let RefreshTokens = (access_token: string): Promise<ICognitoRefreshResponse> => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let username = getUserIDFromAccessToken(access_token)
+
+            let refreshToken = await findRefreshTokenForUser(username) //to be done get refresh token...
+            let params = {
+                AuthFlow: 'REFRESH_TOKEN_AUTH',
+                AuthParameters: {
+                    REFRESH_TOKEN: refreshToken
+                },
+                ClientId: process.env.APP_CLIENT_ID
+            }
+
+            new CognitoIdentityServiceProvider({
+                region: 'eu-west-1'
+            }).initiateAuth(params, (err, data) => {
+                if (err) reject(err)
+                let cognitoResponse = data as ICognitoRefreshResponse
+                resolve(cognitoResponse)
+            })
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
+
+let getUserIDFromAccessToken = (access_token: string) => {
+    let decode = jwt.decode(access_token)
+
+    let user = decode as IAccessToken;
+    return user.username;
 }

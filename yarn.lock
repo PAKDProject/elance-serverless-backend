@@ -237,6 +237,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/cookie-parser@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@types/cookie-parser/-/cookie-parser-1.4.1.tgz#e88a39c41960f31549b4c52dd8620aa4a2feb4bb"
+  integrity sha512-iJY6B3ZGufLiDf2OCAgiAAQuj1sMKC/wz/7XCEjZ+/MDuultfFJuSwrBKcLSmJ5iYApLzCCYBYJZs0Ws8GPmwA==
+  dependencies:
+    "@types/express" "*"
+
 "@types/cors@^2.8.4":
   version "2.8.4"
   resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.4.tgz#50991a759a29c0b89492751008c6af7a7c8267b0"
@@ -273,6 +280,13 @@
     "@types/body-parser" "*"
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
+
+"@types/jsonwebtoken@^8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@types/jsonwebtoken/-/jsonwebtoken-8.3.0.tgz#1fe79489df97b49273401ac3c8019cbf1dae4578"
+  integrity sha512-YKnUTR4VxwljbPORPrRon9E3uel1aD8nUdvzqArCCdMTWPvo0gnI2UZkwIHN2QATdj6HYXV/Iq3/KcecAO42Ww==
+  dependencies:
+    "@types/node" "*"
 
 "@types/mime@*":
   version "2.0.0"
@@ -874,6 +888,14 @@ convert-source-map@^1.1.0:
   integrity sha512-eFu7XigvxdZ1ETfbgPBohgyQ/Z++C0eEhTor0qRwBw9unw+L0/6V8wkSuGgzdThkiS5lSpdptOQPD8Ak40a+7A==
   dependencies:
     safe-buffer "~5.1.1"
+
+cookie-parser@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/cookie-parser/-/cookie-parser-1.4.3.tgz#0fe31fa19d000b95f4aadf1f53fdc2b8a203baa5"
+  integrity sha1-D+MfoZ0AC5X0qt8fU/3CuKIDuqU=
+  dependencies:
+    cookie "0.3.1"
+    cookie-signature "1.0.6"
 
 cookie-signature@1.0.6:
   version "1.0.6"
@@ -2797,10 +2819,10 @@ serverless-dynamodb-local@^0.2.35:
     dynamodb-localhost "^0.0.6"
     lodash "^4.17.0"
 
-serverless-offline@^3.28.1:
-  version "3.28.1"
-  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-3.28.1.tgz#188158e1cd4aa54c35f372b51175f2363a81cecd"
-  integrity sha512-4bYgolweNUC1ax8SDtKUs775qW6yv7yXA0QZCQBT48UXfoIeobtpbBbLSd2lUMlX34BJQnsfViubwL3QP7prAQ==
+serverless-offline@^3.31.0:
+  version "3.31.0"
+  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-3.31.0.tgz#0ee5885df968c4be415cf10d229370fd6cd5c908"
+  integrity sha512-uGur1/LeQ8LkOl1U6RFDlfTUXAl08GeYRqqX1mjFjQQxh7Lol0JORyFQP3xfIWszCWjkdTPw79R4TPqVncMHtA==
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/register" "^7.0.0"

@@ -61,7 +61,7 @@ const UserRepo = typeDynamo.define(User, {
 
 export const findAllUsers = async () => await UserRepo.find().allResults().execute();
 
-export const findUserByEmail = async (email: string) => await UserRepo.find({email:email}).execute();
+export const findUserByEmail = async (email: string) => await UserRepo.find({ email: email }).execute();
 
 export const findUsersByFName = async (query: object) => await UserRepo.onIndex.fNameIndex.find(query).allResults().execute();
 
@@ -69,6 +69,6 @@ export const findUsersByLName = async (query: object) => await UserRepo.onIndex.
 
 export const postNewUser = async (newUser: User) => await UserRepo.save(newUser).execute();
 
-export const updateUser = async (email: string, userChanges: Partial<User>) => await UserRepo.update({email, ...userChanges}).execute();
+export const updateUser = async (email: string, userChanges: Partial<User>) => await UserRepo.update({ email, ...userChanges }).execute();
 
-export const deleteUser = async (email: string) => await UserRepo.delete({email:email}).execute();
+export const deleteUser = async (email: string) => await UserRepo.delete({ email: email }).execute();
