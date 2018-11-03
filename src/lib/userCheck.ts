@@ -3,7 +3,8 @@ import { decode } from 'jsonwebtoken'
 import { CognitoIdentityServiceProvider } from 'aws-sdk'
 import { ICognitoRefreshResponse, IAccessToken } from '../interfaces/IAWSResponse';
 import * as jwt from 'jsonwebtoken'
-import { findRefreshTokenForUser } from '../models/token';
+import { findRefreshTokenForUser, addRefreshTokenForUser, updateRefreshTokenForUser } from '../models/token';
+import { rejects } from 'assert';
 
 export let LoginUser = (Username: string, Password: string) => {
     const userPool: CognitoUserPool = new CognitoUserPool({ UserPoolId: process.env.POOL_ID, ClientId: process.env.APP_CLIENT_ID })
@@ -15,26 +16,41 @@ export let LoginUser = (Username: string, Password: string) => {
         Username,
         Pool: userPool
     })
-
     return new Promise((resolve, reject) => {
-        cognitoUser.authenticateUser(auth, {
-            onSuccess: (result) => {
-                let access_token = result.getAccessToken().getJwtToken()
-                let id_token = result.getIdToken().getJwtToken()
-                let refreshToken = result.getRefreshToken().getToken()
+        try {
+            cognitoUser.authenticateUser(auth, {
+                onSuccess: (result) => {
+                    let access_token = result.getAccessToken().getJwtToken()
+                    let id_token = result.getIdToken().getJwtToken()
+                    let refresh_token = result.getRefreshToken().getToken()
 
-                //save refresh - todo
+                    let username = getUserIDFromAccessToken(access_token)
+                    //save refresh - todo
+                    findRefreshTokenForUser(username).then(token => {
+                        updateRefreshTokenForUser(username, {
+                            refresh_token
+                        })
+                    }, rej => {
+                        addRefreshTokenForUser({
+                            username,
+                            refresh_token
+                        })
+                    })
 
-                let tokens = {
-                    access_token,
-                    id_token
+                    let tokens = {
+                        access_token,
+                        id_token
+                    }
+                    resolve(tokens)
+                },
+                onFailure: (result) => {
+                    reject(result)
                 }
-                resolve(tokens)
-            },
-            onFailure: (result) => {
-                reject(result)
-            }
-        })
+            })
+        }
+        catch (error) {
+            reject(error)
+        }
     })
 }
 
@@ -127,7 +143,11 @@ export let ResendValidationCode = (Username: string) => {
     })
 }
 
-export let ValidateToken = (token: string): boolean => {
+export let ValidateToken = (tokens): boolean => {
+    return true
+}
+
+export let CheckExpiry = (tokens): boolean => {
     return true
 }
 

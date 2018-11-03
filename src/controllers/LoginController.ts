@@ -1,6 +1,6 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
-import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode, ValidateToken, RefreshTokens } from '../lib/userCheck';
+import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode, ValidateToken, RefreshTokens, CheckExpiry } from '../lib/userCheck';
 
 /**
 * @class LoginController used to control login route
@@ -42,11 +42,25 @@ export class LoginController implements BaseRouter {
                     }
 
                     let tokens
-                    if (req.cookies === undefined) {
+                    console.log(req.cookies)
+                    if (Object.keys(req.cookies).length === 0) {
                         tokens = await LoginUser(email, password);
                     }
                     else {
-                        tokens = await RefreshTokens(JSON.parse(req.cookies.inf_check).access_token)
+                        let cookieTokens = JSON.parse(req.cookies.inf_check)
+                        if (ValidateToken(cookieTokens)) {
+                            if (CheckExpiry(cookieTokens)) {
+                                tokens = JSON.parse(req.cookies.inf_check)
+                            }
+                            else {
+                                tokens = await RefreshTokens(cookieTokens.access_token)
+
+                                if (tokens === undefined) throw new Error('Can\'t refresh token!')
+                            }
+                        }
+                        else {
+                            throw new Error('Invalid tokens!')
+                        }
                     }
 
                     res.status(200).cookie('inf_check', tokens, {
