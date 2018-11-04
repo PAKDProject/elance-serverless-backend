@@ -1,6 +1,7 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
-import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode, ValidateToken, RefreshTokens, CheckExpiry } from '../lib/userCheck';
+import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode, ValidateToken, RefreshTokens, CheckExpiry, getUserIDFromAccessToken } from '../lib/userCheck';
+import { Encode, Decode } from '../lib/tokenFunc';
 
 /**
 * @class LoginController used to control login route
@@ -25,35 +26,42 @@ export class LoginController implements BaseRouter {
     returnRouter(): Router {
         return Router()
             .post('/login', async (req: Request, res: Response, next: NextFunction) => {
-                let { email, password } = req.body;
-
+                console.log(req.cookies)
+                console.log(req.baseUrl)
+                console.log(req.ip)
+                console.log(req.hostname)
+                let tokens
                 try {
-                    if (email === undefined || password === undefined) {
-                        try {
-                            let data = JSON.parse(req.body.data)
-                            email = data.email
-                            password = data.password
-                        }
-                        catch{
-                            throw Error(JSON.stringify({
-                                message: "Email and password are required!"
-                            }))
-                        }
-                    }
+                    if (Object.keys(req.cookies).length === 0 || req.cookies.inf_check === {}) {
+                        let { email, password } = req.body;
 
-                    let tokens
-                    console.log(req.cookies)
-                    if (Object.keys(req.cookies).length === 0) {
-                        tokens = await LoginUser(email, password);
+                        if (email === undefined || password === undefined) {
+                            try {
+                                let data = JSON.parse(req.body.data)
+                                email = data.email
+                                password = data.password
+                            }
+                            catch{
+                                throw Error(JSON.stringify({
+                                    message: "Email and password are required!"
+                                }))
+                            }
+                        }
+                        tokens = await LoginUser(email, password)
                     }
                     else {
-                        let cookieTokens = JSON.parse(req.cookies.inf_check)
+                        let decodedCookie = await Decode(req.cookies.inf_check)
+                        let cookieTokens = JSON.parse(decodedCookie)
                         if (ValidateToken(cookieTokens)) {
                             if (CheckExpiry(cookieTokens)) {
-                                tokens = JSON.parse(req.cookies.inf_check)
+                                tokens = cookieTokens
                             }
                             else {
-                                tokens = await RefreshTokens(cookieTokens.access_token)
+                                let res = await RefreshTokens(cookieTokens.access_token).catch(err => { throw new Error(err) })
+                                tokens = {
+                                    access_token: res.AccessToken,
+                                    id_token: res.IdToken
+                                }
 
                                 if (tokens === undefined) throw new Error('Can\'t refresh token!')
                             }
@@ -63,14 +71,18 @@ export class LoginController implements BaseRouter {
                         }
                     }
 
-                    res.status(200).cookie('inf_check', tokens, {
-                        httpOnly: true,
-                        domain: '.elance.site',
-                        secure: true
-                    }).send(JSON.stringify({
-                        tokens,
-                        message: 'User logged in successfully!'
-                    }))
+                    //Here - save random string to db for comparison!
+                    res.status(200)
+                        .cookie('inf_check', await Encode(JSON.stringify(tokens)), {
+                            httpOnly: true,
+                            domain: '.elance.site',
+                            path: '/',
+                            secure: true
+                        })
+                        .send(JSON.stringify({
+                            tokens,
+                            message: 'User logged in successfully!'
+                        })).end()
                 } catch (error) {
                     let message
 

@@ -1,10 +1,9 @@
 import { CognitoUserPool, AuthenticationDetails, CognitoUser, CognitoUserAttribute, CognitoRefreshToken } from 'amazon-cognito-identity-js';
-import { decode } from 'jsonwebtoken'
 import { CognitoIdentityServiceProvider } from 'aws-sdk'
 import { ICognitoRefreshResponse, IAccessToken } from '../interfaces/IAWSResponse';
 import * as jwt from 'jsonwebtoken'
 import { findRefreshTokenForUser, addRefreshTokenForUser, updateRefreshTokenForUser } from '../models/token';
-import { rejects } from 'assert';
+import { AuthenticationResultType } from 'aws-sdk/clients/cognitoidentityserviceprovider';
 
 export let LoginUser = (Username: string, Password: string) => {
     const userPool: CognitoUserPool = new CognitoUserPool({ UserPoolId: process.env.POOL_ID, ClientId: process.env.APP_CLIENT_ID })
@@ -25,7 +24,7 @@ export let LoginUser = (Username: string, Password: string) => {
                     let refresh_token = result.getRefreshToken().getToken()
 
                     let username = getUserIDFromAccessToken(access_token)
-                    //save refresh - todo
+
                     findRefreshTokenForUser(username).then(token => {
                         updateRefreshTokenForUser(username, {
                             refresh_token
@@ -151,14 +150,18 @@ export let CheckExpiry = (tokens): boolean => {
     return true
 }
 
-export let RefreshTokens = (access_token: string): Promise<ICognitoRefreshResponse> => {
+export let RefreshTokens = (access_token: string): Promise<AuthenticationResultType> => {
     return new Promise(async (resolve, reject) => {
         try {
             let username = getUserIDFromAccessToken(access_token)
 
-            let refreshToken = await findRefreshTokenForUser(username) //to be done get refresh token...
+            let find = await findRefreshTokenForUser(username) //to be done get refresh token...
+            let refreshToken = find.data.refresh_token
+
+            if (!refreshToken) reject('Bad shit')
+
             let params = {
-                AuthFlow: 'REFRESH_TOKEN_AUTH',
+                AuthFlow: 'REFRESH_TOKEN',
                 AuthParameters: {
                     REFRESH_TOKEN: refreshToken
                 },
@@ -169,7 +172,11 @@ export let RefreshTokens = (access_token: string): Promise<ICognitoRefreshRespon
                 region: 'eu-west-1'
             }).initiateAuth(params, (err, data) => {
                 if (err) reject(err)
-                let cognitoResponse = data as ICognitoRefreshResponse
+                let cognitoResponse = data.AuthenticationResult as AuthenticationResultType
+
+                console.log('data: ' + JSON.stringify(data))
+                console.log('response: ' + JSON.stringify(cognitoResponse))
+                updateRefreshTokenForUser(username, { refresh_token: cognitoResponse.RefreshToken })
                 resolve(cognitoResponse)
             })
         } catch (error) {
@@ -178,7 +185,7 @@ export let RefreshTokens = (access_token: string): Promise<ICognitoRefreshRespon
     })
 }
 
-let getUserIDFromAccessToken = (access_token: string) => {
+export const getUserIDFromAccessToken = (access_token: string) => {
     let decode = jwt.decode(access_token)
 
     let user = decode as IAccessToken;
