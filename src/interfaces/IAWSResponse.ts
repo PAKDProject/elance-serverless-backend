@@ -4,7 +4,7 @@ export interface ICognitoRefreshResponse {
         "ExpiresIn": number,
         "IdToken": string,
         "RefreshToken": string,
-        "TokenType": "string"
+        "TokenType": string
     }
 }
 
