@@ -1,22 +1,22 @@
 [
     {
-        "id":"d813c1eb-d73f-482f-b801-9519b664e706",
-        "email":"paulkratz@elance.site",
-        "fName":"paul",
-        "lName":"kratz",
-        "dob":"18-12-1995",
-        "summary":"Me llamo Paulo, donde esta la mantequilla.",
-        "skills":[
+        "id": "d813c1eb-d73ddd-482f-b801-9519b664e706",
+        "email": "paulkratz@elance.site",
+        "fName": "paul",
+        "lName": "kratz",
+        "dob": "1995-12-18",
+        "summary": "Me llamo Paulo, donde esta la mantequilla.",
+        "skills": [
             {
-                "title":"Front-end expert",
-                "description":"Can angular good."
+                "title": "Front-end expert",
+                "description": "Can angular good."
             },
             {
-                "title":".NET master",
-                "description":"Can ASP good."
+                "title": ".NET master",
+                "description": "Can ASP good."
             }
         ],
-        "educationItems":[
+        "educationItems": [
             {
                 "degreeTitle": "Honours Computing",
                 "startYear": "2016",
@@ -26,45 +26,45 @@
                 "description": "4 years of padraig"
             }
         ],
-        "activeJobs":[],
-        "jobHistory":[],
-        "avatarUrl":"www.facebook/paul",
-        "backgroundUrl":"background.png",
-        "socialLinks":[
+        "activeJobs": [],
+        "jobHistory": [],
+        "avatarUrl": "www.facebook/paul",
+        "backgroundUrl": "background.png",
+        "socialLinks": [
             {
-                "title":"Github",
-                "link":"www.github.com"
+                "title": "Github",
+                "link": "www.github.com"
             },
             {
-                "title":"Twitter",
-                "link":"www.twitter.com"
+                "title": "Twitter",
+                "link": "www.twitter.com"
             },
             {
-                "title":"LinkdIn",
-                "link":"www.linkdin.com"
+                "title": "LinkdIn",
+                "link": "www.linkdin.com"
             }
         ],
-        "tagline":"My name a paul",
-        "contacts":[]
+        "tagline": "My name a paul",
+        "contacts": []
     },
     {
-        "id":"dasdasd-d73f-343443-b801-544535345435",
-        "email":"alanjachimczak@elance.site",
-        "fName":"alan",
-        "lName":"jachimczak",
-        "dob":"23-04-1998",
-        "summary":"Me llamo Alan, donde esta la mantequilla.",
-        "skills":[
+        "id": "dasdasd-d73f-343443-b801-544535345435",
+        "email": "alanjachimczak@elance.site",
+        "fName": "alan",
+        "lName": "jachimczak",
+        "dob": "1998-04-23",
+        "summary": "Me llamo Alan, donde esta la mantequilla.",
+        "skills": [
             {
-                "title":"Back-end export",
-                "description":"Polish import."
+                "title": "Back-end export",
+                "description": "Polish import."
             },
             {
-                "title":".NET master",
-                "description":"Can ASP good."
+                "title": ".NET master",
+                "description": "Can ASP good."
             }
         ],
-        "educationItems":[
+        "educationItems": [
             {
                 "degreeTitle": "Honours Computing",
                 "startYear": "2016",
@@ -74,45 +74,45 @@
                 "description": "4 years of padraig"
             }
         ],
-        "activeJobs":[],
-        "jobHistory":[],
-        "avatarUrl":"www.facebook/alan",
-        "backgroundUrl":"background.png",
-        "socialLinks":[
+        "activeJobs": [],
+        "jobHistory": [],
+        "avatarUrl": "www.facebook/alan",
+        "backgroundUrl": "background.png",
+        "socialLinks": [
             {
-                "title":"Github",
-                "link":"www.github.com"
+                "title": "Github",
+                "link": "www.github.com"
             },
             {
-                "title":"Twitter",
-                "link":"www.twitter.com"
+                "title": "Twitter",
+                "link": "www.twitter.com"
             },
             {
-                "title":"LinkdIn",
-                "link":"www.linkdin.com"
+                "title": "LinkdIn",
+                "link": "www.linkdin.com"
             }
         ],
-        "tagline":"My name a alan",
-        "contacts":[]
+        "tagline": "My name a alan",
+        "contacts": []
     },
     {
-        "id":"34242424-d73f-482f-hfghfghf-sfsfsfsdfsdf",
-        "email":"killiankelly@elance.site",
-        "fName":"killian",
-        "lName":"kelly",
-        "dob":"15-09-1998",
-        "summary":"Me llamo Lillian, donde esta la mantequilla.",
-        "skills":[
+        "id": "34242424-d73f-482f-hfghfghf-sfsfsfsdfsdf",
+        "email": "killiankelly@elance.site",
+        "fName": "killian",
+        "lName": "kelly",
+        "dob": "1998-09-15",
+        "summary": "Me llamo Lillian, donde esta la mantequilla.",
+        "skills": [
             {
-                "title":"Jack of all trades",
-                "description":"Not particularly good at any."
+                "title": "Jack of all trades",
+                "description": "Not particularly good at any."
             },
             {
-                "title":".NET master",
-                "description":"Can ASP good."
+                "title": ".NET master",
+                "description": "Can ASP good."
             }
         ],
-        "educationItems":[
+        "educationItems": [
             {
                 "degreeTitle": "Honours Computing",
                 "startYear": "2016",
@@ -122,45 +122,45 @@
                 "description": "4 years of padraig"
             }
         ],
-        "activeJobs":[],
-        "jobHistory":[],
-        "avatarUrl":"www.facebook/lillian",
-        "backgroundUrl":"background.png",
-        "socialLinks":[
+        "activeJobs": [],
+        "jobHistory": [],
+        "avatarUrl": "www.facebook/lillian",
+        "backgroundUrl": "background.png",
+        "socialLinks": [
             {
-                "title":"Github",
-                "link":"www.github.com"
+                "title": "Github",
+                "link": "www.github.com"
             },
             {
-                "title":"Twitter",
-                "link":"www.twitter.com"
+                "title": "Twitter",
+                "link": "www.twitter.com"
             },
             {
-                "title":"LinkdIn",
-                "link":"www.linkdin.com"
+                "title": "LinkdIn",
+                "link": "www.linkdin.com"
             }
         ],
-        "tagline":"My name a lillian",
-        "contacts":[]
+        "tagline": "My name a lillian",
+        "contacts": []
     },
     {
-        "id":"asdasdasdsa-d73f-234234-b801-sdfsdfs3423",
-        "email":"dairefinn@elance.site",
-        "fName":"daire",
-        "lName":"finn",
-        "dob":"19-01-1999",
-        "summary":"Me llamo Daire, donde esta la mantequilla.",
-        "skills":[
+        "id": "asdasdasdsa-d73f-234234-b801-sdfsdfs3423",
+        "email": "dairefinn@elance.site",
+        "fName": "daire",
+        "lName": "finn",
+        "dob": "1999-01-19",
+        "summary": "Me llamo Daire, donde esta la mantequilla.",
+        "skills": [
             {
-                "title":"Front-end expert",
-                "description":"Can design good."
+                "title": "Front-end expert",
+                "description": "Can design good."
             },
             {
-                "title":".NET master",
-                "description":"Can ASP good."
+                "title": ".NET master",
+                "description": "Can ASP good."
             }
         ],
-        "educationItems":[
+        "educationItems": [
             {
                 "degreeTitle": "Honours Computing",
                 "startYear": "2016",
@@ -170,25 +170,25 @@
                 "description": "4 years of padraig"
             }
         ],
-        "activeJobs":[],
-        "jobHistory":[],
-        "avatarUrl":"www.facebook/daire",
-        "backgroundUrl":"background.png",
-        "socialLinks":[
+        "activeJobs": [],
+        "jobHistory": [],
+        "avatarUrl": "www.facebook/daire",
+        "backgroundUrl": "background.png",
+        "socialLinks": [
             {
-                "title":"Github",
-                "link":"www.github.com"
+                "title": "Github",
+                "link": "www.github.com"
             },
             {
-                "title":"Twitter",
-                "link":"www.twitter.com"
+                "title": "Twitter",
+                "link": "www.twitter.com"
             },
             {
-                "title":"LinkdIn",
-                "link":"www.linkdin.com"
+                "title": "LinkdIn",
+                "link": "www.linkdin.com"
             }
         ],
-        "tagline":"My name a daire",
-        "contacts":[]
+        "tagline": "My name a daire",
+        "contacts": []
     }
 ]

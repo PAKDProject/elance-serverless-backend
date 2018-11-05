@@ -4,7 +4,7 @@
         "title": "react web application for managing employee health",
         "employer": "kudos health",
         "description": "looking for an unsuspecting student to do free labour for exposure.",
-        "datePosted": "29/10/2018",
+        "datePosted": "2018-10-29",
         "isAccepted": false,
         "payment": 0
     },
@@ -13,8 +13,8 @@
         "title": "microsoft dynamics 365 project for managing workflow",
         "employer": "codec",
         "description": "looking for a team of down-and-out students to suck the life out of",
-        "datePosted": "20/9/2018",
-        "dateAccepted": "25/9/2018",
+        "datePosted": "2018-09-29",
+        "dateAccepted": "2018-3-25",
         "isAccepted": true,
         "payment": 69420
     },
@@ -23,8 +23,8 @@
         "title": "test",
         "employer": "test employer",
         "description": "test description",
-        "datePosted": "20/9/2018",
-        "dateAccepted": "25/9/2018",
+        "datePosted": "2018-09-29",
+        "dateAccepted": "2018-3-25",
         "isAccepted": true,
         "payment": 666999
     }
