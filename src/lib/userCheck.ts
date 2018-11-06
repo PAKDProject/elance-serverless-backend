@@ -142,14 +142,6 @@ export let ResendValidationCode = (Username: string) => {
     })
 }
 
-export let ValidateToken = (tokens): boolean => {
-    return true
-}
-
-export let CheckExpiry = (tokens): boolean => {
-    return true
-}
-
 export let RefreshTokens = (access_token: string): Promise<AuthenticationResultType> => {
     return new Promise(async (resolve, reject) => {
         try {

@@ -1,7 +1,7 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
-import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode, ValidateToken, RefreshTokens, CheckExpiry, getUserIDFromAccessToken } from '../lib/userCheck';
-import { Encode, Decode } from '../lib/tokenFunc';
+import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode, RefreshTokens } from '../lib/userCheck';
+import { Encode, Decode, ValidateToken, CheckExpiry, TokenTypes } from '../lib/tokenFunc';
 
 /**
 * @class LoginController used to control login route
@@ -26,10 +26,6 @@ export class LoginController implements BaseRouter {
     returnRouter(): Router {
         return Router()
             .post('/login', async (req: Request, res: Response, next: NextFunction) => {
-                console.log(req.cookies)
-                console.log(req.baseUrl)
-                console.log(req.ip)
-                console.log(req.hostname)
                 let tokens
                 try {
                     if (Object.keys(req.cookies).length === 0 || req.cookies.inf_check === {}) {
@@ -51,21 +47,17 @@ export class LoginController implements BaseRouter {
                     }
                     else {
                         let decodedCookie = await Decode(req.cookies.inf_check)
-                        let cookieTokens = JSON.parse(decodedCookie)
-                        if (ValidateToken(cookieTokens)) {
-                            if (CheckExpiry(cookieTokens)) {
-                                tokens = cookieTokens
+                        let cookieToken = JSON.parse(decodedCookie)
+                        if (ValidateToken(cookieToken, TokenTypes.ACCESS_TOKEN)) {
+                            let res = await RefreshTokens(cookieToken).catch(err => { throw new Error(err) })
+                            tokens = {
+                                access_token: res.AccessToken,
+                                id_token: res.IdToken
                             }
-                            else {
-                                let res = await RefreshTokens(cookieTokens.access_token).catch(err => { throw new Error(err) })
-                                tokens = {
-                                    access_token: res.AccessToken,
-                                    id_token: res.IdToken
-                                }
 
-                                if (tokens === undefined) throw new Error('Can\'t refresh token!')
-                            }
+                            if (tokens === undefined) throw new Error('Can\'t refresh token!')
                         }
+
                         else {
                             throw new Error('Invalid tokens!')
                         }
@@ -73,7 +65,7 @@ export class LoginController implements BaseRouter {
 
                     //Here - save random string to db for comparison!
                     res.status(200)
-                        .cookie('inf_check', await Encode(JSON.stringify(tokens)), {
+                        .cookie('inf_check', await Encode(JSON.stringify(tokens.access_token)), {
                             httpOnly: true,
                             domain: '.elance.site',
                             path: '/',
@@ -258,26 +250,32 @@ export class LoginController implements BaseRouter {
                             }))
                         }
                     }
-                    if (typeof (tokens) !== typeof (Array)) {
+
+                    if ((tokens as string[]).length === 0) {
                         throw Error('Tokens sent in incorrect format!')
                     }
 
-                    let isValid = false
+                    let isValid
+                    isValid = ValidateToken(tokens[0], TokenTypes.ACCESS_TOKEN)
 
-                    tokens.forEach(element => {
-                        isValid = ValidateToken(element)
-                    });
-
-                    if (isValid) {
-                        res.send(isValid)
+                    if (!isValid) {
+                        res.send({ isValid })
                     }
                     else {
-                        res.status(403).send(JSON.stringify({
-                            message: 'Incorrect token!'
-                        }))
+                        isValid = ValidateToken(tokens[1], TokenTypes.ID_TOKEN)
+
+                        if (isValid) {
+                            res.send({ isValid })
+                        }
+                        else {
+                            res.status(403).send(JSON.stringify({
+                                message: 'Incorrect token!'
+                            }))
+                        }
                     }
                 }
                 catch (error) {
+                    console.error(error)
                     res.status(400).send(JSON.stringify({
                         message: error
                     }))
