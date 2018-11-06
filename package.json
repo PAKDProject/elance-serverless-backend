@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "yarn build && sls offline start",
-    "start:dev": "nodemon",
+    "start:dev": "nodemon --exec yarn start",
     "build:dev": "ts-node src/local.ts",
     "build": "tsc",
     "deploy": "yarn build && sls deploy",
