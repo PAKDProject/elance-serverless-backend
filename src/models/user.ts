@@ -34,17 +34,18 @@ class User {
     email: string;
     fName: string;
     lName: string;
+    phone: string;
     dob: Date;
     summary: string;
-    skills: Array<Skill>;
-    educationItems: Array<EducationItem>;
-    activeJobs: Array<Job>;
-    jobHistory: Array<Job>;
+    skills: Skill[];
+    educationItems: EducationItem[];
+    activeJobs: Job[];
+    jobHistory: Job[];
     avatarUrl: string;
     backgroundUrl: string;
-    socialLinks: Array<SocialLink>;
+    socialLinks: SocialLink[];
     tagline: string;
-    contacts: Array<String>;
+    contacts: String[];
 }
 
 const UserRepo = typeDynamo.define(User, {
