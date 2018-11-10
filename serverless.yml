@@ -1,6 +1,6 @@
 # serverless.yml
 
-service: my-express-application
+service: elance-serverless-backend
 
 custom:
   userTable: 'users-table-${self:provider.stage}'
