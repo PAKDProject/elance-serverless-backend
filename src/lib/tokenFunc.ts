@@ -2,7 +2,7 @@ import * as CryptoJS from 'crypto-js'
 import { JWKS } from '../config/jwks';
 import * as JWKToPem from 'jwk-to-pem'
 import * as jwt from 'jsonwebtoken'
-import { IAccessToken, IIDToken, IToken } from '../interfaces/IAWSResponse';
+import { IToken } from '../interfaces/IAWSResponse';
 
 export const Encode = async (value: string): Promise<string> => {
     return new Promise<string>((resolve, reject) => {

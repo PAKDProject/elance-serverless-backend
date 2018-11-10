@@ -49,14 +49,12 @@ provider:
 package:
   exclude:
     - src/**
-    - .vscode
     - tsconfig.json
     - nodemon.json
-  include: 
-    - dist/**
-    - package.json
-    - package-lock.json
-    - node_modules/**
+    - test-data/**
+    - .dynamodb/**
+    - .circleci/**
+    - README.md
 
 functions:
   app:
