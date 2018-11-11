@@ -48,7 +48,7 @@ class SocialLink {
     linkUrl: string;
 }
 
-export const appTable = typeDynamo.define(TableModel, {
+export const AppTable = typeDynamo.define(TableModel, {
     tableName: 'app-table-dev',
     partitionKey: 'id',
 }).withLocalIndex({
@@ -63,3 +63,5 @@ export const appTable = typeDynamo.define(TableModel, {
     sortKey: 'jobId',
     projectionType: 'ALL'
 }).getInstance();
+
+export const findAllUsers = async () => await AppTable.find().allResults().execute();
