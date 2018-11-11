@@ -1,6 +1,6 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
-import * as JobModel  from '../models/job';
+import * as TableModel  from '../models/tableModel';
 import { v4 as uuid } from "uuid";
 
 /**
@@ -27,7 +27,7 @@ export class JobController implements BaseRouter {
         return Router()
         .get('/', async (req: Request, res: Response, next: NextFunction) => {
             try {
-                let jobs = await JobModel.findAllJobs();
+                let jobs = await TableModel.findEntriesByType('job');
                 if(jobs.data.length === 0) res.status(404).json({message: 'No jobs in collection'})
                 res.status(200).json({message:'Jobs found', jobs: jobs.data});
             } catch (error) {
@@ -37,28 +37,10 @@ export class JobController implements BaseRouter {
         })
         .get('/:id', async (req: Request, res: Response, next: NextFunction) => {
             try {
-                let job = await JobModel.findJobById(req.params.id);
+                let job = await TableModel.findEntryById(req.params.id);
                 if(job.data) res.status(200).json({message:'Job found', job: job.data});
             } catch (error) {
                 res.status(404).json({message: 'Something went wrong. Job not found', error: error});
-                next(error);
-            }
-        })
-        .get('/title/:title', async (req: Request, res: Response, next: NextFunction) => {
-            try {
-                const jobs = await JobModel.findJobByTitle(JSON.parse(decodeURIComponent(req.params.title)));
-                res.status(200).json({message: 'Jobs found', jobs: jobs.data});
-            } catch (error) {
-                res.status(404).json({message: 'Something went wrong. Jobs not found', error: error});
-                next(error);
-            }
-        })
-        .get('/payment/:payment', async (req: Request, res: Response, next: NextFunction) => {
-            try {
-                const jobs = await JobModel.findJobByPayment(JSON.parse(decodeURIComponent(req.params.payment)));
-                res.status(200).json({message: 'Jobs found', jobs: jobs.data});
-            } catch (error) {
-                res.status(404).json({message: 'Something went wrong. Jobs not found', error: error});
                 next(error);
             }
         })
@@ -66,7 +48,8 @@ export class JobController implements BaseRouter {
             try {
                 let partialJob = req.body;
                 partialJob.id = uuid();
-                const job = await JobModel.postNewJob(partialJob);
+                partialJob.entity = 'job';
+                const job = await TableModel.postNewEntry(partialJob);
                 res.status(201).json({message:'Job created',job:job.data});
             } catch (error) {
                 res.status(400).json({message: 'Something went wrong. Job not created', error:error});
@@ -75,7 +58,7 @@ export class JobController implements BaseRouter {
         })
         .put('/:id', async (req: Request, res: Response, next: NextFunction) => {
             try {
-                const job = await JobModel.updateJob(req.params.id, req.body)
+                const job = await TableModel.updateEntry(req.params.id, req.body)
                 res.status(200).json({message: 'Job updated', job: job.data})
             } catch (error) {
                 res.status(400).json({message: 'Something went wrong. Job not updated', error:error})
@@ -84,7 +67,7 @@ export class JobController implements BaseRouter {
         })
         .delete('/:id', async (req: Request, res: Response, next: NextFunction) => {
             try {
-                const job = await JobModel.deleteJob(req.params.id);
+                const job = await TableModel.deleteEntry(req.params.id);
                 res.status(200).json({message:'Job deleted', job: job.data})
             } catch (error) {
                 res.status(400).json({message: 'Something went wrong. Job not deleted', error:error})

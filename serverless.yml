@@ -4,8 +4,6 @@ service: elance-serverless-backend
 
 custom:
   appTable: 'app-table-${self:provider.stage}'
-  userTable: 'users-table-${self:provider.stage}'
-  jobTable: 'jobs-table-${self:provider.stage}'
   tokensTable: 'tokens-table-${self:provider.stage}'
   dynamodb:
     stages:
@@ -19,10 +17,8 @@ custom:
     seed:
       test:
         sources:
-          - table: 'users-table-${self:provider.stage}'
-            sources: [test-data/users-table-dev.json]
-          - table: 'jobs-table-${self:provider.stage}'
-            sources: [test-data/jobs-table-dev.json]            
+          - table: 'app-table-${self:provider.stage}'
+            sources: [test-data/app-table-dev.json]          
 
 provider:
   name: aws
@@ -40,13 +36,9 @@ provider:
         - dynamodb:DeleteItem
       Resource:
         - { "Fn::GetAtt": ["AppDynamoDBTable", "Arn" ] }
-        - { "Fn::GetAtt": ["UsersDynamoDBTable", "Arn" ] }
-        - { "Fn::GetAtt": ["JobsDynamoDBTable", "Arn" ] }
         - { "Fn::GetAtt": ["TokensDynamoDBTable", "Arn" ] }
   environment:
     APP_TABLE: ${self:custom.appTable}
-    USERS_TABLE: ${self:custom.userTable}
-    JOBS_TABLE: ${self:custom.jobTable}
     TOKENS_TABLE: ${self:custom.tokensTable}
 
 package:
@@ -71,145 +63,27 @@ resources:
       Type: 'AWS::DynamoDB::Table'
       Properties:
         AttributeDefinitions:
+          - AttributeName: entity
+            AttributeType: S
           - AttributeName: id
-            AttributeType: S
-          - AttributeName: userId
-            AttributeType: S
-          - AttributeName: jobId
             AttributeType: S
         KeySchema:
           - AttributeName: id
             KeyType: HASH
-          - AttributeName: userId
-            KeyType: RANGE
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         GlobalSecondaryIndexes:
-          - IndexName: userJobIndex
+          - IndexName: entityIndex
             KeySchema:
-              - AttributeName: userId
+              - AttributeName: entity
                 KeyType: HASH
             Projection:
               ProjectionType: ALL
             ProvisionedThroughput:
               ReadCapacityUnits: 1
               WriteCapacityUnits: 1
-        LocalSecondaryIndexes:
-          # - IndexName: userIndex
-          #   KeySchema:
-          #     - AttributeName: id
-          #       KeyType: HASH
-          #     - AttributeName: userId
-          #       KeyType: RANGE
-          #   Projection:
-          #     NonKeyAttributes:
-          #       - "userEmail"
-          #       - "userFName"
-          #       - "userLName"
-          #       - "userPhone"
-          #       - "userDOB"
-          #       - "userSummary"
-          #       - "userSkills"
-          #       - "userEducationItems"
-          #       - "userActiveJobs"
-          #       - "userJobHistory"
-          #       - "userAvatarUrl"
-          #       - "userBackgroundUrl"
-          #       - "userSocialLinks"
-          #       - "userTagline"
-          #       - "userContacts"
-          #     ProjectionType: INCLUDE
-          - IndexName: jobIndex
-            KeySchema:
-              - AttributeName: id
-                KeyType: HASH
-              - AttributeName: jobId
-                KeyType: RANGE
-            Projection:
-              NonKeyAttributes:
-                - "jobTitle"
-                - "jobEmployer"
-                - "jobDescription"
-                - "jobDatePosted"
-                - "jobDateAccepted"
-                - "jobIsAccepted"
-                - "jobPayment"
-                - "jobProgress"
-              ProjectionType: INCLUDE
         TableName: ${self:custom.appTable}
-    UsersDynamoDBTable:
-      Type: 'AWS::DynamoDB::Table'
-      Properties:
-        AttributeDefinitions:
-          - AttributeName: id
-            AttributeType: S
-          - AttributeName: lName
-            AttributeType: S
-          - AttributeName: fName
-            AttributeType: S
-        KeySchema:
-          - AttributeName: id
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-        GlobalSecondaryIndexes:
-        - IndexName: fNameIndex
-          KeySchema:
-          - AttributeName: fName
-            KeyType: HASH
-          Projection:
-            ProjectionType: ALL
-          ProvisionedThroughput:
-            ReadCapacityUnits: 1
-            WriteCapacityUnits: 1
-        - IndexName: lNameIndex
-          KeySchema:
-          - AttributeName: lName
-            KeyType: HASH
-          Projection:
-            ProjectionType: ALL
-          ProvisionedThroughput:
-            ReadCapacityUnits: 1
-            WriteCapacityUnits: 1
-        TableName: ${self:custom.userTable}
-    JobsDynamoDBTable:
-      Type: 'AWS::DynamoDB::Table'
-      Properties:
-        AttributeDefinitions:
-          - AttributeName: id
-            AttributeType: S
-          - AttributeName: title
-            AttributeType: S
-          - AttributeName: payment
-            AttributeType: N
-        KeySchema:
-          - AttributeName: id
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-        GlobalSecondaryIndexes:
-        - IndexName: titleIndex
-          KeySchema:
-          - AttributeName: title
-            KeyType: HASH
-          Projection:
-            ProjectionType: ALL
-          ProvisionedThroughput:
-            ReadCapacityUnits: 1
-            WriteCapacityUnits: 1
-        - IndexName: paymentIndex
-          KeySchema:
-          - AttributeName: payment
-            KeyType: HASH
-          Projection:
-            ProjectionType: ALL
-          ProvisionedThroughput:
-            ReadCapacityUnits: 1
-            WriteCapacityUnits: 1
-        TableName: ${self:custom.jobTable}
     TokensDynamoDBTable:
       Type: 'AWS::DynamoDB::Table'
       Properties:

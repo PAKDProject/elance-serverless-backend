@@ -31,32 +31,6 @@ describe("Testing User Controller", () => {
         });
     });
 
-    it('Should search users by their first name at GET /fname/{query}', done => {
-        fetch(url + 'fname/' + encodeURIComponent(JSON.stringify({fName: "killian"})))
-        .then(res => res.json())
-        .then(json => {
-            expect(json).to.not.be.null;
-            expect(json.message).to.eql('Users found');
-            expect(json.users.length).greaterThan(0);
-            done();
-        }).catch(err => {
-            done(err);
-        });
-    });
-
-    it('Should search users by their last name at GET /lname/{query}', done => {
-        fetch(url + 'lname/' + encodeURIComponent(JSON.stringify({lName: "finn"})))
-        .then(res => res.json())
-        .then(json => {
-            expect(json).to.not.be.null;
-            expect(json.message).to.eql('Users found');
-            expect(json.users.length).greaterThan(0);
-            done();
-        }).catch(err => {
-            done(err);
-        });
-    });
-
     it('Should insert one user at POST /', done => {
         fetch(url, {method: 'POST', body: JSON.stringify({id:'d813c1eb-d73f-482f-b801-dadadasd', email:'testemail@elance.site',fName:'jeff',lName:'bezos'}), headers:{'Content-Type':'application/json'}})
         .then(res => res.json())

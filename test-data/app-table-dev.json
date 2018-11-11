@@ -1,0 +1,60 @@
+[
+    {
+        "id": "d813c1eb-d73f-482f-b801-9519b664e706",
+        "entity": "user",
+        "email": "paulkratz@elance.site",
+        "fName": "paul",
+        "lName": "kratz",
+        "dob": "18-12-1995",
+        "summary": "Me llamo Paulo, donde esta la mantequilla.",
+        "skills": [
+            {
+                "title": "Front-end expert",
+                "description": "Can angular good."
+            },
+            {
+                "title": ".NET master",
+                "description": "Can ASP good."
+            }
+        ],
+        "educationItems": [
+            {
+                "degreeTitle": "Honours Computing",
+                "startYear": "2016",
+                "endYear": "2020",
+                "collegeName": "IT Sligo",
+                "grade": "1st Hons",
+                "description": "4 years of padraig"
+            }
+        ],
+        "avatarUrl": "www.facebook/paul",
+        "backgroundUrl": "background.png",
+        "socialLinks": [
+            {
+                "title": "Github",
+                "link": "www.github.com"
+            },
+            {
+                "title": "Twitter",
+                "link": "www.twitter.com"
+            },
+            {
+                "title": "LinkdIn",
+                "link": "www.linkdin.com"
+            }
+        ],
+        "tagline": "My name a paul"
+    },
+    {
+        "id": "1a",
+        "entity": "job",
+        "title": "Angular Web Application",
+        "employer": "Kudos Health",
+        "description": "Durrr hurrr make an app lol",
+        "datePosted": "18-12-1995",
+        "dateAccepted": "01-01-1999",
+        "IsAccepted": false,
+        "payment": 42069,
+        "progress": 0
+    }
+]

@@ -31,32 +31,6 @@ describe("Testing Job Controller", () => {
         });
     });
 
-    it('Should search jobs by its title at GET /title/{query}', done => {
-        fetch(url + 'title/' + encodeURIComponent(JSON.stringify({title: "react web application for managing employee health"})))
-        .then(res => res.json())
-        .then(json => {
-            expect(json).to.not.be.null;
-            expect(json.message).to.eql('Jobs found');
-            expect(json.jobs.length).greaterThan(0);
-            done();
-        }).catch(err => {
-            done(err);
-        });
-    });
-
-    it('Should search jobs by their payment GET /payment/{query}', done => {
-        fetch(url + 'payment/' + encodeURIComponent(JSON.stringify({payment: 69420})))
-        .then(res => res.json())
-        .then(json => {
-            expect(json).to.not.be.null;
-            expect(json.message).to.eql('Jobs found');
-            expect(json.jobs.length).greaterThan(0);
-            done();
-        }).catch(err => {
-            done(err);
-        });
-    });
-
     it('Should insert one job at POST /', done => {
         fetch(url, {method: 'POST', body: JSON.stringify({id:'d813c1ebd73f82fb801dadadasd', title:'my test job',payment:696969,employer:'papa jeff'}), headers:{'Content-Type':'application/json'}})
         .then(res => res.json())
@@ -71,7 +45,7 @@ describe("Testing Job Controller", () => {
     });
 
     it('Should update one job at PUT /{id}', done => {
-        fetch(url + '2b', {method: 'PUT', body: JSON.stringify({title:'the goatest job', payment:420}), headers:{'Content-Type':'application/json'}})
+        fetch(url + '1a', {method: 'PUT', body: JSON.stringify({title:'the goatest job', payment:420}), headers:{'Content-Type':'application/json'}})
         .then(res => res.json())
         .then(json => {
             expect(json).to.not.be.null;
@@ -84,7 +58,7 @@ describe("Testing Job Controller", () => {
     });
 
     it('Should delete one job at DELETE /{id}', done => {
-        fetch(url + '3c', {method: 'DELETE'})
+        fetch(url + '1a', {method: 'DELETE'})
         .then(res => res.json())
         .then(json => {
             expect(json).to.not.be.null;
