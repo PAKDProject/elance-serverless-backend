@@ -52,12 +52,6 @@ export const appTable = typeDynamo.define(TableModel, {
     tableName: 'app-table-dev',
     partitionKey: 'id',
 }).withLocalIndex({
-    indexName: 'userIndex',
-    partitionKey: 'id',
-    sortKey: 'userId',
-    projectionType: 'INCLUDE',
-    attributes: ['userEmail','userFName','userLName','userDOB']
-}).withLocalIndex({
     indexName: 'jobIndex',
     partitionKey: 'id',
     sortKey: 'jobId',
