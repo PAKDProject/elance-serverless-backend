@@ -1,6 +1,6 @@
 import { CognitoUserPool, AuthenticationDetails, CognitoUser, CognitoUserAttribute, CognitoRefreshToken } from 'amazon-cognito-identity-js';
 import { CognitoIdentityServiceProvider } from 'aws-sdk'
-import { ICognitoRefreshResponse, IAccessToken } from '../interfaces/IAWSResponse';
+import { IAccessToken } from '../interfaces/IAWSResponse';
 import * as jwt from 'jsonwebtoken'
 import { findRefreshTokenForUser, addRefreshTokenForUser, updateRefreshTokenForUser } from '../models/token';
 import { AuthenticationResultType } from 'aws-sdk/clients/cognitoidentityserviceprovider';
