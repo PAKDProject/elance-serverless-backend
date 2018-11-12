@@ -68,6 +68,6 @@ export const findEntriesByBatchIds = async (idBatch: string[], entity: string) =
 
 export const postNewEntry = async (newEntry: object) => await AppTable.save(newEntry).execute();
 
-export const updateEntry = async (id: string, entity: string, changes: object) => await AppTable.update({ id, entity, ...changes }).execute();
+export const updateEntry = async (id: string, entity: string, changes: object) => await AppTable.update({ id, entity}, changes ).execute();
 
 export const deleteEntry = async (id: string, entity: string) => await AppTable.delete({ id, entity }).execute();
