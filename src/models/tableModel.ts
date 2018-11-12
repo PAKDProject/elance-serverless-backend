@@ -64,10 +64,12 @@ export const findDocumentsByType = async (entity: string) => await AppTable.onIn
 
 export const findDocumentById = async (id: string, entity: string) => await AppTable.find({ id, entity }).execute();
 
-export const findDocumentsByBatchIds = async (idBatch: string[], entity: string) => await AppTable.find(idBatch.map(id => ({id, entity}))).execute();
+export const batchFindDocumentsByIds = async (idBatch: string[], entity: string) => await AppTable.find(idBatch.map(id => ({id, entity}))).execute();
 
 export const createNewDocument = async (newEntry: object) => await AppTable.save(newEntry).execute();
 
 export const updateDocument = async (id: string, entity: string, changes: object) => await AppTable.update({ id, entity}, changes ).execute();
 
 export const deleteDocument = async (id: string, entity: string) => await AppTable.delete({ id, entity }).execute();
+
+export const batchDeleteDocumentsByIds = async (idBatch: string[], entity: string) => await AppTable.delete(idBatch.map(id => ({id, entity}))).execute();
