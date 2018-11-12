@@ -44,6 +44,7 @@
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4",
+    "serverless-domain-manager": "^2.6.6",
     "serverless-dynamodb-local": "^0.2.35",
     "serverless-offline": "^3.31.0",
     "node-fetch": "^2.2.0",
