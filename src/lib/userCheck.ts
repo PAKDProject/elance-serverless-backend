@@ -26,9 +26,9 @@ export let LoginUser = (Username: string, Password: string) => {
                     let refresh_token = result.getRefreshToken().getToken()
 
                     let username = getUserIDFromAccessToken(access_token)
-                    await TableModel.findEntryById(username,entityType).then(async () => {
+                    await TableModel.findDocumentById(username,entityType).then(async () => {
                         try {
-                            await TableModel.updateEntry(username,entityType, { refresh_token })
+                            await TableModel.updateDocument(username,entityType, { refresh_token })
                         } catch (error) {
                             console.log(error);
                         }
@@ -38,7 +38,7 @@ export let LoginUser = (Username: string, Password: string) => {
                             entity: entityType,
                             refresh_token
                         }
-                        await TableModel.postNewEntry(newToken)
+                        await TableModel.createNewDocument(newToken)
                     })
 
                     let tokens = {
@@ -151,7 +151,7 @@ export let RefreshTokens = (access_token: string): Promise<AuthenticationResultT
     return new Promise(async (resolve, reject) => {
         try {
             let username = getUserIDFromAccessToken(access_token)
-            let find = await TableModel.findEntryById(username,entityType) //to be done get refresh token...
+            let find = await TableModel.findDocumentById(username,entityType) //to be done get refresh token...
             let refreshToken = find.data.refresh_token
 
             if (!refreshToken) reject('Bad shit')
@@ -172,7 +172,7 @@ export let RefreshTokens = (access_token: string): Promise<AuthenticationResultT
 
                 console.log('data: ' + JSON.stringify(data))
                 console.log('response: ' + JSON.stringify(cognitoResponse))
-                await TableModel.updateEntry(username,entityType, { refresh_token: cognitoResponse.RefreshToken })
+                await TableModel.updateDocument(username,entityType, { refresh_token: cognitoResponse.RefreshToken })
                 resolve(cognitoResponse)
             })
         } catch (error) {
