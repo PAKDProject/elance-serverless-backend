@@ -6,5 +6,5 @@ import { JobController } from "./JobController";
 export default [
     new LoginController(),
     new UserController(),
-    new JobController()
+    new JobController(),
 ]

@@ -1,7 +1,7 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
 import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode, RefreshTokens } from '../lib/userCheck';
-import { Encode, Decode, ValidateToken, CheckExpiry, TokenTypes } from '../lib/tokenFunc';
+import { Encode, Decode, ValidateToken, TokenTypes } from '../lib/tokenFunc';
 
 /**
 * @class LoginController used to control login route
@@ -64,17 +64,16 @@ export class LoginController implements BaseRouter {
                     }
 
                     //Here - save random string to db for comparison!
-                    res.status(200)
+                    try{
+                        res.status(200)
                         .cookie('inf_check', await Encode(JSON.stringify(tokens.access_token)), {
                             httpOnly: true,
                             domain: '.elance.site',
                             path: '/',
                             secure: true
                         })
-                        .send(JSON.stringify({
-                            tokens,
-                            message: 'User logged in successfully!'
-                        })).end()
+                        .json({ tokens, message: 'User logged in successfully!' })
+                    } catch(error) { }
                 } catch (error) {
                     let message
 
