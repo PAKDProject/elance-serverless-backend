@@ -64,8 +64,12 @@ export let ValidateToken = (token: string, tokenType: TokenTypes): boolean => {
 }
 
 export let CheckExpiry = (token): boolean => {
-    jwt.decode(token)
-    return
+    let decoded = jwt.decode(token)
+    let convertedToken = decoded as IToken;
+
+    if (convertedToken.exp < (Date.now() / 1000))
+        return false
+    else return true
 }
 
 export enum TokenTypes {

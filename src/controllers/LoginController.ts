@@ -63,17 +63,16 @@ export class LoginController implements BaseRouter {
                         }
                     }
 
-                    //Here - save random string to db for comparison!
-                    try{
+                    try {
                         res.status(200)
-                        .cookie('inf_check', await Encode(JSON.stringify(tokens.access_token)), {
-                            httpOnly: true,
-                            domain: '.elance.site',
-                            path: '/',
-                            secure: true
-                        })
-                        .json({ tokens, message: 'User logged in successfully!' })
-                    } catch(error) { }
+                            .cookie('inf_check', await Encode(JSON.stringify(tokens.access_token)), {
+                                httpOnly: true,
+                                domain: '.elance.site',
+                                path: '/',
+                                secure: true
+                            })
+                            .json({ tokens, message: 'User logged in successfully!' })
+                    } catch (error) { }
                 } catch (error) {
                     let message
 

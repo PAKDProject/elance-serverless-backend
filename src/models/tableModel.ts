@@ -28,6 +28,7 @@ class TableModel {
     progress: number;
     cognitoId: string;
     refresh_token: string;
+    blacklistedTokens: string[];
 }
 
 interface Skill {
@@ -60,14 +61,14 @@ const AppTable = typeDynamo.define(TableModel, {
 
 export const findAllEntries = async () => await AppTable.find().allResults().execute();
 
-export const findEntriesByType = async (entity: string) => await AppTable.onIndex.entityIndex.find({entity}).allResults().execute();
+export const findEntriesByType = async (entity: string) => await AppTable.onIndex.entityIndex.find({ entity }).allResults().execute();
 
 export const findEntryById = async (id: string, entity: string) => await AppTable.find({ id, entity }).execute();
 
-export const findEntriesByBatchIds = async (idBatch: string[], entity: string) => await AppTable.find(idBatch.map(id => ({id, entity}))).execute();
+export const findEntriesByBatchIds = async (idBatch: string[], entity: string) => await AppTable.find(idBatch.map(id => ({ id, entity }))).execute();
 
 export const postNewEntry = async (newEntry: object) => await AppTable.save(newEntry).execute();
 
-export const updateEntry = async (id: string, entity: string, changes: object) => await AppTable.update({ id, entity}, changes ).execute();
+export const updateEntry = async (id: string, entity: string, changes: object) => await AppTable.update({ id, entity }, changes).execute();
 
 export const deleteEntry = async (id: string, entity: string) => await AppTable.delete({ id, entity }).execute();

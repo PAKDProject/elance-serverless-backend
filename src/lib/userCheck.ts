@@ -3,7 +3,7 @@ import { CognitoIdentityServiceProvider } from 'aws-sdk'
 import { IAccessToken } from '../interfaces/IAWSResponse';
 import * as jwt from 'jsonwebtoken'
 import { AuthenticationResultType } from 'aws-sdk/clients/cognitoidentityserviceprovider';
-import * as TableModel  from '../models/tableModel';
+import * as TableModel from '../models/tableModel';
 import { resolve } from 'path';
 
 const entityType = 'token';
@@ -26,9 +26,9 @@ export let LoginUser = (Username: string, Password: string) => {
                     let refresh_token = result.getRefreshToken().getToken()
 
                     let username = getUserIDFromAccessToken(access_token)
-                    await TableModel.findEntryById(username,entityType).then(async () => {
+                    await TableModel.findEntryById(username, entityType).then(async () => {
                         try {
-                            await TableModel.updateEntry(username,entityType, { refresh_token })
+                            await TableModel.updateEntry(username, entityType, { refresh_token })
                         } catch (error) {
                             console.log(error);
                         }
@@ -151,30 +151,33 @@ export let RefreshTokens = (access_token: string): Promise<AuthenticationResultT
     return new Promise(async (resolve, reject) => {
         try {
             let username = getUserIDFromAccessToken(access_token)
-            let find = await TableModel.findEntryById(username,entityType) //to be done get refresh token...
+            let find = await TableModel.findEntryById(username, entityType)
             let refreshToken = find.data.refresh_token
 
-            if (!refreshToken) reject('Bad shit')
+            if (!refreshToken) reject('No refresh token present in db')
 
-            let params = {
-                AuthFlow: 'REFRESH_TOKEN',
-                AuthParameters: {
-                    REFRESH_TOKEN: refreshToken
-                },
-                ClientId: process.env.APP_CLIENT_ID
+            else {
+                let params = {
+                    AuthFlow: 'REFRESH_TOKEN',
+                    AuthParameters: {
+                        REFRESH_TOKEN: refreshToken
+                    },
+                    ClientId: process.env.APP_CLIENT_ID
+                }
+
+                new CognitoIdentityServiceProvider({
+                    region: 'eu-west-1'
+                }).initiateAuth(params, async (err, data) => {
+                    if (err) reject(err)
+                    console.log(data)
+                    let cognitoResponse = data.AuthenticationResult as AuthenticationResultType
+
+                    if (cognitoResponse.RefreshToken !== undefined) {
+                        await TableModel.updateEntry(username, entityType, { refresh_token: cognitoResponse.RefreshToken })
+                    }
+                    resolve(cognitoResponse)
+                })
             }
-
-            new CognitoIdentityServiceProvider({
-                region: 'eu-west-1'
-            }).initiateAuth(params, async (err, data) => {
-                if (err) reject(err)
-                let cognitoResponse = data.AuthenticationResult as AuthenticationResultType
-
-                console.log('data: ' + JSON.stringify(data))
-                console.log('response: ' + JSON.stringify(cognitoResponse))
-                await TableModel.updateEntry(username,entityType, { refresh_token: cognitoResponse.RefreshToken })
-                resolve(cognitoResponse)
-            })
         } catch (error) {
             reject(error)
         }
@@ -186,4 +189,8 @@ export const getUserIDFromAccessToken = (access_token: string) => {
 
     let user = decode as IAccessToken;
     return user.username;
+}
+
+export const blacklistAccessToken = (access_token: string) => {
+
 }

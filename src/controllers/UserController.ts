@@ -1,6 +1,7 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
 import * as TableModel from '../models/tableModel';
+import { CheckAccessToken } from '../middleware/checkToken';
 
 /**
 * @class UserController used to control the user route
@@ -25,7 +26,7 @@ export class UserController implements BaseRouter {
     returnRouter(): Router {
         const entityType = 'user';
         return Router()
-            .get('/', async (req: Request, res: Response, next: NextFunction) => {
+            .get('/', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     let users = await TableModel.findEntriesByType(entityType);
                     if (users.data.length === 0) res.status(404).json({ message: 'No users in collection' })
@@ -35,7 +36,7 @@ export class UserController implements BaseRouter {
                     next(error);
                 }
             })
-            .get('/:id', async (req: Request, res: Response, next: NextFunction) => {
+            .get('/:id', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     const user = await TableModel.findEntryById(req.params.id, entityType);
                     if (user.data) res.status(200).json({ message: "User found", user: user.data });
@@ -44,7 +45,7 @@ export class UserController implements BaseRouter {
                     next(error);
                 }
             })
-            .post('/', async (req: Request, res: Response, next: NextFunction) => {
+            .post('/', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     let partialUser = req.body;
                     partialUser.entity = entityType;
@@ -55,7 +56,7 @@ export class UserController implements BaseRouter {
                     next(error);
                 }
             })
-            .put('/:id', async (req: Request, res: Response, next: NextFunction) => {
+            .put('/:id', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     const user = await TableModel.updateEntry(req.params.id, entityType, req.body)
                     res.status(200).json({ message: 'User updated', user: user.data })
@@ -64,7 +65,7 @@ export class UserController implements BaseRouter {
                     next(error)
                 }
             })
-            .delete('/:id', async (req: Request, res: Response, next: NextFunction) => {
+            .delete('/:id', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     const user = await TableModel.deleteEntry(req.params.id, entityType);
                     res.status(200).json({ message: 'User deleted', user: user.data })
