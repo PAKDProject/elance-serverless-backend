@@ -59,16 +59,18 @@ const AppTable = typeDynamo.define(TableModel, {
     projectionType: 'ALL'
 }).getInstance();
 
-export const findAllEntries = async () => await AppTable.find().allResults().execute();
+export const findAllDocuments = async () => await AppTable.find().allResults().execute();
 
-export const findEntriesByType = async (entity: string) => await AppTable.onIndex.entityIndex.find({ entity }).allResults().execute();
+export const findDocumentsByType = async (entity: string) => await AppTable.onIndex.entityIndex.find({ entity }).allResults().execute();
 
-export const findEntryById = async (id: string, entity: string) => await AppTable.find({ id, entity }).execute();
+export const findDocumentById = async (id: string, entity: string) => await AppTable.find({ id, entity }).execute();
 
-export const findEntriesByBatchIds = async (idBatch: string[], entity: string) => await AppTable.find(idBatch.map(id => ({ id, entity }))).execute();
+export const batchFindDocumentsByIds = async (idBatch: string[], entity: string) => await AppTable.find(idBatch.map(id => ({ id, entity }))).execute();
 
-export const postNewEntry = async (newEntry: object) => await AppTable.save(newEntry).execute();
+export const createNewDocument = async (newEntry: object) => await AppTable.save(newEntry).execute();
 
-export const updateEntry = async (id: string, entity: string, changes: object) => await AppTable.update({ id, entity }, changes).execute();
+export const updateDocument = async (id: string, entity: string, changes: object) => await AppTable.update({ id, entity }, changes).execute();
 
-export const deleteEntry = async (id: string, entity: string) => await AppTable.delete({ id, entity }).execute();
+export const deleteDocument = async (id: string, entity: string) => await AppTable.delete({ id, entity }).execute();
+
+export const batchDeleteDocumentsByIds = async (idBatch: string[], entity: string) => await AppTable.delete(idBatch.map(id => ({ id, entity }))).execute();

@@ -29,7 +29,7 @@ export class JobController implements BaseRouter {
         return Router()
             .get('/', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    let jobs = await TableModel.findEntriesByType(entityType);
+                    let jobs = await TableModel.findDocumentsByType(entityType);
                     if (jobs.data.length === 0) res.status(404).json({ message: 'No jobs in collection' })
                     res.status(200).json({ message: 'Jobs found', jobs: jobs.data });
                 } catch (error) {
@@ -39,7 +39,7 @@ export class JobController implements BaseRouter {
             })
             .get('/:id', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    let job = await TableModel.findEntryById(req.params.id, entityType);
+                    let job = await TableModel.findDocumentById(req.params.id, entityType);
                     if (job.data) res.status(200).json({ message: 'Job found', job: job.data });
                 } catch (error) {
                     res.status(404).json({ message: 'Something went wrong. Job not found', error: error });
@@ -51,7 +51,7 @@ export class JobController implements BaseRouter {
                     let partialJob = req.body;
                     partialJob.id = uuid();
                     partialJob.entity = 'job';
-                    const job = await TableModel.postNewEntry(partialJob);
+                    const job = await TableModel.createNewDocument(partialJob);
                     res.status(201).json({ message: 'Job created', job: job.data });
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. Job not created', error: error });
@@ -60,7 +60,7 @@ export class JobController implements BaseRouter {
             })
             .put('/:id', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const job = await TableModel.updateEntry(req.params.id, entityType, req.body)
+                    const job = await TableModel.updateDocument(req.params.id, entityType, req.body)
                     res.status(200).json({ message: 'Job updated', job: job.data })
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. Job not updated', error: error })
@@ -69,7 +69,7 @@ export class JobController implements BaseRouter {
             })
             .delete('/:id', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const job = await TableModel.deleteEntry(req.params.id, entityType);
+                    const job = await TableModel.deleteDocument(req.params.id, entityType);
                     res.status(200).json({ message: 'Job deleted', job: job.data })
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. Job not deleted', error: error })

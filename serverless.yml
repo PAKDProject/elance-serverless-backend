@@ -3,6 +3,11 @@
 service: elance-serverless-backend
 
 custom:
+  customDomain:
+    domainName: api.elance.site
+    basePath: ''
+    stage: ${self:provider.stage}
+    createRoute53Record: true
   appTable: 'app-table-${self:provider.stage}'
   dynamodb:
     stages:
@@ -85,5 +90,6 @@ resources:
         TableName: ${self:custom.appTable}
 
 plugins:
+  - serverless-domain-manager
   - serverless-dynamodb-local
   - serverless-offline

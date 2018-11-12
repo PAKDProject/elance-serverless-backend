@@ -28,7 +28,7 @@ export class UserController implements BaseRouter {
         return Router()
             .get('/', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    let users = await TableModel.findEntriesByType(entityType);
+                    let users = await TableModel.findDocumentsByType(entityType);
                     if (users.data.length === 0) res.status(404).json({ message: 'No users in collection' })
                     res.status(200).json({ message: 'Users found', users: users.data });
                 } catch (error) {
@@ -38,7 +38,7 @@ export class UserController implements BaseRouter {
             })
             .get('/:id', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const user = await TableModel.findEntryById(req.params.id, entityType);
+                    const user = await TableModel.findDocumentById(req.params.id, entityType);
                     if (user.data) res.status(200).json({ message: "User found", user: user.data });
                 } catch (error) {
                     res.status(404).json({ message: 'Something went wrong. User not found', error: error });
@@ -49,7 +49,7 @@ export class UserController implements BaseRouter {
                 try {
                     let partialUser = req.body;
                     partialUser.entity = entityType;
-                    const user = await TableModel.postNewEntry(req.body);
+                    const user = await TableModel.createNewDocument(req.body);
                     res.status(201).json({ message: 'User created', user: user.data });
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. User not created', error: error });
@@ -58,7 +58,7 @@ export class UserController implements BaseRouter {
             })
             .put('/:id', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const user = await TableModel.updateEntry(req.params.id, entityType, req.body)
+                    const user = await TableModel.updateDocument(req.params.id, entityType, req.body)
                     res.status(200).json({ message: 'User updated', user: user.data })
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. User not updated', error: error })
@@ -67,7 +67,7 @@ export class UserController implements BaseRouter {
             })
             .delete('/:id', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    const user = await TableModel.deleteEntry(req.params.id, entityType);
+                    const user = await TableModel.deleteDocument(req.params.id, entityType);
                     res.status(200).json({ message: 'User deleted', user: user.data })
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. User not deleted', error: error })
