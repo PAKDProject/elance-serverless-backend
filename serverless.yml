@@ -4,7 +4,6 @@ service: elance-serverless-backend
 
 custom:
   appTable: 'app-table-${self:provider.stage}'
-  tokensTable: 'tokens-table-${self:provider.stage}'
   dynamodb:
     stages:
       - dev
@@ -36,10 +35,8 @@ provider:
         - dynamodb:DeleteItem
       Resource:
         - { "Fn::GetAtt": ["AppDynamoDBTable", "Arn" ] }
-        - { "Fn::GetAtt": ["TokensDynamoDBTable", "Arn" ] }
   environment:
     APP_TABLE: ${self:custom.appTable}
-    TOKENS_TABLE: ${self:custom.tokensTable}
 
 package:
   exclude:
@@ -63,13 +60,15 @@ resources:
       Type: 'AWS::DynamoDB::Table'
       Properties:
         AttributeDefinitions:
-          - AttributeName: entity
-            AttributeType: S
           - AttributeName: id
+            AttributeType: S
+          - AttributeName: entity
             AttributeType: S
         KeySchema:
           - AttributeName: id
             KeyType: HASH
+          - AttributeName: entity
+            KeyType: RANGE
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
@@ -84,19 +83,6 @@ resources:
               ReadCapacityUnits: 1
               WriteCapacityUnits: 1
         TableName: ${self:custom.appTable}
-    TokensDynamoDBTable:
-      Type: 'AWS::DynamoDB::Table'
-      Properties:
-        AttributeDefinitions:
-          - AttributeName: username
-            AttributeType: S
-        KeySchema:
-          - AttributeName: username
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-        TableName: ${self:custom.tokensTable}
 
 plugins:
   - serverless-dynamodb-local

@@ -26,6 +26,8 @@ class TableModel {
     isAccepted: boolean;
     payment: number;
     progress: number;
+    cognitoId: string;
+    refresh_token: string;
 }
 
 interface Skill {
@@ -58,17 +60,14 @@ const AppTable = typeDynamo.define(TableModel, {
 
 export const findAllEntries = async () => await AppTable.find().allResults().execute();
 
-export const findEntriesByType = async (entity: string) => await AppTable.onIndex.entityIndex.find({entity: entity}).allResults().execute();
+export const findEntriesByType = async (entity: string) => await AppTable.onIndex.entityIndex.find({entity}).allResults().execute();
 
-// Not using this till i find a better solution - Killian
-//export const findUsersByName = async (query: object) => await AppTable.onIndex.nameIndex.find(query).allResults().execute();
+export const findEntryById = async (id: string, entity: string) => await AppTable.find({ id, entity }).execute();
 
-export const findEntryById = async (id: string) => await AppTable.find({ id: id }).execute();
-
-export const findEntriesByBatchIds = async (idBatch: string[]) => await AppTable.find(idBatch.map(id => ({id}))).execute();
+export const findEntriesByBatchIds = async (idBatch: string[], entity: string) => await AppTable.find(idBatch.map(id => ({id, entity}))).execute();
 
 export const postNewEntry = async (newEntry: object) => await AppTable.save(newEntry).execute();
 
-export const updateEntry = async (id: string, changes: object) => await AppTable.update({ id, ...changes }).execute();
+export const updateEntry = async (id: string, entity: string, changes: object) => await AppTable.update({ id, entity, ...changes }).execute();
 
-export const deleteEntry = async (id: string) => await AppTable.delete({ id: id }).execute();
+export const deleteEntry = async (id: string, entity: string) => await AppTable.delete({ id, entity }).execute();

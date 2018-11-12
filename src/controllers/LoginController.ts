@@ -1,7 +1,7 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
 import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode, RefreshTokens } from '../lib/userCheck';
-import { Encode, Decode, ValidateToken, CheckExpiry, TokenTypes } from '../lib/tokenFunc';
+import { Encode, Decode, ValidateToken, TokenTypes } from '../lib/tokenFunc';
 
 /**
 * @class LoginController used to control login route

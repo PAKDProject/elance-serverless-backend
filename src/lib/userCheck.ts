@@ -2,9 +2,10 @@ import { CognitoUserPool, AuthenticationDetails, CognitoUser, CognitoUserAttribu
 import { CognitoIdentityServiceProvider } from 'aws-sdk'
 import { IAccessToken } from '../interfaces/IAWSResponse';
 import * as jwt from 'jsonwebtoken'
-import { findRefreshTokenForUser, addRefreshTokenForUser, updateRefreshTokenForUser } from '../models/token';
 import { AuthenticationResultType } from 'aws-sdk/clients/cognitoidentityserviceprovider';
+import * as TableModel  from '../models/tableModel';
 
+const entityType = 'token';
 export let LoginUser = (Username: string, Password: string) => {
     const userPool: CognitoUserPool = new CognitoUserPool({ UserPoolId: process.env.POOL_ID, ClientId: process.env.APP_CLIENT_ID })
     let auth: AuthenticationDetails = new AuthenticationDetails({
@@ -25,15 +26,17 @@ export let LoginUser = (Username: string, Password: string) => {
 
                     let username = getUserIDFromAccessToken(access_token)
 
-                    findRefreshTokenForUser(username).then(token => {
-                        updateRefreshTokenForUser(username, {
+                    TableModel.findEntryById(username,entityType).then(token => {
+                        TableModel.updateEntry(username,entityType, {
                             refresh_token
                         })
                     }, rej => {
-                        addRefreshTokenForUser({
-                            username,
+                        const newToken = {
+                            id: username,
+                            entity: entityType,
                             refresh_token
-                        })
+                        }
+                        TableModel.postNewEntry(newToken)
                     })
 
                     let tokens = {
@@ -147,7 +150,7 @@ export let RefreshTokens = (access_token: string): Promise<AuthenticationResultT
         try {
             let username = getUserIDFromAccessToken(access_token)
 
-            let find = await findRefreshTokenForUser(username) //to be done get refresh token...
+            let find = await TableModel.findEntryById(username,entityType) //to be done get refresh token...
             let refreshToken = find.data.refresh_token
 
             if (!refreshToken) reject('Bad shit')
@@ -168,7 +171,7 @@ export let RefreshTokens = (access_token: string): Promise<AuthenticationResultT
 
                 console.log('data: ' + JSON.stringify(data))
                 console.log('response: ' + JSON.stringify(cognitoResponse))
-                updateRefreshTokenForUser(username, { refresh_token: cognitoResponse.RefreshToken })
+                TableModel.updateEntry(username,entityType, { refresh_token: cognitoResponse.RefreshToken })
                 resolve(cognitoResponse)
             })
         } catch (error) {
