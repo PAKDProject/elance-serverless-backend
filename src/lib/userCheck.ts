@@ -5,6 +5,7 @@ import * as jwt from 'jsonwebtoken'
 import { AuthenticationResultType } from 'aws-sdk/clients/cognitoidentityserviceprovider';
 import * as TableModel from '../models/tableModel';
 import { resolve } from 'path';
+import { Encode, Decode } from './tokenFunc';
 
 const entityType = 'token';
 export let LoginUser = (Username: string, Password: string) => {
@@ -28,11 +29,13 @@ export let LoginUser = (Username: string, Password: string) => {
                     let username = getUserIDFromAccessToken(access_token)
                     await TableModel.findDocumentById(username, entityType).then(async () => {
                         try {
+                            refresh_token = await Encode(refresh_token)
                             await TableModel.updateDocument(username, entityType, { refresh_token })
                         } catch (error) {
                             console.log(error);
                         }
                     }, async () => {
+                        refresh_token = await Encode(refresh_token)
                         const newToken = {
                             id: username,
                             entity: entityType,
@@ -153,10 +156,10 @@ export let RefreshTokens = (access_token: string): Promise<AuthenticationResultT
             let username = getUserIDFromAccessToken(access_token)
             let find = await TableModel.findDocumentById(username, entityType) //to be done get refresh token...
             let refreshToken = find.data.refresh_token
-
             if (!refreshToken) reject('No refresh token present in db')
 
             else {
+                refreshToken = Decode(refreshToken)
                 let params = {
                     AuthFlow: 'REFRESH_TOKEN',
                     AuthParameters: {
