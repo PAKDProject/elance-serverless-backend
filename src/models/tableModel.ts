@@ -23,7 +23,7 @@ class TableModel {
     description: string;
     datePosted: Date;
     dateAccepted: Date;
-    isAccepted: boolean;
+    userId: string;
     payment: number;
     progress: number;
     cognitoId: string;
