@@ -5,6 +5,7 @@ import * as cookieParser from 'cookie-parser'
 import { info } from "../helpers/logger"
 import * as cors from 'cors'
 import { config } from "dotenv";
+import { testMethods } from '../helpers/testMethods';
 
 export class App {
     private port: number
@@ -17,6 +18,7 @@ export class App {
         this.allowCors()
         this.setRoutes()
         config()
+        testMethods() // delete for production
     }
 
     private setRoutes = () => {

@@ -28,7 +28,7 @@ class TableModel {
     progress: number;
     cognitoId: string;
     refresh_token: string;
-    blacklistedTokens: string[];
+    blacklistedTokens: IBlacklistToken[];
 }
 
 interface Skill {
@@ -48,6 +48,12 @@ interface EducationItem {
 interface SocialLink {
     name: string;
     linkUrl: string;
+}
+
+export interface IBlacklistToken {
+    userId: string
+    token: string
+    expiryDate: number
 }
 
 const AppTable = typeDynamo.define(TableModel, {

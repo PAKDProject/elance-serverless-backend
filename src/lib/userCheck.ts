@@ -5,7 +5,8 @@ import * as jwt from 'jsonwebtoken'
 import { AuthenticationResultType } from 'aws-sdk/clients/cognitoidentityserviceprovider';
 import * as TableModel from '../models/tableModel';
 import { resolve } from 'path';
-import { Encode, Decode } from './tokenFunc';
+import { Encode, Decode, CheckExpiry, GetExpiryFromToken } from './tokenFunc';
+import uuid = require('uuid');
 
 const entityType = 'token';
 export let LoginUser = (Username: string, Password: string) => {
@@ -194,6 +195,40 @@ export const getUserIDFromAccessToken = (access_token: string) => {
     return user.username;
 }
 
-export const blacklistAccessToken = (access_token: string) => {
+export const blacklistAccessToken = async (access_token: string) => {
+    try {
+        let userId = getUserIDFromAccessToken(access_token)
+        let exp = GetExpiryFromToken(access_token)
+        await TableModel.createNewDocument({
+            id: uuid.v4(),
+            entity: "blacklisted-token",
+            userId,
+            token: access_token,
+            expiry: exp
+        })
+    } catch (error) {
+        throw new Error(error)
+    }
+}
 
+export const isBlacklisted = async (access_token: string): Promise<boolean> => {
+    try {
+        let value = await TableModel.findDocumentsByType("blacklisted-token")
+        let blackListedArray = value.data as TableModel.IBlacklistToken[];
+        let arrayWithToken = blackListedArray.findIndex((value) => {
+            if (value.token == access_token)
+                return true;
+            else
+                return false;
+        })
+
+        if (arrayWithToken === -1) {
+            return Promise.resolve(false)
+        }
+        else {
+            return Promise.resolve(true)
+        }
+    } catch (error) {
+        throw error
+    }
 }

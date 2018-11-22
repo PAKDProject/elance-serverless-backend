@@ -46,6 +46,11 @@
         "tagline": "My name a paul"
     },
     {
+        "id": "424jgf-343214-gfsgj4-8dgfs8-4235ji",
+        "entity": "blacklisted-token",
+        "token": "test-token"
+    },
+    {
         "id": "6ad5192f-5e77-4520-9965-e6c37a33f120",
         "entity": "job",
         "title": "Cost Accountant",

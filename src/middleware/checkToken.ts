@@ -2,15 +2,16 @@ import { Request, Response, NextFunction } from "express";
 import { ValidateToken, TokenTypes, CheckExpiry } from "../lib/tokenFunc";
 import * as jwt from 'jsonwebtoken'
 import { IToken } from "../interfaces/IAWSResponse";
-import { RefreshTokens } from "../lib/userCheck";
+import { RefreshTokens, isBlacklisted } from "../lib/userCheck";
 
 export const CheckAccessToken = async (req: Request, res: Response, next: NextFunction) => {
     let token = req.headers['authorization']
 
     let isValid = ValidateToken(token, TokenTypes.ACCESS_TOKEN)
+    let isInBlacklist = await isBlacklisted(token);
 
-    if (!isValid) {
-        res.status(403).clearCookie('inf_check').send()
+    if (!isValid || isInBlacklist) {
+        res.status(403).clearCookie('inf_check').send('{"message":"Authorization Failed!"')
     }
     else {
         let decodedToken = jwt.decode(token)

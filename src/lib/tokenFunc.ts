@@ -30,7 +30,6 @@ export const Decode = async (value: string): Promise<string> => {
     })
 }
 
-
 export let ValidateToken = (token: string, tokenType: TokenTypes): boolean => {
     const jwtk = JWKS;
     const decodedJWKS = CryptoJS.AES.decrypt(jwtk, process.env.JWT_KEY).toString(CryptoJS.enc.Utf8)
@@ -72,6 +71,12 @@ export let CheckExpiry = (token): boolean => {
     else return true
 }
 
+export let GetExpiryFromToken = (token): number => {
+    let decoded = jwt.decode(token)
+    let convertedToken = decoded as IToken;
+
+    return convertedToken.exp
+}
 export enum TokenTypes {
     'ACCESS_TOKEN',
     'ID_TOKEN'

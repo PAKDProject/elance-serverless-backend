@@ -1,6 +1,6 @@
 import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
-import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode, RefreshTokens } from '../lib/userCheck';
+import { LoginUser, RegisterUser, ConfirmRegistration, ForgotPasswordStart, ForgotPasswordVerify, ResendValidationCode, RefreshTokens, blacklistAccessToken } from '../lib/userCheck';
 import { Encode, Decode, ValidateToken, TokenTypes } from '../lib/tokenFunc';
 
 /**
@@ -273,10 +273,32 @@ export class LoginController implements BaseRouter {
                     }
                 }
                 catch (error) {
-                    console.error(error)
                     res.status(400).send(JSON.stringify({
                         message: error
                     }))
+                    throw error
+                }
+            })
+            .post('/logout', async (req: Request, res: Response, next: NextFunction) => {
+                try {
+                    let token = req.headers["authorization"]
+
+                    await blacklistAccessToken(token)
+
+                    res.status(200).send(JSON.stringify({
+                        message: "Logout successful"
+                    }))
+                } catch (err) {
+                    let error = err as Error
+                    let message = error.message
+                    if (error.message === "TypeError: Cannot read property 'username' of null") {
+                        message = "String passed in is not an access_token!"
+                    }
+                    res.status(400).send(JSON.stringify({
+                        message: message
+                    }))
+
+                    throw error
                 }
             })
     }
