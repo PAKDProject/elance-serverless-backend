@@ -4,7 +4,7 @@
   "description": "Serverless AWS backend for project E-Lance",
   "main": "index.js",
   "scripts": {
-    "start": "yarn build && serverless offline start",
+    "start": "yarn build && export NODE_ENV=dev && serverless offline start",
     "start:dev": "nodemon --exec yarn start",
     "build:dev": "ts-node src/local.ts",
     "build": "tsc",
