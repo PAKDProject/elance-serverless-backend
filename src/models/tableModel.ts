@@ -21,6 +21,7 @@ class TableModel {
     title: string;
     employer: string;
     description: string;
+    location: string;
     datePosted: Date;
     dateAccepted: Date;
     userId: string;
