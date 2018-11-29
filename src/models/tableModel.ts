@@ -21,11 +21,13 @@ class TableModel {
     title: string;
     employer: string;
     description: string;
+    location: string;
     datePosted: Date;
     dateAccepted: Date;
     userId: string;
     payment: number;
     progress: number;
+    isRemote: boolean;
     cognitoId: string;
     refresh_token: string;
     blacklistedTokens: IBlacklistToken[];

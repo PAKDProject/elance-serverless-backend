@@ -8,6 +8,7 @@ custom:
     basePath: ''
     stage: ${self:provider.stage}
     createRoute53Record: true
+    certificateName: '*.elance.site'
   appTable: 'app-table-${self:provider.stage}'
   dynamodb:
     stages:
