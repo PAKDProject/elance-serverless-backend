@@ -26,6 +26,7 @@ class TableModel {
     userId: string;
     payment: number;
     progress: number;
+    isRemote: boolean;
     cognitoId: string;
     refresh_token: string;
     blacklistedTokens: IBlacklistToken[];
