@@ -45,6 +45,8 @@ provider:
     APP_TABLE: ${self:custom.appTable}
 
 package:
+  include: 
+    - .env
   exclude:
     - src/**
     - tsconfig.json
