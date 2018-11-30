@@ -9,7 +9,7 @@ class TableModel {
     phone: string;
     dob: Date;
     summary: string;
-    skills: Skill[];
+    //skills: Skill[]; - deprecated
     educationItems: EducationItem[];
     activeJobs: string[];
     jobHistory: string[];
@@ -21,19 +21,29 @@ class TableModel {
     title: string;
     employer: string;
     description: string;
+    location: string;
     datePosted: Date;
     dateAccepted: Date;
     userId: string;
     payment: number;
     progress: number;
+    isRemote: boolean;
     cognitoId: string;
     refresh_token: string;
     blacklistedTokens: IBlacklistToken[];
+    skills: ISkills[]
 }
 
 interface Skill {
     title: string;
     description: string;
+}
+
+
+interface ISkills {
+    skillTitle: string;
+    category?: string;
+    confidenceLevel?: string;
 }
 
 interface EducationItem {
