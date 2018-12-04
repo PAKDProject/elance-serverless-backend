@@ -1,16 +1,18 @@
 import { typeDynamo } from "../lib/createDb";
 
 class TableModel {
+    // Partition and sort key
     id: string;
     entity: string;
+    // User related attributes
     email: string;
     fName: string;
     lName: string;
     phone: string;
     dob: Date;
     summary: string;
-    //skills: Skill[]; - deprecated
     educationItems: EducationItem[];
+    skills: ISkills[];
     activeJobs: string[];
     jobHistory: string[];
     avatarUrl: string;
@@ -18,6 +20,7 @@ class TableModel {
     socialLinks: SocialLink[];
     tagline: string;
     contacts: String[];
+    // Job related attributes
     title: string;
     employer: string;
     description: string;
@@ -28,17 +31,12 @@ class TableModel {
     payment: number;
     progress: number;
     isRemote: boolean;
+    // Token related attributes
     cognitoId: string;
     refresh_token: string;
+    // Blacklisted token related fields
     blacklistedTokens: IBlacklistToken[];
-    skills: ISkills[]
 }
-
-interface Skill {
-    title: string;
-    description: string;
-}
-
 
 interface ISkills {
     skillTitle: string;
