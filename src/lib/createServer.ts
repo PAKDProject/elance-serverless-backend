@@ -38,7 +38,8 @@ export class App {
 
     private allowCors = () => {
         this.app.use(cors({
-            exposedHeaders: ['X-Auth-Tokens', 'Origin']
+            exposedHeaders: ['X-Auth-Tokens', 'Origin'],
+            credentials: true
         }))
     }
 

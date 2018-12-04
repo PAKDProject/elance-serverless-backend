@@ -7,7 +7,6 @@ import { RefreshTokens, isBlacklisted } from "../lib/userCheck";
 export const CheckAccessToken = async (req: Request, res: Response, next: NextFunction) => {
     if (process.env.NODE_ENV !== "dev") {
         let token = req.headers['authorization']
-
         let isValid = ValidateToken(token, TokenTypes.ACCESS_TOKEN)
         let isInBlacklist = await isBlacklisted(token);
 
@@ -34,7 +33,6 @@ export const CheckAccessToken = async (req: Request, res: Response, next: NextFu
                     res.status(403).clearCookie('inf_check').send()
                     next(error)
                 }
-
             }
             else next()
         }
