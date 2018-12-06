@@ -46,6 +46,16 @@ export class JobController implements BaseRouter {
                     next(error);
                 }
             })
+            .get('/user/:id', async (req: Request, res: Response, next: NextFunction) => {
+                try {
+                    let jobs = await TableModel.queryDocumentsByIndex(entityType, req.params.id );
+                    if (jobs.data.length === 0) res.status(404).json({ message: 'No jobs for that user' })
+                    res.status(200).json({ message: 'Jobs for user found', jobs: jobs.data });
+                } catch (error) {
+                    res.status(404).json({ message: 'Something went wrong. Jobs not found', error: error });
+                    next(error);
+                }
+            })
             .post('/', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     let partialJob = req.body;

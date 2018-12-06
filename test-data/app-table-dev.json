@@ -72,7 +72,8 @@
         "dateAccepted": "11/27/2017",
         "isAccepted": true,
         "payment": 5980,
-        "progress": 40
+        "progress": 40,
+        "userId": "d813c1eb-d73f-482f-b801-9519b664e706"
     },
     {
         "id": "8df54914-75ef-44b0-b994-3d2a3b6f125e",
@@ -84,7 +85,8 @@
         "dateAccepted": "11/08/2017",
         "isAccepted": false,
         "payment": 5362,
-        "progress": 60
+        "progress": 60,
+        "userId": "d813c1eb-d73f-482f-b801-9519b664e706"
     },
     {
         "id": "a5a03e21-69a0-4dca-a7f7-17b71314b79e",
@@ -96,7 +98,8 @@
         "dateAccepted": "11/14/2017",
         "isAccepted": false,
         "payment": 5329,
-        "progress": 22
+        "progress": 22,
+        "userId": "d813c1eb-d73f-482f-b801-9519b664e706"
     },
     {
         "id": "4842de36-5490-47c0-a7ef-74be9b01363d",
