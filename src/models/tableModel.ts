@@ -28,7 +28,6 @@ class TableModel {
     location: string;
     datePosted: Date;
     dateAccepted: Date;
-    userId: string;
     payment: number;
     progress: number;
     isRemote: boolean;
