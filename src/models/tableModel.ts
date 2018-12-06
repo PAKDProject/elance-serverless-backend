@@ -1,4 +1,5 @@
 import { typeDynamo } from "../lib/createDb";
+import { isEqualTo } from "type-dynamo";
 
 class TableModel {
     // Partition and sort key
@@ -13,7 +14,7 @@ class TableModel {
     summary: string;
     educationItems: EducationItem[];
     skills: ISkills[];
-    activeJobs: string[];
+    activeJobs: object[];
     jobHistory: string[];
     avatarUrl: string;
     backgroundUrl: string;
@@ -69,15 +70,13 @@ const AppTable = typeDynamo.define(TableModel, {
     partitionKey: 'id',
 }).withGlobalIndex({
     indexName: 'entityIndex',
-    partitionKey: 'id',
+    partitionKey: 'entity',
     projectionType: 'ALL'
 }).getInstance();
 
 export const findAllDocuments = async () => await AppTable.find().allResults().execute();
 
-// TODO: Combine the next two into one function
 export const findDocumentsByType = async (entity: string) => await AppTable.onIndex.entityIndex.find({ entity }).allResults().execute();
-export const queryDocumentsByIndex = async (entity: string, userId: string) => await AppTable.onIndex.entityIndex.find({entity: entity, userId: userId}).allResults().execute();
 
 export const findDocumentById = async (id: string, entity: string) => await AppTable.find({ id, entity }).execute();
 
