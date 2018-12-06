@@ -54,8 +54,8 @@ export class JobController implements BaseRouter {
                     const job = await TableModel.createNewDocument(partialJob);
                     res.status(201).json({ message: 'Job created', job: job.data });
                 } catch (error) {
-                    res.status(400).json({ message: 'Something went wrong. Job not created', error: error });
-                    next(error);
+                    res.status(400).json({ message: 'Something went wrong. Job not created', statusCode: error.statusCode || 0, error: error });
+                    next(error)
                 }
             })
             .put('/:id', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {

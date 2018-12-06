@@ -67,7 +67,7 @@ export class LoginController implements BaseRouter {
                         res.status(200)
                             .cookie('inf_check', await Encode(JSON.stringify(tokens.access_token)), {
                                 httpOnly: true,
-                                domain: '.elance.site',
+                                domain: 'elance.site',
                                 path: '/',
                                 secure: true
                             })

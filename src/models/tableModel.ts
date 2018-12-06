@@ -22,15 +22,17 @@ class TableModel {
     contacts: String[];
     // Job related attributes
     title: string;
+    // employer: IUser;
     employer: string;
-    description: string;
     location: string;
+    remote: boolean;
+    description: string;
     datePosted: Date;
-    dateAccepted: Date;
-    userId: string;
     payment: number;
+    userId: string;
+    dateAccepted: Date;
+    dateDue: Date;
     progress: number;
-    isRemote: boolean;
     // Token related attributes
     cognitoId: string;
     refresh_token: string;
