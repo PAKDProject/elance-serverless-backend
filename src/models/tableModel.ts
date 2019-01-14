@@ -16,7 +16,7 @@ class TableModel {
     skills: ISkills[];
     appliedJobs: object[];
     activeJobs: object[];
-    jobHistory: object[];
+    jobHistory: string[];
     avatarUrl: string;
     backgroundUrl: string;
     socialLinks: SocialLink[];
