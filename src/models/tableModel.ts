@@ -21,6 +21,7 @@ class TableModel {
     socialLinks: SocialLink[];
     tagline: string;
     contacts: String[];
+    profileCards: IProfileCard[];
     // Job related attributes
     title: string;
     // employer: IUser;
@@ -59,6 +60,12 @@ interface EducationItem {
 interface SocialLink {
     name: string;
     linkUrl: string;
+}
+
+interface IProfileCard {
+    title: string,
+    type: string,
+    content: string | ISkills[] | EducationItem[]
 }
 
 export interface IBlacklistToken {
