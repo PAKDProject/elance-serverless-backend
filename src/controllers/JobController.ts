@@ -46,6 +46,16 @@ export class JobController implements BaseRouter {
                     next(error);
                 }
             })
+            .post('/batch', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
+                try {
+                    let jobIds = req.body.jobIds
+                    let jobs = await TableModel.batchFindDocumentsByIds(jobIds, entityType);
+                    if (jobs.data) res.status(200).json({ message: 'Jobs found', jobs: jobs.data });
+                } catch (error) {
+                    res.status(404).json({ message: 'Something went wrong. Jobs not found', error: error });
+                    next(error);
+                }
+            })
             .post('/', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     let partialJob = req.body;
@@ -73,6 +83,16 @@ export class JobController implements BaseRouter {
                     res.status(200).json({ message: 'Job deleted', job: job.data })
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. Job not deleted', error: error })
+                }
+            })
+            .delete('/batch', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
+                try {
+                    let jobIds = req.body.jobIds
+                    let jobs = await TableModel.batchDeleteDocumentsByIds(jobIds, entityType);
+                    if (jobs.data) res.status(200).json({ message: 'Jobs deleted', jobs: jobs.data });
+                } catch (error) {
+                    res.status(400).json({ message: 'Something went wrong. Jobs not deleted', error: error });
+                    next(error);
                 }
             })
     }

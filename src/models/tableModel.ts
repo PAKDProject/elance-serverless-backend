@@ -14,8 +14,9 @@ class TableModel {
     summary: string;
     educationItems: EducationItem[];
     skills: ISkills[];
+    appliedJobs: object[];
     activeJobs: object[];
-    jobHistory: string[];
+    jobHistory: object[];
     avatarUrl: string;
     backgroundUrl: string;
     socialLinks: SocialLink[];
@@ -24,14 +25,14 @@ class TableModel {
     profileCards: IProfileCard[];
     // Job related attributes
     title: string;
-    // employer: IUser;
     employer: string;
     location: string;
     remote: boolean;
     description: string;
     datePosted: Date;
     payment: number;
-    userId: string;
+    applicantIds: string[];
+    chosenApplicantId: string;
     dateAccepted: Date;
     dateDue: Date;
     progress: number;

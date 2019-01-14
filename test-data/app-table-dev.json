@@ -46,6 +46,52 @@
         "tagline": "My name a paul"
     },
     {
+        "id": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+        "entity": "user",
+        "email": "killiankelly@elance.site",
+        "fName": "killian",
+        "lName": "kelly",
+        "dob": "15-09-1998",
+        "summary": "Me llamo Killiana, donde esta la mantequilla.",
+        "skills": [
+            {
+                "title": "Back-end expert :)",
+                "description": "Can node good."
+            },
+            {
+                "title": ".NET master",
+                "description": "Can ASP good."
+            }
+        ],
+        "educationItems": [
+            {
+                "degreeTitle": "Honours Computing",
+                "startYear": "2016",
+                "endYear": "2020",
+                "collegeName": "IT Sligo",
+                "grade": "1st Hons",
+                "description": "4 years of padraig"
+            }
+        ],
+        "avatarUrl": "www.facebook/killian",
+        "backgroundUrl": "background.png",
+        "socialLinks": [
+            {
+                "title": "Github",
+                "link": "www.github.com"
+            },
+            {
+                "title": "Twitter",
+                "link": "www.twitter.com"
+            },
+            {
+                "title": "LinkdIn",
+                "link": "www.linkdin.com"
+            }
+        ],
+        "tagline": "My name a killian"
+    },
+    {
         "id": "424jgf-343214-gfsgj4-8dgfs8-4235ji",
         "entity": "blacklisted-token",
         "token": "test-token"

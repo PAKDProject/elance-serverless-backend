@@ -45,6 +45,16 @@ export class UserController implements BaseRouter {
                     next(error);
                 }
             })
+            .post('/batch', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
+                try {
+                    let userIds = req.body.userIds
+                    let users = await TableModel.batchFindDocumentsByIds(userIds, entityType);
+                    if (users.data) res.status(200).json({ message: 'Users found', users: users.data });
+                } catch (error) {
+                    res.status(404).json({ message: 'Something went wrong. Users not found', error: error });
+                    next(error);
+                }
+            })
             .post('/', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     let partialUser = req.body;
@@ -81,6 +91,16 @@ export class UserController implements BaseRouter {
                     res.status(200).json({ message: 'User deleted', user: user.data })
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. User not deleted', error: error })
+                }
+            })
+            .delete('/batch', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
+                try {
+                    let userIds = req.body.userIds
+                    let users = await TableModel.batchDeleteDocumentsByIds(userIds, entityType);
+                    if (users.data) res.status(200).json({ message: 'Users deleted', users: users.data });
+                } catch (error) {
+                    res.status(400).json({ message: 'Something went wrong. Users not deleted', error: error });
+                    next(error);
                 }
             })
     }
