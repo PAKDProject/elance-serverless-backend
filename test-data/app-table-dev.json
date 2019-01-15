@@ -55,12 +55,16 @@
         "summary": "Me llamo Killiana, donde esta la mantequilla.",
         "skills": [
             {
-                "title": "Back-end expert :)",
-                "description": "Can node good."
+                "skillTitle": "C#",
+                "category": "Software"
             },
             {
-                "title": ".NET master",
-                "description": "Can ASP good."
+                "skillTitle": "Python",
+                "category": "Software"
+            },
+            {
+                "skillTitle": "HTML",
+                "category": "Software"
             }
         ],
         "educationItems": [
@@ -87,6 +91,25 @@
             {
                 "title": "LinkdIn",
                 "link": "www.linkdin.com"
+            }
+        ],
+        "profileCards": [
+            {
+                "title": "About Me",
+                "type": "bio"
+            },
+            {
+                "title": "Education",
+                "type": "edu"
+            },
+            {
+                "title": "Skills",
+                "type": "skills"
+            },
+            {
+                "title": "Custom Card 1",
+                "type": "custom",
+                "content": "Custom card body with <h1>MARKDOWN</h1>"
             }
         ],
         "tagline": "My name a killian"

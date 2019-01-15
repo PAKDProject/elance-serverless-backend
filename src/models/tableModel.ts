@@ -16,7 +16,7 @@ class TableModel {
   skills: ISkills[];
   appliedJobs: object[];
   activeJobs: object[];
-  jobHistory: object[];
+  jobHistory: string[];
   avatarUrl: string;
   backgroundUrl: string;
   socialLinks: SocialLink[];
@@ -25,8 +25,8 @@ class TableModel {
   profileCards: IProfileCard[];
   // Job related attributes
   title: string;
-  employerName: string;
   employerID: string;
+  employerName: string;
   location: string;
   remote: boolean;
   description: string;
