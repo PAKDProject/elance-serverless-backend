@@ -30,6 +30,7 @@ class TableModel {
     remote: boolean;
     description: string;
     datePosted: Date;
+    dateCompleted: Date;
     payment: number;
     applicantIds: string[];
     chosenApplicantId: string;

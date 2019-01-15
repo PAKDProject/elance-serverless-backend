@@ -126,7 +126,8 @@
         "employer": "Skyble",
         "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",
         "datePosted": "05/12/2018",
-        "dateAccepted": "03/15/2018",
+        "dateAccepted": "05/15/2018",
+        "dateCompleted": "06/01/2018",
         "isAccepted": true,
         "payment": 919,
         "progress": 36
@@ -138,7 +139,8 @@
         "employer": "Blogtags",
         "description": "Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
         "datePosted": "07/11/2017",
-        "dateAccepted": "11/27/2017",
+        "dateAccepted": "07/12/2017",
+        "dateCompleted": "07/30/2017",
         "isAccepted": true,
         "payment": 5980,
         "progress": 40
@@ -150,7 +152,8 @@
         "employer": "Digitube",
         "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend.",
         "datePosted": "08/25/2017",
-        "dateAccepted": "11/08/2017",
+        "dateAccepted": "08/27/2017",
+        "dateCompleted": "09/15/2017",
         "isAccepted": false,
         "payment": 5362,
         "progress": 60
