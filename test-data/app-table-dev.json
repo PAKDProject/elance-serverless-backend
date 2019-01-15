@@ -81,15 +81,15 @@
         "backgroundUrl": "background.png",
         "socialLinks": [
             {
-                "title": "Github",
+                "title": "github",
                 "link": "www.github.com"
             },
             {
-                "title": "Twitter",
+                "title": "twitter",
                 "link": "www.twitter.com"
             },
             {
-                "title": "LinkdIn",
+                "title": "linkedin",
                 "link": "www.linkdin.com"
             }
         ],
@@ -349,10 +349,9 @@
         "isAccepted": false,
         "payment": 3116,
         "progress": 17,
-        "applicants" : 
-        [
-          "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
-          "d813c1eb-d73f-482f-b801-9519b664e706"
+        "applicants": [
+            "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+            "d813c1eb-d73f-482f-b801-9519b664e706"
         ]
     },
     {
@@ -378,10 +377,9 @@
         "isAccepted": false,
         "payment": 5629,
         "progress": 79,
-        "applicants" : 
-        [
-          "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
-          "d813c1eb-d73f-482f-b801-9519b664e706"
+        "applicants": [
+            "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+            "d813c1eb-d73f-482f-b801-9519b664e706"
         ]
     },
     {
@@ -395,10 +393,9 @@
         "isAccepted": false,
         "payment": 2600,
         "progress": 14,
-        "applicants" : 
-        [
-          "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
-          "d813c1eb-d73f-482f-b801-9519b664e706"
+        "applicants": [
+            "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+            "d813c1eb-d73f-482f-b801-9519b664e706"
         ]
     },
     {
@@ -412,10 +409,9 @@
         "isAccepted": true,
         "payment": 2987,
         "progress": 4,
-        "applicants" : 
-        [
-          "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
-          "d813c1eb-d73f-482f-b801-9519b664e706"
+        "applicants": [
+            "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+            "d813c1eb-d73f-482f-b801-9519b664e706"
         ]
     },
     {
