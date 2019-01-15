@@ -348,7 +348,12 @@
         "dateAccepted": "11/20/2017",
         "isAccepted": false,
         "payment": 3116,
-        "progress": 17
+        "progress": 17,
+        "applicants" : 
+        [
+          "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+          "d813c1eb-d73f-482f-b801-9519b664e706"
+        ]
     },
     {
         "id": "aced8af8-6cfb-47e1-9d51-7844426dbcad",
@@ -372,7 +377,12 @@
         "dateAccepted": "09/07/2018",
         "isAccepted": false,
         "payment": 5629,
-        "progress": 79
+        "progress": 79,
+        "applicants" : 
+        [
+          "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+          "d813c1eb-d73f-482f-b801-9519b664e706"
+        ]
     },
     {
         "id": "7126bd0a-2270-495f-b5ab-96008cb88c86",
@@ -384,7 +394,12 @@
         "dateAccepted": "11/08/2017",
         "isAccepted": false,
         "payment": 2600,
-        "progress": 14
+        "progress": 14,
+        "applicants" : 
+        [
+          "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+          "d813c1eb-d73f-482f-b801-9519b664e706"
+        ]
     },
     {
         "id": "4077749e-bbe8-4755-9600-aefc0c016ad8",
@@ -396,7 +411,12 @@
         "dateAccepted": "11/04/2017",
         "isAccepted": true,
         "payment": 2987,
-        "progress": 4
+        "progress": 4,
+        "applicants" : 
+        [
+          "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+          "d813c1eb-d73f-482f-b801-9519b664e706"
+        ]
     },
     {
         "id": "8f77f4d9-dd39-4b29-9aa6-47be9a4619e9",
