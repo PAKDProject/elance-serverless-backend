@@ -4,7 +4,6 @@ import { IAccessToken } from '../interfaces/IAWSResponse';
 import * as jwt from 'jsonwebtoken'
 import { AuthenticationResultType } from 'aws-sdk/clients/cognitoidentityserviceprovider';
 import * as TableModel from '../models/tableModel';
-import { resolve } from 'path';
 import { Encode, Decode, CheckExpiry, GetExpiryFromToken } from './tokenFunc';
 import uuid = require('uuid');
 
@@ -31,7 +30,7 @@ export let LoginUser = (Username: string, Password: string) => {
                     await TableModel.findDocumentById(username, entityType).then(async () => {
                         try {
                             refresh_token = await Encode(refresh_token)
-                            await TableModel.updateDocument(username, entityType, { refresh_token })
+                            await TableModel.updateDocument(username, entityType, { refresh_token } as TableModel.TableModel)
                         } catch (error) {
                             console.log(error);
                         }
@@ -42,7 +41,7 @@ export let LoginUser = (Username: string, Password: string) => {
                             entity: entityType,
                             refresh_token
                         }
-                        await TableModel.createNewDocument(newToken)
+                        await TableModel.createNewDocument(newToken as TableModel.TableModel)
                     })
 
                     let tokens = {
@@ -160,7 +159,10 @@ export let RefreshTokens = (access_token: string): Promise<AuthenticationResultT
             if (!refreshToken) reject('No refresh token present in db')
 
             else {
-                refreshToken = Decode(refreshToken)
+                //refreshToken = Decode(refreshToken)
+                Decode(refreshToken).then((res) => {
+                    refreshToken = res
+                })
                 let params = {
                     AuthFlow: 'REFRESH_TOKEN',
                     AuthParameters: {
@@ -177,7 +179,7 @@ export let RefreshTokens = (access_token: string): Promise<AuthenticationResultT
                     let cognitoResponse = data.AuthenticationResult as AuthenticationResultType
 
                     if (cognitoResponse.RefreshToken !== undefined) {
-                        await TableModel.updateDocument(username, entityType, { refresh_token: cognitoResponse.RefreshToken })
+                        await TableModel.updateDocument(username, entityType, { refresh_token: cognitoResponse.RefreshToken } as TableModel.TableModel)
                     }
                     resolve(cognitoResponse)
                 })
@@ -199,13 +201,14 @@ export const blacklistAccessToken = async (access_token: string) => {
     try {
         let userId = getUserIDFromAccessToken(access_token)
         let exp = GetExpiryFromToken(access_token)
-        await TableModel.createNewDocument({
+        const btoken = {
             id: uuid.v4(),
             entity: "blacklisted-token",
-            userId,
+            userId: userId,
             token: access_token,
-            expiry: exp
-        })
+            expiryDate: exp
+        } 
+        await TableModel.createNewDocument(btoken as TableModel.TableModel)
     } catch (error) {
         throw new Error(error)
     }

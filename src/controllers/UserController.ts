@@ -75,16 +75,16 @@ export class UserController implements BaseRouter {
                     next(error)
                 }
             })
-            .put('/:userId/:jobId', async (req: Request, res: Response, next: NextFunction) => {
-                try {
-                    const user = await TableModel.updateDocument(req.params.userId, entityType, req.body);
-                    const job = await TableModel.deleteDocument(req.params.jobId, 'job');
-                    res.status(200).json({ message: 'User updated', user: user.data });
-                } catch (error) {
-                    res.status(400).json({ message: 'Something went wrong. User not updated', error: error });
-                    next(error);
-                }
-            })
+            // .put('/:userId/:jobId', async (req: Request, res: Response, next: NextFunction) => {
+            //     try {
+            //         const user = await TableModel.updateDocument(req.params.userId, entityType, req.body);
+            //         const job = await TableModel.deleteDocument(req.params.jobId, 'job');
+            //         res.status(200).json({ message: 'User updated', user: user.data });
+            //     } catch (error) {
+            //         res.status(400).json({ message: 'Something went wrong. User not updated', error: error });
+            //         next(error);
+            //     }
+            // })
             .delete('/:id', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     const user = await TableModel.deleteDocument(req.params.id, entityType);
@@ -97,7 +97,7 @@ export class UserController implements BaseRouter {
                 try {
                     let userIds = req.body.userIds
                     let users = await TableModel.batchDeleteDocumentsByIds(userIds, entityType);
-                    if (users.data) res.status(200).json({ message: 'Users deleted', users: users.data });
+                    if (users) res.status(200).json({ message: 'Users deleted', users: users });
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. Users not deleted', error: error });
                     next(error);

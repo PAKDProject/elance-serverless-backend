@@ -343,15 +343,83 @@
         "entity": "job",
         "title": "VP Marketing",
         "employer": "Yabox",
+        "employerID": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
         "description": "Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
         "datePosted": "10/14/2017",
         "dateAccepted": "11/20/2017",
         "isAccepted": false,
         "payment": 3116,
         "progress": 17,
-        "applicants": [
-            "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
-            "d813c1eb-d73f-482f-b801-9519b664e706"
+        "applicants":[
+            {
+                "id": "sad34324-d73fsadas-sdfdasf-b801-42069LOL",
+                "entity": "user",
+                "email": "killiankelly@elance.site",
+                "fName": "killian",
+                "lName": "kelly",
+                "dob": "15-09-1998",
+                "summary": "Me llamo Killiana, donde esta la mantequilla.",
+                "skills": [
+                    {
+                        "skillTitle": "C#",
+                        "category": "Software"
+                    },
+                    {
+                        "skillTitle": "Python",
+                        "category": "Software"
+                    },
+                    {
+                        "skillTitle": "HTML",
+                        "category": "Software"
+                    }
+                ],
+                "educationItems": [
+                    {
+                        "degreeTitle": "Honours Computing",
+                        "startYear": "2016",
+                        "endYear": "2020",
+                        "collegeName": "IT Sligo",
+                        "grade": "1st Hons",
+                        "description": "4 years of padraig"
+                    }
+                ],
+                "avatarUrl": "www.facebook/killian",
+                "backgroundUrl": "background.png",
+                "socialLinks": [
+                    {
+                        "title": "github",
+                        "link": "www.github.com"
+                    },
+                    {
+                        "title": "twitter",
+                        "link": "www.twitter.com"
+                    },
+                    {
+                        "title": "linkedin",
+                        "link": "www.linkdin.com"
+                    }
+                ],
+                "profileCards": [
+                    {
+                        "title": "About Me",
+                        "type": "bio"
+                    },
+                    {
+                        "title": "Education",
+                        "type": "edu"
+                    },
+                    {
+                        "title": "Skills",
+                        "type": "skills"
+                    },
+                    {
+                        "title": "Custom Card 1",
+                        "type": "custom",
+                        "content": "Custom card body with <h1>MARKDOWN</h1>"
+                    }
+                ],
+                "tagline": "My name a killian"
+            }
         ]
     },
     {
@@ -376,11 +444,7 @@
         "dateAccepted": "09/07/2018",
         "isAccepted": false,
         "payment": 5629,
-        "progress": 79,
-        "applicants": [
-            "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
-            "d813c1eb-d73f-482f-b801-9519b664e706"
-        ]
+        "progress": 79
     },
     {
         "id": "7126bd0a-2270-495f-b5ab-96008cb88c86",
@@ -392,11 +456,7 @@
         "dateAccepted": "11/08/2017",
         "isAccepted": false,
         "payment": 2600,
-        "progress": 14,
-        "applicants": [
-            "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
-            "d813c1eb-d73f-482f-b801-9519b664e706"
-        ]
+        "progress": 14
     },
     {
         "id": "4077749e-bbe8-4755-9600-aefc0c016ad8",
@@ -408,11 +468,7 @@
         "dateAccepted": "11/04/2017",
         "isAccepted": true,
         "payment": 2987,
-        "progress": 4,
-        "applicants": [
-            "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
-            "d813c1eb-d73f-482f-b801-9519b664e706"
-        ]
+        "progress": 4
     },
     {
         "id": "8f77f4d9-dd39-4b29-9aa6-47be9a4619e9",

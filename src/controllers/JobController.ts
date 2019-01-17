@@ -83,6 +83,7 @@ export class JobController implements BaseRouter {
       })
       .put("/:id", async (req: Request, res: Response, next: NextFunction) => {
         try {
+          console.log(req.body)
           const job = await TableModel.updateDocument(
             req.params.id,
             entityType,
@@ -118,7 +119,7 @@ export class JobController implements BaseRouter {
           try {
               let jobIds = req.body
               let jobs = await TableModel.batchDeleteDocumentsByIds(jobIds, entityType);
-              if (jobs.data) res.status(200).json({ message: 'Jobs deleted', jobs: jobs.data });
+              if (jobs) res.status(200).json({ message: 'Jobs deleted', jobs: jobs });
           } catch (error) {
               res.status(400).json({ message: 'Something went wrong. Jobs not deleted', error: error });
               next(error);
