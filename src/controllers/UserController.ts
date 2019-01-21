@@ -81,6 +81,7 @@ export class UserController implements BaseRouter {
                     res.status(200).json({ message: 'User deleted', user: user.data })
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. User not deleted', error: error })
+                    next(error)
                 }
             })
     }

@@ -71,6 +71,7 @@ export class OrgController implements BaseRouter {
                     res.status(200).json({ message: 'Organisation deleted', org: org.data })
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. Organisation not deleted', error: error })
+                    next(error)
                 }
             })
     }
