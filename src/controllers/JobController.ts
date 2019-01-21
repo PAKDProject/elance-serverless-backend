@@ -25,33 +25,22 @@ export class JobController implements BaseRouter {
   returnRouter(): Router {
     const entityType = "job";
     return Router()
-      .get("/", async (req: Request, res: Response, next: NextFunction) => {
+      .get("/", CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
         try {
           let jobs = await TableModel.findDocumentsByType(entityType);
-          if (jobs.data.length === 0)
-            res.status(404).json({ message: "No jobs in collection" });
+          if (jobs.data.length === 0) res.status(404).json({ message: "No jobs in collection" });
           res.status(200).json({ message: "Jobs found", jobs: jobs.data });
         } catch (error) {
-          res.status(404).json({
-            message: "Something went wrong. Jobs not found",
-            error: error
-          });
+          res.status(404).json({ message: "Something went wrong. Jobs not found", error: error });
           next(error);
         }
       })
-      .get("/:id", async (req: Request, res: Response, next: NextFunction) => {
+      .get("/:id", CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
         try {
-          let job = await TableModel.findDocumentById(
-            req.params.id,
-            entityType
-          );
-          if (job.data)
-            res.status(200).json({ message: "Job found", job: job.data });
+          let job = await TableModel.findDocumentById(req.params.id, entityType);
+          if (job.data) res.status(200).json({ message: "Job found", job: job.data });
         } catch (error) {
-          res.status(404).json({
-            message: "Something went wrong. Job not found",
-            error: error
-          });
+          res.status(404).json({message: "Something went wrong. Job not found", error: error});
           next(error);
         }
       })
@@ -73,45 +62,25 @@ export class JobController implements BaseRouter {
           const job = await TableModel.createNewDocument(partialJob);
           res.status(201).json({ message: "Job created", job: job.data });
         } catch (error) {
-          res.status(400).json({
-            message: "Something went wrong. Job not created",
-            statusCode: error.statusCode || 0,
-            error: error
-          });
+          res.status(400).json({message: "Something went wrong. Job not created", statusCode: error.statusCode || 0, error: error});
           next(error);
         }
       })
       .put("/:id", async (req: Request, res: Response, next: NextFunction) => {
         try {
-          console.log(req.body)
-          const job = await TableModel.updateDocument(
-            req.params.id,
-            entityType,
-            req.body
-          );
+          const job = await TableModel.updateDocument(req.params.id, entityType, req.body);
           res.status(200).json({ message: "Job updated", job: job.data });
         } catch (error) {
-          res.status(400).json({
-            message: "Something went wrong. Job not updated",
-            error: error
-          });
+          res.status(400).json({message: "Something went wrong. Job not updated", error: error});
           next(error);
         }
       })
-      .delete(
-        "/:id",
-        async (req: Request, res: Response, next: NextFunction) => {
+      .delete("/:id", async (req: Request, res: Response, next: NextFunction) => {
           try {
-            const job = await TableModel.deleteDocument(
-              req.params.id,
-              entityType
-            );
+            const job = await TableModel.deleteDocument(req.params.id, entityType);
             res.status(200).json({ message: "Job deleted", job: job.data });
           } catch (error) {
-            res.status(400).json({
-              message: "Something went wrong. Job not deleted",
-              error: error
-            });
+            res.status(400).json({message: "Something went wrong. Job not deleted",error: error});
           }
         }
       )
