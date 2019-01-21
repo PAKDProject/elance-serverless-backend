@@ -57,7 +57,8 @@ export class UserController implements BaseRouter {
             })
             .post('/', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    let partialUser = req.body;
+                    let partialUser = req.body as TableModel.TableModel;
+                    // partialUser.fullName = req.body.fName + ' ' + req.body.lName
                     partialUser.entity = entityType;
                     const user = await TableModel.createNewDocument(req.body);
                     res.status(201).json({ message: 'User created', user: user.data });

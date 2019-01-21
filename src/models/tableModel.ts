@@ -8,6 +8,7 @@ export class TableModel {
   email: string;
   fName: string;
   lName: string;
+  // fullName: string;
   phone: string;
   dob: Date;
   summary: string;
@@ -105,5 +106,3 @@ export const createNewDocument = async (newEntry: TableModel) => await AppTable.
 export const updateDocument = async ( id: string, entity: string, changes: TableModel ) => await AppTable.update({ id, entity }, changes).execute();
 
 export const deleteDocument = async (id: string, entity: string) => await AppTable.delete({ id, entity }).execute();
-
-export const batchDeleteDocumentsByIds = async ( idBatch: string[], entity: string ) => await AppTable.delete(idBatch.map(id => ({ id, entity }))).execute();

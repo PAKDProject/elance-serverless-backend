@@ -84,15 +84,5 @@ export class JobController implements BaseRouter {
           }
         }
       )
-      .delete('/batch', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
-          try {
-              let jobIds = req.body
-              let jobs = await TableModel.batchDeleteDocumentsByIds(jobIds, entityType);
-              if (jobs) res.status(200).json({ message: 'Jobs deleted', jobs: jobs });
-          } catch (error) {
-              res.status(400).json({ message: 'Something went wrong. Jobs not deleted', error: error });
-              next(error);
-          }
-      })
   }
 }
