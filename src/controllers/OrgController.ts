@@ -51,7 +51,7 @@ export class OrgController implements BaseRouter {
                     let partialOrg = req.body;
                     partialOrg.id = uuid();
                     partialOrg.entity = entityType;
-                    const org = await TableModel.createNewDocument(req.body);
+                    const org = await TableModel.createNewDocument(partialOrg);
                     res.status(201).json({ message: 'Organisation created', org: org.data });
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. Organisation not created', error: error });
