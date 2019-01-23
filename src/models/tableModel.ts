@@ -20,9 +20,12 @@ export class TableModel {
   socialLinks: SocialLink[];
   contacts: String[];
   profileCards: IProfileCard[];
+  organisations: object[];
   // Organisation related attributes
   orgName: string;
   logoUrl: string;
+  adminUser: object;
+  members: object[];
   // Job related attributes
   title: string;
   employerID: string;
