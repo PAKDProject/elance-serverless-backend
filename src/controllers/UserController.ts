@@ -2,6 +2,7 @@ import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
 import * as TableModel from '../models/tableModel';
 import { CheckAccessToken } from '../middleware/checkToken';
+import { client } from '../lib/createES';
 
 /**
 * @class UserController used to control the user route
@@ -50,6 +51,19 @@ export class UserController implements BaseRouter {
                     let userIDs = req.body;
                     let users = await TableModel.batchFindDocumentsByIds(userIDs, entityType);
                     if (users.data) res.status(200).json({ message: 'Users found', users: users.data });
+                } catch (error) {
+                    res.status(404).json({ message: 'Something went wrong. Users not found.', error: error});
+                    next(error);
+                }
+            })
+            .post('/search', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
+                try{
+                    const query = req.body;
+                    const data = await client.search({
+                        index: 'users',
+                        body: query
+                    });
+                    if(data) res.status(200).json({message:'Users found', users: data.hits.hits})
                 } catch (error) {
                     res.status(404).json({ message: 'Something went wrong. Users not found.', error: error});
                     next(error);
