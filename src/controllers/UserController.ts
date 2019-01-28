@@ -2,7 +2,7 @@ import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
 import * as TableModel from '../models/tableModel';
 import { CheckAccessToken } from '../middleware/checkToken';
-import { client } from '../lib/createES';
+import { elasticSearch } from '../lib/createES';
 
 /**
 * @class UserController used to control the user route
@@ -59,7 +59,7 @@ export class UserController implements BaseRouter {
             .post('/search', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try{
                     const query = req.body;
-                    const data = await client.search({
+                    const data = await elasticSearch.search({
                         index: 'users',
                         body: query
                     });
@@ -72,7 +72,6 @@ export class UserController implements BaseRouter {
             .post('/', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     let partialUser = req.body as TableModel.TableModel;
-                    // partialUser.fullName = req.body.fName + ' ' + req.body.lName
                     partialUser.entity = entityType;
                     const user = await TableModel.createNewDocument(req.body);
                     res.status(201).json({ message: 'User created', user: user.data });
