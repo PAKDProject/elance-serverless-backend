@@ -1,5 +1,5 @@
 import { CognitoUserPool, AuthenticationDetails, CognitoUser, CognitoUserAttribute, CognitoRefreshToken } from 'amazon-cognito-identity-js';
-import { CognitoIdentityServiceProvider } from 'aws-sdk'
+import { CognitoIdentityServiceProvider, S3 } from 'aws-sdk'
 import { IAccessToken } from '../interfaces/IAWSResponse';
 import * as jwt from 'jsonwebtoken'
 import { AuthenticationResultType } from 'aws-sdk/clients/cognitoidentityserviceprovider';
@@ -207,7 +207,7 @@ export const blacklistAccessToken = async (access_token: string) => {
             userId: userId,
             token: access_token,
             expiryDate: exp
-        } 
+        }
         await TableModel.createNewDocument(btoken as TableModel.TableModel)
     } catch (error) {
         throw new Error(error)
@@ -234,4 +234,47 @@ export const isBlacklisted = async (access_token: string): Promise<boolean> => {
     } catch (error) {
         throw error
     }
+}
+
+
+export const addToS3 = (id, file): Promise<any> => {
+    const s3 = new S3()
+    let stamp = id + "-" + Date.now().toString() + ".png"
+    const params = {
+        Bucket: "elance-profile-images",
+        Key: stamp,
+        Body: file,
+        ACL: "public-read",
+        ContentType: "image/png"
+    }
+
+    return new Promise((resolve, reject) => {
+        s3.putObject(params, (err, data) => {
+            if (err) {
+                reject(err)
+            }
+            else {
+                resolve(stamp)
+            }
+        })
+    })
+}
+
+export const removeFromS3 = (id): Promise<any> => {
+    const s3 = new S3()
+
+    const params = {
+        Key: id,
+        Bucket: "elance-profile-images"
+    }
+
+    return new Promise((resolve, reject) => {
+        s3.deleteObject(params, (err, data) => {
+            if (err) {
+                reject(err)
+            }
+
+            resolve()
+        })
+    })
 }

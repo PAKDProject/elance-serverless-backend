@@ -2,6 +2,9 @@ import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
 import * as TableModel from '../models/tableModel';
 import { CheckAccessToken } from '../middleware/checkToken';
+import { addToS3, removeFromS3 } from '../lib/userCheck'
+import * as Busboy from 'busboy'
+import { writeFileSync } from "fs"
 
 /**
 * @class UserController used to control the user route
@@ -51,7 +54,7 @@ export class UserController implements BaseRouter {
                     let users = await TableModel.batchFindDocumentsByIds(userIDs, entityType);
                     if (users.data) res.status(200).json({ message: 'Users found', users: users.data });
                 } catch (error) {
-                    res.status(404).json({ message: 'Something went wrong. Users not found.', error: error});
+                    res.status(404).json({ message: 'Something went wrong. Users not found.', error: error });
                     next(error);
                 }
             })
@@ -82,6 +85,55 @@ export class UserController implements BaseRouter {
                     res.status(200).json({ message: 'User deleted', user: user.data })
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. User not deleted', error: error })
+                    next(error)
+                }
+            })
+            .post('/avatar-upload', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
+                try {
+                    let image = req.body.image
+                    let id = req.body.id
+                    let oldImageUrl: string = req.body.oldImageUrl
+
+                    if (image === undefined || id === undefined) {
+                        throw new Error("Bad request")
+                    }
+
+                    if (oldImageUrl !== undefined) {
+                        let imageId = oldImageUrl.split("https://s3-eu-west-1.amazonaws.com/elance-profile-images/")[1]
+
+                        if (imageId === undefined) {
+                            throw new Error("Passed in image url is incorrect")
+                        }
+
+                        await removeFromS3(id)
+                    }
+
+                    let uploadedAvatar: { file?: any, mimetype?: any, extension?: string, md5?: any } = {}
+                    const allowedExtensions: Array<string> = [
+                        "jpg",
+                        "jpeg",
+                        "png",
+                        "svg"
+                    ]
+
+                    let buffer: Buffer = Buffer.from(image, "base64")
+
+
+                    // if (!allowedExtensions.includes(uploadedAvatar.extension)) {
+                    //     throw new Error("Wrong file type!")
+                    // }
+
+                    let data = await addToS3(id, buffer)
+                    let url = `https://s3-eu-west-1.amazonaws.com/elance-profile-images/${data}`
+                    res.status(201).json({
+                        message: 'File uploaded successfully',
+                        url
+                    })
+                }
+                catch (error) {
+                    res.status(422).send({
+                        message: `Error: ${error.message}`
+                    })
                     next(error)
                 }
             })
