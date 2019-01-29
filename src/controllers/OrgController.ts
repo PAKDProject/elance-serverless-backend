@@ -2,6 +2,7 @@ import { Router, Response, Request, NextFunction } from 'express'
 import { BaseRouter } from '../interfaces/baseRouter'
 import * as TableModel from '../models/tableModel';
 import { CheckAccessToken } from '../middleware/checkToken';
+import { v4 as uuid } from "uuid";
 
 /**
 * @class OrgController used to control the organisation route
@@ -48,8 +49,9 @@ export class OrgController implements BaseRouter {
             .post('/', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     let partialOrg = req.body;
+                    partialOrg.id = uuid();
                     partialOrg.entity = entityType;
-                    const org = await TableModel.createNewDocument(req.body);
+                    const org = await TableModel.createNewDocument(partialOrg);
                     res.status(201).json({ message: 'Organisation created', org: org.data });
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. Organisation not created', error: error });

@@ -3,8 +3,7 @@ import { BaseRouter } from '../interfaces/baseRouter'
 import * as TableModel from '../models/tableModel';
 import { CheckAccessToken } from '../middleware/checkToken';
 import { addToS3, removeFromS3 } from '../lib/userCheck'
-import * as Busboy from 'busboy'
-import { writeFileSync } from "fs"
+import { elasticSearch } from '../lib/createES';
 
 /**
 * @class UserController used to control the user route
@@ -48,11 +47,14 @@ export class UserController implements BaseRouter {
                     next(error);
                 }
             })
-            .post('/batch', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
+            .post('/search', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
-                    let userIDs = req.body;
-                    let users = await TableModel.batchFindDocumentsByIds(userIDs, entityType);
-                    if (users.data) res.status(200).json({ message: 'Users found', users: users.data });
+                    const query = req.body;
+                    const data = await elasticSearch.search({
+                        index: 'users',
+                        body: query
+                    });
+                    if (data) res.status(200).json({ message: 'Users found', users: data.hits.hits })
                 } catch (error) {
                     res.status(404).json({ message: 'Something went wrong. Users not found.', error: error });
                     next(error);
@@ -61,7 +63,6 @@ export class UserController implements BaseRouter {
             .post('/', CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
                 try {
                     let partialUser = req.body as TableModel.TableModel;
-                    // partialUser.fullName = req.body.fName + ' ' + req.body.lName
                     partialUser.entity = entityType;
                     const user = await TableModel.createNewDocument(req.body);
                     res.status(201).json({ message: 'User created', user: user.data });

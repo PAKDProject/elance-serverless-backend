@@ -1,5 +1,136 @@
 [
     {
+        "id": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+        "entity": "user",
+        "email": "johnsmith418@email.com",
+        "fName": "John",
+        "lName": "Smith",
+        "dob": "1970-01-01T00:00:00.000Z",
+        "summary": "A hardworking individual!",
+        "educationItems": [
+          {
+            "degreeTitle": "BSc Hons in Computing",
+            "startYear": "2016",
+            "endYear": "2020",
+            "collegeName": "IT Sligo",
+            "grade": "A+",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
+          },
+          {
+            "degreeTitle": "BSc Hons in Computer Science",
+            "startYear": "2020",
+            "endYear": "2023",
+            "collegeName": "IT Sligo",
+            "grade": "D-",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
+          },
+          {
+            "degreeTitle": "Phd in Business",
+            "startYear": "2014",
+            "endYear": "2016",
+            "collegeName": "IT Sligo",
+            "grade": "C",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
+          }
+        ],
+        "organisations": [
+          {
+            "orgName": "Facebook",
+            "email": "zuck@facebook.com",
+            "tagline": "### This is Facebook ",
+            "websiteUrl": "facebook.com",
+            "adminUser": {
+              "id": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+              "entity": "user",
+              "email": "johnsmith@email.com"
+            }
+          }
+        ],
+        "skills": [
+          {
+            "skillTitle": "C#",
+            "category": "Software"
+          },
+          {
+            "skillTitle": "Python",
+            "category": "Software"
+          },
+          {
+            "skillTitle": "HTML",
+            "category": "Software"
+          }
+        ],
+        "avatarUrl": "",
+        "backgroundUrl": "",
+        "socialLinks": [
+          {
+            "imageUrl": "github",
+            "url": "http://github.com"
+          },
+          {
+            "imageUrl": "facebook",
+            "url": "http://facebook.com"
+          },
+          {
+            "imageUrl": "twitter",
+            "url": "http://twitter.com"
+          },
+          {
+            "imageUrl": "linkedin",
+            "url": "http://linkedin.com"
+          }
+        ],
+        "tagline": "Software Developer",
+        "contacts": [
+            {
+                "id": "0e9c26d6-3da5-416c-a2c6-c45b02c4d5b5",
+                "entity": "user",
+                "fName": "Florentia",
+                "lName": "Goss",
+                "email": "fgoss4@washingtonpost.com",
+                "dob": "10/02/2012",
+                "tagline": "Right-sized"
+            }
+        ],
+        "profileCards": [
+          {
+            "title": "About Me",
+            "type": "bio"
+          },
+          {
+            "title": "Education",
+            "type": "edu"
+          },
+          {
+            "title": "Skills",
+            "type": "skills"
+          },
+          {
+            "title": "Job History",
+            "type": "jobs"
+          },
+          {
+            "title": "Custom Card 1",
+            "type": "custom",
+            "content": "Custom card body with <h1>MARKDOWN</h1>"
+          }
+        ],
+        "jobHistory": [
+          {
+            "id": "0a7d3ef1-00da-4bb9-9d10-61695207f8ca",
+            "entity": "job",
+            "title": "Product Engineer",
+            "employerID": "d813c1eb-d73f-482f-b801-9519b664e706",
+            "employerName": "Wordware",
+            "description": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
+            "datePosted": "1907-09-08T00:25:21.000Z",
+            "dateAccepted": "1906-09-08T00:25:21.000Z",
+            "payment": 5629,
+            "progress": 100
+          }
+        ]
+      },
+    {
         "id": "d813c1eb-d73f-482f-b801-9519b664e706",
         "entity": "user",
         "email": "paulkratz@elance.site",
@@ -46,7 +177,7 @@
         "tagline": "My name a paul"
     },
     {
-        "id": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+        "id": "sad34324-d73fsadas-DAB4SATAN-b801-42069LOL",
         "entity": "user",
         "email": "killiankelly@elance.site",
         "fName": "killian",
@@ -114,6 +245,167 @@
         ],
         "tagline": "My name a killian"
     },
+    {
+        "id": "c4041af3-edb5-4a4c-8e8a-f5d8c489a955",
+        "entity": "user",
+        "fName": "Dirk",
+        "lName": "Blaney",
+        "email": "dblaney0@oaic.gov.au",
+        "dob": "11/03/2018",
+        "tagline": "foreground"
+      }, {
+        "id": "a0a34fda-56ed-4006-b789-dfbf870c0eb2",
+        "entity": "user",
+        "fName": "Lane",
+        "lName": "Speare",
+        "email": "lspeare1@tiny.cc",
+        "dob": "19/09/2018",
+        "tagline": "real-time"
+      }, {
+        "id": "eabfc682-964a-48b5-8353-811776c7cf4a",
+        "entity": "user",
+        "fName": "Sindee",
+        "lName": "Rivel",
+        "email": "srivel2@1und1.de",
+        "dob": "15/11/2017",
+        "tagline": "policy"
+      }, {
+        "id": "f9d1acf7-b38a-4d1c-8b40-b30283e69d51",
+        "entity": "user",
+        "fName": "Aurie",
+        "lName": "Ollett",
+        "email": "aollett3@prweb.com",
+        "dob": "15/05/2018",
+        "tagline": "strategy"
+      }, {
+        "id": "0e9c26d6-3da5-416c-a2c6-c45b02c4d5b5",
+        "entity": "user",
+        "fName": "Florentia",
+        "lName": "Goss",
+        "email": "fgoss4@washingtonpost.com",
+        "dob": "10/02/2012",
+        "tagline": "Right-sized"
+      }, {
+        "id": "43797031-ef40-4fdc-9df0-0b0f0737986a",
+        "entity": "user",
+        "fName": "Darla",
+        "lName": "Tongue",
+        "email": "dtongue5@elegantthemes.com",
+        "dob": "15/01/2016",
+        "tagline": "background"
+      }, {
+        "id": "a64998d6-cb0e-466d-a487-51c6ea4ef2ba",
+        "entity": "user",
+        "fName": "Gabrielle",
+        "lName": "Eilers",
+        "email": "geilers6@addtoany.com",
+        "dob": "19/02/2013",
+        "tagline": "system engine"
+      }, {
+        "id": "1b2d5544-8b04-4a5b-ac5a-5d443a2edbb6",
+        "entity": "user",
+        "fName": "Barbaraanne",
+        "lName": "O'Collopy",
+        "email": "bocollopy7@usnews.com",
+        "dob": "19/10/2014",
+        "tagline": "Pre-emptive"
+      }, {
+        "id": "1cf746d0-572f-43ad-9b24-6400003f036b",
+        "entity": "user",
+        "fName": "Sol",
+        "lName": "Beinisch",
+        "email": "sbeinisch8@ow.ly",
+        "dob": "06/02/2018",
+        "tagline": "productivity"
+      }, {
+        "id": "9a8d57dc-ceee-4765-b25b-b99ac02f614d",
+        "entity": "user",
+        "fName": "Dolli",
+        "lName": "Bowers",
+        "email": "dbowers9@tmall.com",
+        "dob": "03/09/2014",
+        "tagline": "intranet"
+      }, {
+        "id": "e30ac3f8-574f-4c0e-bd47-08e057ec7b2a",
+        "entity": "user",
+        "fName": "Barny",
+        "lName": "Zanni",
+        "email": "bzannia@fotki.com",
+        "dob": "08/08/2011",
+        "tagline": "contextually-based"
+      }, {
+        "id": "1e6dc15f-090c-4624-880e-94b94b4dae43",
+        "entity": "user",
+        "fName": "Celestyna",
+        "lName": "Fletcher",
+        "email": "cfletcherb@com.com",
+        "dob": "23/12/2013",
+        "tagline": "fault-tolerant"
+      }, {
+        "id": "5027174b-09d2-4875-a6ba-42840f79d18d",
+        "entity": "user",
+        "fName": "Dalt",
+        "lName": "Dollman",
+        "email": "ddollmanc@miibeian.gov.cn",
+        "dob": "07/09/2017",
+        "tagline": "Graphical User Interface"
+      }, {
+        "id": "b9934e85-92d5-4358-81da-b1131b56b9e2",
+        "entity": "user",
+        "fName": "Blaire",
+        "lName": "Kidson",
+        "email": "bkidsond@bloglovin.com",
+        "dob": "30/06/2013",
+        "tagline": "zero tolerance"
+      }, {
+        "id": "62948686-c1fd-4c43-a22e-0658282d578d",
+        "entity": "user",
+        "fName": "Janeen",
+        "lName": "Bines",
+        "email": "jbinese@apple.com",
+        "dob": "05/03/2018",
+        "tagline": "attitude"
+      }, {
+        "id": "8bb9c76c-552d-486c-891b-bf587867dc0e",
+        "entity": "user",
+        "fName": "Giacinta",
+        "lName": "Needs",
+        "email": "gneedsf@un.org",
+        "dob": "31/05/2017",
+        "tagline": "portal"
+      }, {
+        "id": "fe998039-e634-4812-ae38-a01db87c8fb0",
+        "entity": "user",
+        "fName": "Sigvard",
+        "lName": "Redmell",
+        "email": "sredmellg@soup.io",
+        "dob": "19/03/2012",
+        "tagline": "Progressive"
+      }, {
+        "id": "abf4195f-c0c8-4f35-b09b-2877d8e80d50",
+        "entity": "user",
+        "fName": "Cordie",
+        "lName": "Tothe",
+        "email": "ctotheh@edublogs.org",
+        "dob": "19/09/2017",
+        "tagline": "database"
+      }, {
+        "id": "a53e9af3-54a8-40ee-92a3-7f1394509b81",
+        "entity": "user",
+        "fName": "Gaby",
+        "lName": "Moens",
+        "email": "gmoensi@ehow.com",
+        "dob": "25/01/2016",
+        "tagline": "responsive"
+      }, {
+        "id": "05a7479a-8745-421c-8ebb-25a451fda1ca",
+        "entity": "user",
+        "fName": "Chickie",
+        "lName": "Claesens",
+        "email": "cclaesensj@woothemes.com",
+        "dob": "19/10/2011",
+        "tagline": "project"
+      },
     {
         "id": "424jgf-343214-gfsgj4-8dgfs8-4235ji",
         "entity": "blacklisted-token",

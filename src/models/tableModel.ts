@@ -5,7 +5,6 @@ export class TableModel {
   id: string;
   entity: string;
   // User related attributes
-  email: string;
   fName: string;
   lName: string;
   // fullName: string;
@@ -15,14 +14,19 @@ export class TableModel {
   educationItems: EducationItem[];
   skills: ISkills[];
   appliedJobs: object[];
-  activeJobs: object[];
   jobHistory: string[];
   avatarUrl: string;
   backgroundUrl: string;
   socialLinks: SocialLink[];
-  tagline: string;
   contacts: String[];
   profileCards: IProfileCard[];
+  organisations: object[];
+  orgInvitations: object[];
+  // Organisation related attributes
+  orgName: string;
+  logoUrl: string;
+  adminUser: object;
+  members: object[];
   // Job related attributes
   title: string;
   employerID: string;
@@ -46,6 +50,11 @@ export class TableModel {
   userId: string;
   token: string;
   expiryDate: number;
+  // Shared fields
+  tagline: string;
+  postedJobs: object[];
+  activeJobs: object[];
+  email: string;
 }
 
 interface ISkills {
@@ -64,8 +73,8 @@ interface EducationItem {
 }
 
 interface SocialLink {
-  name: string;
-  linkUrl: string;
+  url: string;
+  imageUrl: string;
 }
 
 interface IProfileCard {
