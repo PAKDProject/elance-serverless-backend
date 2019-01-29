@@ -21,6 +21,7 @@ export class TableModel {
   contacts: String[];
   profileCards: IProfileCard[];
   organisations: object[];
+  orgInvitations: object[];
   // Organisation related attributes
   orgName: string;
   logoUrl: string;
