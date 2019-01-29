@@ -72,8 +72,8 @@ interface EducationItem {
 }
 
 interface SocialLink {
-  name: string;
-  linkUrl: string;
+  url: string;
+  imageUrl: string;
 }
 
 interface IProfileCard {
