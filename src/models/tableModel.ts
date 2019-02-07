@@ -25,6 +25,7 @@ export class TableModel {
   // Organisation related attributes
   orgName: string;
   logoUrl: string;
+  websiteUrl: string;
   adminUser: object;
   members: object[];
   // Job related attributes

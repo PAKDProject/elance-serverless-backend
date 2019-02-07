@@ -3,6 +3,7 @@ import { BaseRouter } from "../interfaces/baseRouter";
 import * as TableModel from "../models/tableModel";
 import { v4 as uuid } from "uuid";
 import { CheckAccessToken } from "../middleware/checkToken";
+import { ValidateJob } from "../lib/validator";
 
 /**
  * @class JobController used to control the job route
@@ -59,6 +60,7 @@ export class JobController implements BaseRouter {
           let partialJob = req.body;
           partialJob.id = uuid();
           partialJob.entity = "job";
+          if (!ValidateJob(partialJob)) throw "Job is invalid, try again scrub."
           const job = await TableModel.createNewDocument(partialJob);
           res.status(201).json({ message: "Job created", job: job.data });
         } catch (error) {
@@ -68,6 +70,8 @@ export class JobController implements BaseRouter {
       })
       .put("/:id", async (req: Request, res: Response, next: NextFunction) => {
         try {
+          const jobUpdates = req.body as TableModel.TableModel;
+          if (!ValidateJob(jobUpdates)) throw "Job is invalid, try again scrub."
           const job = await TableModel.updateDocument(req.params.id, entityType, req.body);
           res.status(200).json({ message: "Job updated", job: job.data });
         } catch (error) {
