@@ -4,7 +4,7 @@ import * as TableModel from '../models/tableModel';
 import { CheckAccessToken } from '../middleware/checkToken';
 import { addToS3, removeFromS3 } from '../lib/userCheck'
 import { elasticSearch } from '../lib/createES';
-import { ValidateUser } from '../middleware/validator';
+import { ValidateUser } from '../lib/validator';
 
 /**
 * @class UserController used to control the user route
