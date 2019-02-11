@@ -109,6 +109,6 @@ resources:
         TableName: ${self:custom.appTable}
 
 plugins:
+  - serverless-websockets-plugin
   - serverless-dynamodb-local
   - serverless-offline
-

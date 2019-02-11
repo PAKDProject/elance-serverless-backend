@@ -6,7 +6,6 @@ import { info } from "../helpers/logger"
 import * as cors from 'cors'
 import { config } from "dotenv";
 import { testMethods } from '../helpers/testMethods';
-import * as fileUpload from 'express-fileupload'
 
 export class App {
     private port: number
@@ -16,7 +15,6 @@ export class App {
         this.port = port || 3000
         this.setupBodyParsing()
         this.setupCookieParsing()
-        //this.setupMultipart()
         this.allowCors()
         this.setRoutes()
         config()
@@ -36,10 +34,6 @@ export class App {
 
     private setupCookieParsing = () => {
         this.app.use(cookieParser())
-    }
-
-    private setupMultipart = () => {
-        this.app.use(fileUpload())
     }
 
     private allowCors = () => {

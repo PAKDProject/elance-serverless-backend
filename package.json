@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "amazon-cognito-identity-js": "^3.0.2",
+    "aws-sdk": "^2.400.0",
     "aws-serverless-express": "^3.3.5",
     "body-parser": "^1.18.3",
     "busboy": "^0.3.0",
@@ -54,8 +55,8 @@
     "nodemon": "^1.18.4",
     "serverless-domain-manager": "^2.6.6",
     "serverless-dynamodb-local": "^0.2.35",
-    "serverless-localstack": "^0.3.1",
     "serverless-offline": "^4.2.0",
+    "serverless-websockets-plugin": "^1.0.0",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.3"
   }
