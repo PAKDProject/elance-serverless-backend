@@ -14,7 +14,7 @@ export class TableModel {
   educationItems: EducationItem[];
   skills: ISkills[];
   appliedJobs: object[];
-  jobHistory: string[];
+  jobHistory: any[];
   avatarUrl: string;
   backgroundUrl: string;
   socialLinks: SocialLink[];
@@ -56,6 +56,7 @@ export class TableModel {
   postedJobs: object[];
   activeJobs: object[];
   email: string;
+  tags: ISkills[];
   //WS
   requestContext: IWSContext
   fromDb: boolean

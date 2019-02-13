@@ -508,7 +508,8 @@
         "dateAccepted": "02/20/2018",
         "isAccepted": false,
         "payment": 1233,
-        "progress": 41
+        "progress": 41,
+        "chosenApplicant": "saoidhasoidhaiodh"
     },
     {
         "id": "58813d3c-790a-4206-b276-52c2ace4765d",

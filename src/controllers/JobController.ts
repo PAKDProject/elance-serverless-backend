@@ -4,6 +4,7 @@ import * as TableModel from "../models/tableModel";
 import { v4 as uuid } from "uuid";
 import { CheckAccessToken } from "../middleware/checkToken";
 import { ValidateJob } from "../lib/validator";
+import { jobHistoryNode } from "../WebSocketServer/handler";
 
 /**
  * @class JobController used to control the job route

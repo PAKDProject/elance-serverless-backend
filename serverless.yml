@@ -63,6 +63,18 @@ functions:
     handler: dist/serverless.handler
     events:
       - http: 'ANY {proxy+}'
+  
+  jobHistoryNode:
+    handler: dist/WebSocketServer/handler.jobHistoryNode
+
+  descriptionNode:
+    handler: dist/WebSocketServer/handler.descriptionNode
+
+  userSkillsNode:
+    handler: dist/WebSocketServer/handler.userSkillsNode
+
+  educationNode:
+    handler: dist/WebSocketServer/handler.educationNode
 
 resources:
   Resources:
