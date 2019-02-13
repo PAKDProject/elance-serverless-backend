@@ -6,6 +6,7 @@ export async function assembleData(event:any, context: any) {
     const inactiveJobs = allJobs.data.filter((job) => {
         return job.chosenApplicant === undefined;
     });
+    //Replace id
     const user = await findDocumentById('420BLAZEITDAB4GSUS', 'user');
 }
 /*
@@ -74,11 +75,11 @@ export async function educationNode(event: any, context: any) {
     const user = await findDocumentById('420BLAZEITDAB4GSUS', 'user');
     let educationItems = user.data.educationItems;
     let inactiveJobTags = [];
-    user.data.educationItems.forEach(edu => {
-        educationItems.push(edu);
-    });
     inactiveJobs.forEach(job => {
         inactiveJobTags = job.tags;
+        const commonTags = inactiveJobTags.filter(tag => educationItems.includes(tag));
+        const points = commonTags.length * 20;
+        inactiveJobTags = [];
     });
 }
 
