@@ -64,17 +64,12 @@ functions:
     events:
       - http: 'ANY {proxy+}'
   
-  jobHistoryNode:
-    handler: dist/WebSocketServer/handler.jobHistoryNode
-
-  descriptionNode:
-    handler: dist/WebSocketServer/handler.descriptionNode
-
-  userSkillsNode:
-    handler: dist/WebSocketServer/handler.userSkillsNode
-
-  educationNode:
-    handler: dist/WebSocketServer/handler.educationNode
+  fuccMaster:
+    handler: dist/WebSocketServer/handler.fuccMaster
+    events:
+      - http:
+        path: fucc/{id}
+        cors: true
 
 resources:
   Resources:

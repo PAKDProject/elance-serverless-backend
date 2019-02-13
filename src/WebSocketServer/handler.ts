@@ -1,28 +1,33 @@
 import { TableModel, findDocumentsByType, findDocumentById } from "../models/tableModel";
 
-// Call first to get data
-export async function assembleData(event:any, context: any) {
+// Master function for neural network
+export async function fuccMaster(event:any, context: any, callback: any, userId: string) {
     const allJobs = await findDocumentsByType('job');
     const inactiveJobs = allJobs.data.filter((job) => {
         return job.chosenApplicant === undefined;
     });
-    //Replace id
-    const user = await findDocumentById('420BLAZEITDAB4GSUS', 'user');
+    const user = await findDocumentById(userId, 'user');
+    let sortedJobs = [];
+    sortedJobs.push(jobHistoryNode(inactiveJobs, user));
+    userSkillsNode(inactiveJobs, user);
+    educationNode(inactiveJobs, user);
+    descriptionNode(inactiveJobs, user);
+    const response = {
+        status: 200,
+        body: sortedJobs
+    }
+    callback(null, response);
 }
 /*
     JOB HISTORY NODE
     Loops through the job history of the current user
     In each job it checks its tags and matches them to the tags on the jobs being processed
 */
-export async function jobHistoryNode(event: any, context: any) {
-    const allJobs = await findDocumentsByType('job');
-    const inactiveJobs = allJobs.data.filter((job) => {
-        return job.chosenApplicant === undefined;
-    });
-    const user = await findDocumentById('420BLAZEITDAB4GSUS', 'user');
+export async function jobHistoryNode(inactiveJobs: any[], user: any) {
     const userJobHistory = user.data.jobHistory;
     let inactiveJobTags = [];
     let jobHistoryTags= [];
+    let jobPoints = [];
     userJobHistory.forEach(job => {
         job.tags.forEach(tag => {
             if(!jobHistoryTags.includes(tag)) {
@@ -34,8 +39,13 @@ export async function jobHistoryNode(event: any, context: any) {
         inactiveJobTags = job.tags;
         const commonTags = inactiveJobTags.filter(tag => jobHistoryTags.includes(tag));
         const points = commonTags.length * 20;
+        jobPoints.push({
+            id: job.id,
+            points: points
+        });
         inactiveJobTags = [];
     });
+    return jobPoints;
 }
 
 /*
@@ -43,12 +53,7 @@ export async function jobHistoryNode(event: any, context: any) {
     Loops through the skills of the current user
     Matches each skill to the tags on the jobs being processed
 */
-export async function userSkillsNode(event: any, context: any) {
-    const allJobs = await findDocumentsByType('job');
-    const inactiveJobs = allJobs.data.filter((job) => {
-        return job.chosenApplicant === undefined;
-    });
-    const user = await findDocumentById('420BLAZEITDAB4GSUS', 'user');
+export async function userSkillsNode(inactiveJobs: any[], user: any) {
     let userSkills = [];
     let inactiveJobTags = [];
     user.data.skills.forEach(skill => {
@@ -67,12 +72,7 @@ export async function userSkillsNode(event: any, context: any) {
     Loops through the education items of the current user
     Matches each education item to the tags on the jobs being processed
 */
-export async function educationNode(event: any, context: any) {
-    const allJobs = await findDocumentsByType('job');
-    const inactiveJobs = allJobs.data.filter((job) => {
-        return job.chosenApplicant === undefined;
-    });
-    const user = await findDocumentById('420BLAZEITDAB4GSUS', 'user');
+export async function educationNode(inactiveJobs: any[], user: any) {
     let educationItems = user.data.educationItems;
     let inactiveJobTags = [];
     inactiveJobs.forEach(job => {
@@ -88,6 +88,6 @@ export async function educationNode(event: any, context: any) {
     Loops through the words in the user's description
     Matches each word to the tags on the jobs being processed
 */
-export async function descriptionNode(event: any, context: any) {
+export async function descriptionNode(inactiveJobs: any[], user: any) {
 
 }
