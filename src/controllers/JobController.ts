@@ -4,7 +4,8 @@ import * as TableModel from "../models/tableModel";
 import { v4 as uuid } from "uuid";
 import { CheckAccessToken } from "../middleware/checkToken";
 import { ValidateJob } from "../lib/validator";
-import { jobHistoryNode } from "../WebSocketServer/handler";
+import { fuccMasterTest } from '../WebSocketServer/fuccSystem';
+import { isNullOrUndefined } from 'util';
 
 /**
  * @class JobController used to control the job route
@@ -32,6 +33,17 @@ export class JobController implements BaseRouter {
           let jobs = await TableModel.findDocumentsByType(entityType);
           if (jobs.data.length === 0) res.status(404).json({ message: "No jobs in collection" });
           res.status(200).json({ message: "Jobs found", jobs: jobs.data });
+        } catch (error) {
+          res.status(404).json({ message: "Something went wrong. Jobs not found", error: error });
+          next(error);
+        }
+      })
+      // ONLY FOR TESTING FUCC
+      .get("/fucc/:id", CheckAccessToken, async (req: Request, res: Response, next: NextFunction) => {
+        try {
+          let fucc = await fuccMasterTest(req.params.id);
+          if (isNullOrUndefined(fucc.body)) res.status(404).json({ message: "No jobs loser!" });
+          res.status(200).json({ message: "Jobs found", jobs: fucc.body });
         } catch (error) {
           res.status(404).json({ message: "Something went wrong. Jobs not found", error: error });
           next(error);
