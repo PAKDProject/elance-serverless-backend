@@ -13,7 +13,7 @@ export async function fuccMaster(event: any, context: any) {
         pointsForJob += await jobHistoryNode(job, user);
         pointsForJob += await userSkillsNode(job, user);
         pointsForJob += await educationNode(job, user);
-        pointsForJob += await descriptionNode(job, user);
+        pointsForJob += await summaryNode(job, user);
         sortedJobs.push({ job, pointsForJob });
         pointsForJob = 0;
     });
@@ -34,12 +34,12 @@ export async function jobHistoryNode(inactiveJob: any, user: any): Promise<numbe
     let jobHistoryTags = [];
     userJobHistory.forEach(job => {
         job.tags.forEach(tag => {
-            if (!jobHistoryTags.includes(tag)) {
-                jobHistoryTags.push(tag);
+            if (!jobHistoryTags.includes(tag.skillTitle)) {
+                jobHistoryTags.push(tag.skillTitle);
             }
         });
     });
-    const commonTags = inactiveJob.tags.filter(tag => jobHistoryTags.includes(tag));
+    const commonTags = inactiveJob.tags.filter(tag => jobHistoryTags.includes(tag.skillTitle));
     return commonTags.length * 20;
 }
 
@@ -53,7 +53,7 @@ export async function userSkillsNode(inactiveJob: any, user: any): Promise<numbe
     user.data.skills.forEach(skill => {
         userSkills.push(skill.skillTitle);
     });
-    const commonTags = inactiveJob.tags.filter(tag => userSkills.includes(tag));
+    const commonTags = inactiveJob.tags.filter(tag => userSkills.includes(tag.skillTitle));
     return commonTags.length * 20;
 }
 
@@ -68,15 +68,17 @@ export async function educationNode(inactiveJob: any, user: any): Promise<number
     educationItems.forEach(edu => {
         descriptions.push(edu.description);
     });
-    const commonTags = inactiveJob.tags.filter(tag => descriptions.includes(tag));
+    const commonTags = inactiveJob.tags.filter(tag => descriptions.includes(tag.skillTitle));
     return commonTags.length * 20;
 }
 
 /*
-    DESCRIPTION NODE
-    Loops through the words in the user's description
+    SUMMARY NODE
+    Loops through the words in the user's summary
     Matches each word to the tags on the jobs being processed
 */
-export async function descriptionNode(inactiveJob: any, user: any): Promise<number> {
-    return 0;
+export async function summaryNode(inactiveJob: any, user: any): Promise<number> {
+    let summary = user.data.summary;
+    const commonTags = inactiveJob.tags.filter(tag => summary.includes(tag.skillTitle));
+    return commonTags.length * 20;
 }
