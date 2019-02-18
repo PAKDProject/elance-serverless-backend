@@ -4,14 +4,6 @@ import * as TableModel from '../models/tableModel'
 export class WebSocketClient {
     client: ApiGatewayManagementApi
 
-    // async _setupClient() {
-    //         this.client = new ApiGatewayManagementApi({
-    //             apiVersion: "2018-11-29",
-    //             endpoint: `https://${config.requestContext.domainName}/${config.requestContext.stage}`
-    //         });
-    //     }
-    // }
-
     async _disconnectClient(connectionId: string) {
         try {
             await TableModel.deleteDocument(connectionId, "fucc|connection")

@@ -73,6 +73,11 @@ functions:
     events:
       - websocket:
           routeKey: $disconnect
+  fucc:
+    handler: dist/WebSocketServer/handler.doFucc
+    events:
+      - websocket: 
+          routeKey: fuccJobs
       
 resources:
   Resources:
