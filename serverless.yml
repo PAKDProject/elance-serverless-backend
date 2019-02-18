@@ -63,7 +63,17 @@ functions:
     handler: dist/serverless.handler
     events:
       - http: 'ANY {proxy+}'
-
+  websocket-connect:
+    handler: dist/WebSocketServer/handler.connect
+    events:
+      - websocket:
+          routeKey: $connect
+  websocket-disconnect:
+    handler: dist/WebSocketServer/handler.disconnect
+    events:
+      - websocket:
+          routeKey: $disconnect
+      
 resources:
   Resources:
     AppDynamoDBTable:
