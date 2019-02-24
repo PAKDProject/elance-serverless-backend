@@ -1,4 +1,5 @@
 import { typeDynamo } from "../lib/createDb";
+import { match, isEqualTo } from "type-dynamo";
 
 export class TableModel {
   // Partition and sort key
@@ -58,15 +59,22 @@ export class TableModel {
   email: string;
   tags: ISkills[];
   //WS
-  requestContext: IWSContext
-  fromDb: boolean
+  connectionId: string
+  endpoint: string
+  createdOn: number
+  //IM
+  im: IInstantMessage
 }
 
-interface IWSContext {
-  apiId: string
-  stage: string
-  domainName: string
+export interface IInstantMessage {
+  senderId: string
+  recipentId: string
+  content: string
+  isSeen: boolean
+  timestamp: number
+  action?: string
 }
+
 
 interface ISkills {
   skillTitle: string;
@@ -114,6 +122,10 @@ const AppTable = typeDynamo
   .getInstance();
 
 export const findAllDocuments = async () => await AppTable.find().allResults().execute();
+
+export const findUserFromConnectionId = async (connectionId: string) => await AppTable.onIndex.entityIndex.find({ entity: 'fucc|connection' }).filter(match('connectionId', isEqualTo(connectionId))).allResults().execute()
+
+export const getMessagesForUser = async (userId: string) => await AppTable.onIndex.entityIndex.find({ entity: 'fucc|message' }).allResults().execute()//.filter(match('im.recipentId', isEqualTo(userId)).or.match('im.senderId', isEqualTo(userId))).allResults().execute()
 
 export const findDocumentsByType = async (entity: string) => await AppTable.onIndex.entityIndex.find({ entity }).allResults().execute();
 

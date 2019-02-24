@@ -33,6 +33,12 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
+        - "execute-api:ManageConnections"
+      Resource: [
+        "arn:aws:execute-api:*:*:**/@connections/*"
+      ]
+    - Effect: Allow
+      Action:
         - dynamodb:Query
         - dynamodb:Scan
         - dynamodb:GetItem
@@ -78,12 +84,31 @@ functions:
     events:
       - websocket: 
           routeKey: fuccJobs
+  sendMessage: 
+    handler: dist/WebSocketServer/handler.sendMessage
+    events:
+      - websocket:
+          routeKey: sendMessage
+  defaultMessage: 
+    handler: dist/WebSocketServer/handler.defaultMessage
+    events: 
+      - websocket:
+          routeKey: $default
+  sendMessagesToUser:
+    handler: dist/WebSocketServer/handler.sendMessagesToUser
+    events:
+      - stream:
+          type: dynamodb
+          arn:
+            Fn::GetAtt: [AppDynamoDBTable, StreamArn]
       
 resources:
   Resources:
     AppDynamoDBTable:
       Type: 'AWS::DynamoDB::Table'
       Properties:
+        StreamSpecification:
+          StreamViewType: NEW_IMAGE
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
