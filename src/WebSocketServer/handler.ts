@@ -95,9 +95,12 @@ export async function sendMessage(event, context) {
 
         await TableModel.createNewDocument(im as TableModel.TableModel)
 
-        message.action = 'message'
+        let messageToBeSent = {
+            action: 'message',
+            content: message
+        }
 
-        await wsClient._send(message, recipentConnectionId, endpoint)
+        await wsClient._send(messageToBeSent, recipentConnectionId, endpoint)
 
         return success
     } catch (error) {
@@ -123,35 +126,12 @@ export async function defaultMessage(event, context) {
 }
 
 export async function sendMessagesToUser(event, context) {
-    // try {
-    //     let configRes = await wsClient._getConfig()
-    //     let endpoint = configRes.data.endpoint
-
-    //     const results = event.Records.map(async (record) => {
-    //         if (record.dynamodb.Keys["entity"].S === 'fucc|connection') {
-    //             if (record.eventName == 'INSERT') {
-    //                 var who = JSON.stringify(record.dynamodb.NewImage.id.S);
-    //                 var where = JSON.stringify(record.dynamodb.NewImage.connectionId.S)
-
-    //                 if (who === undefined) {
-    //                     throw new Error('Nyet people in record')
-    //                 }
-
-    //                 await wsClient._sendMessages(endpoint, where, who)
-    //             }
-    //         }
-    //     })
-
-    //     await Promise.all(results)
-    //     return success
     try {
         let configRes = await wsClient._getConfig()
         let endpoint = configRes.data.endpoint
 
         const results = event.Records.map(async record => {
-            console.log(JSON.stringify(record))
             if (record.dynamodb.Keys.entity.S === "fucc|connection") {
-                console.log('doing stuff')
                 if (record.eventName == 'INSERT') {
                     var who = JSON.stringify(record.dynamodb.NewImage.id.S);
                     var where = JSON.stringify(record.dynamodb.NewImage.connectionId.S).toString()
@@ -183,8 +163,15 @@ export async function sendMessagesToUser(event, context) {
 }
 
 export async function doFucc(event, context) {
+    endpoint = `${event.requestContext.apiId}.execute-api.eu-west-1.amazonaws.com/dev`
     try {
-        await fuccMaster(event, context)
+        let jobs = await fuccMaster(event, context)
+
+        wsClient._send({
+            action: "fuccJobs",
+            data: jobs,
+        }, event.requestContext.connectionId, endpoint)
+        return success
     } catch (error) {
         console.error(error)
         return success
