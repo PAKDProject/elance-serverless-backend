@@ -1,1104 +1,862 @@
 [
-    {
+  {
+    "id": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+    "entity": "user",
+    "email": "johnsmith418@email.com",
+    "fName": "John",
+    "lName": "Smith",
+    "dob": "1970-01-01T00:00:00.000Z",
+    "summary": "I love Angular and Python. HTML is the most advanced thing i know!",
+    "educationItems": [{
+        "degreeTitle": "BSc Hons in Computing",
+        "startYear": "2016",
+        "endYear": "2020",
+        "collegeName": "IT Sligo",
+        "grade": "A+",
+        "description": "Angular JavaScript Python sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
+      },
+      {
+        "degreeTitle": "BSc Hons in Computer Science",
+        "startYear": "2020",
+        "endYear": "2023",
+        "collegeName": "IT Sligo",
+        "grade": "D-",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
+      },
+      {
+        "degreeTitle": "Phd in Business",
+        "startYear": "2014",
+        "endYear": "2016",
+        "collegeName": "IT Sligo",
+        "grade": "C",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
+      }
+    ],
+    "organisations": [{
+      "orgName": "Facebook",
+      "email": "zuck@facebook.com",
+      "tagline": "### This is Facebook ",
+      "websiteUrl": "facebook.com",
+      "adminUser": {
         "id": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
         "entity": "user",
-        "email": "johnsmith418@email.com",
-        "fName": "John",
-        "lName": "Smith",
-        "dob": "1970-01-01T00:00:00.000Z",
-        "summary": "A hardworking individual!",
-        "educationItems": [
-          {
-            "degreeTitle": "BSc Hons in Computing",
-            "startYear": "2016",
-            "endYear": "2020",
-            "collegeName": "IT Sligo",
-            "grade": "A+",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
-          },
-          {
-            "degreeTitle": "BSc Hons in Computer Science",
-            "startYear": "2020",
-            "endYear": "2023",
-            "collegeName": "IT Sligo",
-            "grade": "D-",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
-          },
-          {
-            "degreeTitle": "Phd in Business",
-            "startYear": "2014",
-            "endYear": "2016",
-            "collegeName": "IT Sligo",
-            "grade": "C",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
-          }
-        ],
-        "organisations": [
-          {
-            "orgName": "Facebook",
-            "email": "zuck@facebook.com",
-            "tagline": "### This is Facebook ",
-            "websiteUrl": "facebook.com",
-            "adminUser": {
-              "id": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
-              "entity": "user",
-              "email": "johnsmith@email.com"
-            }
-          }
-        ],
-        "skills": [
-          {
-            "skillTitle": "C#",
-            "category": "Software"
-          },
-          {
-            "skillTitle": "Python",
-            "category": "Software"
-          },
-          {
-            "skillTitle": "HTML",
-            "category": "Software"
-          }
-        ],
-        "avatarUrl": "",
-        "backgroundUrl": "",
-        "socialLinks": [
-          {
-            "imageUrl": "github",
-            "url": "http://github.com"
-          },
-          {
-            "imageUrl": "facebook",
-            "url": "http://facebook.com"
-          },
-          {
-            "imageUrl": "twitter",
-            "url": "http://twitter.com"
-          },
-          {
-            "imageUrl": "linkedin",
-            "url": "http://linkedin.com"
-          }
-        ],
-        "tagline": "Software Developer",
-        "contacts": [
-            {
-                "id": "0e9c26d6-3da5-416c-a2c6-c45b02c4d5b5",
-                "entity": "user",
-                "fName": "Florentia",
-                "lName": "Goss",
-                "email": "fgoss4@washingtonpost.com",
-                "dob": "10/02/2012",
-                "tagline": "Right-sized"
-            }
-        ],
-        "profileCards": [
-          {
-            "title": "About Me",
-            "type": "bio"
-          },
-          {
-            "title": "Education",
-            "type": "edu"
-          },
-          {
-            "title": "Skills",
-            "type": "skills"
-          },
-          {
-            "title": "Job History",
-            "type": "jobs"
-          },
-          {
-            "title": "Custom Card 1",
-            "type": "custom",
-            "content": "Custom card body with <h1>MARKDOWN</h1>"
-          }
-        ],
-        "jobHistory": [
-          {
-            "id": "0a7d3ef1-00da-4bb9-9d10-61695207f8ca",
-            "entity": "job",
-            "title": "Product Engineer",
-            "employerID": "d813c1eb-d73f-482f-b801-9519b664e706",
-            "employerName": "Wordware",
-            "description": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
-            "datePosted": "1907-09-08T00:25:21.000Z",
-            "dateAccepted": "1906-09-08T00:25:21.000Z",
-            "payment": 5629,
-            "progress": 100
-          }
-        ],
-        "postedJobs":[
-            {
-                "id": "0b9931fe-8dd6-467b-97c9-d7c77d9d3509",
-                "entity": "job",
-                "title": "VP Marketing",
-                "employerName": "John Smith",
-                "dateDue": "05/21/2019",
-                "employerID": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL"
-            }
-        ]
-      },
-    {
-        "id": "d813c1eb-d73f-482f-b801-9519b664e706",
-        "entity": "user",
-        "email": "paulkratz@elance.site",
-        "fName": "paul",
-        "lName": "kratz",
-        "dob": "18-12-1995",
-        "summary": "Me llamo Paulo, donde esta la mantequilla.",
-        "skills": [
-            {
-                "title": "Front-end expert",
-                "description": "Can angular good."
-            },
-            {
-                "title": ".NET master",
-                "description": "Can ASP good."
-            }
-        ],
-        "educationItems": [
-            {
-                "degreeTitle": "Honours Computing",
-                "startYear": "2016",
-                "endYear": "2020",
-                "collegeName": "IT Sligo",
-                "grade": "1st Hons",
-                "description": "4 years of padraig"
-            }
-        ],
-        "avatarUrl": "www.facebook/paul",
-        "backgroundUrl": "background.png",
-        "socialLinks": [
-            {
-                "title": "Github",
-                "link": "www.github.com"
-            },
-            {
-                "title": "Twitter",
-                "link": "www.twitter.com"
-            },
-            {
-                "title": "LinkdIn",
-                "link": "www.linkdin.com"
-            }
-        ],
-        "tagline": "My name a paul"
-    },
-    {
-        "id": "sad34324-d73fsadas-DAB4SATAN-b801-42069LOL",
-        "entity": "user",
-        "email": "killiankelly@elance.site",
-        "fName": "killian",
-        "lName": "kelly",
-        "dob": "15-09-1998",
-        "summary": "Me llamo Killiana, donde esta la mantequilla.",
-        "skills": [
-            {
-                "skillTitle": "C#",
-                "category": "Software"
-            },
-            {
-                "skillTitle": "Python",
-                "category": "Software"
-            },
-            {
-                "skillTitle": "HTML",
-                "category": "Software"
-            }
-        ],
-        "educationItems": [
-            {
-                "degreeTitle": "Honours Computing",
-                "startYear": "2016",
-                "endYear": "2020",
-                "collegeName": "IT Sligo",
-                "grade": "1st Hons",
-                "description": "4 years of padraig"
-            }
-        ],
-        "avatarUrl": "www.facebook/killian",
-        "backgroundUrl": "background.png",
-        "socialLinks": [
-            {
-                "title": "github",
-                "link": "www.github.com"
-            },
-            {
-                "title": "twitter",
-                "link": "www.twitter.com"
-            },
-            {
-                "title": "linkedin",
-                "link": "www.linkdin.com"
-            }
-        ],
-        "profileCards": [
-            {
-                "title": "About Me",
-                "type": "bio"
-            },
-            {
-                "title": "Education",
-                "type": "edu"
-            },
-            {
-                "title": "Skills",
-                "type": "skills"
-            },
-            {
-                "title": "Custom Card 1",
-                "type": "custom",
-                "content": "Custom card body with <h1>MARKDOWN</h1>"
-            }
-        ],
-        "tagline": "My name a killian"
-    },
-    {
-        "id": "c4041af3-edb5-4a4c-8e8a-f5d8c489a955",
-        "entity": "user",
-        "fName": "Dirk",
-        "lName": "Blaney",
-        "email": "dblaney0@oaic.gov.au",
-        "dob": "11/03/2018",
-        "tagline": "foreground"
-      }, {
-        "id": "a0a34fda-56ed-4006-b789-dfbf870c0eb2",
-        "entity": "user",
-        "fName": "Lane",
-        "lName": "Speare",
-        "email": "lspeare1@tiny.cc",
-        "dob": "19/09/2018",
-        "tagline": "real-time"
-      }, {
-        "id": "eabfc682-964a-48b5-8353-811776c7cf4a",
-        "entity": "user",
-        "fName": "Sindee",
-        "lName": "Rivel",
-        "email": "srivel2@1und1.de",
-        "dob": "15/11/2017",
-        "tagline": "policy"
-      }, {
-        "id": "f9d1acf7-b38a-4d1c-8b40-b30283e69d51",
-        "entity": "user",
-        "fName": "Aurie",
-        "lName": "Ollett",
-        "email": "aollett3@prweb.com",
-        "dob": "15/05/2018",
-        "tagline": "strategy"
-      }, {
-        "id": "0e9c26d6-3da5-416c-a2c6-c45b02c4d5b5",
-        "entity": "user",
-        "fName": "Florentia",
-        "lName": "Goss",
-        "email": "fgoss4@washingtonpost.com",
-        "dob": "10/02/2012",
-        "tagline": "Right-sized"
-      }, {
-        "id": "43797031-ef40-4fdc-9df0-0b0f0737986a",
-        "entity": "user",
-        "fName": "Darla",
-        "lName": "Tongue",
-        "email": "dtongue5@elegantthemes.com",
-        "dob": "15/01/2016",
-        "tagline": "background"
-      }, {
-        "id": "a64998d6-cb0e-466d-a487-51c6ea4ef2ba",
-        "entity": "user",
-        "fName": "Gabrielle",
-        "lName": "Eilers",
-        "email": "geilers6@addtoany.com",
-        "dob": "19/02/2013",
-        "tagline": "system engine"
-      }, {
-        "id": "1b2d5544-8b04-4a5b-ac5a-5d443a2edbb6",
-        "entity": "user",
-        "fName": "Barbaraanne",
-        "lName": "O'Collopy",
-        "email": "bocollopy7@usnews.com",
-        "dob": "19/10/2014",
-        "tagline": "Pre-emptive"
-      }, {
-        "id": "1cf746d0-572f-43ad-9b24-6400003f036b",
-        "entity": "user",
-        "fName": "Sol",
-        "lName": "Beinisch",
-        "email": "sbeinisch8@ow.ly",
-        "dob": "06/02/2018",
-        "tagline": "productivity"
-      }, {
-        "id": "9a8d57dc-ceee-4765-b25b-b99ac02f614d",
-        "entity": "user",
-        "fName": "Dolli",
-        "lName": "Bowers",
-        "email": "dbowers9@tmall.com",
-        "dob": "03/09/2014",
-        "tagline": "intranet"
-      }, {
-        "id": "e30ac3f8-574f-4c0e-bd47-08e057ec7b2a",
-        "entity": "user",
-        "fName": "Barny",
-        "lName": "Zanni",
-        "email": "bzannia@fotki.com",
-        "dob": "08/08/2011",
-        "tagline": "contextually-based"
-      }, {
-        "id": "1e6dc15f-090c-4624-880e-94b94b4dae43",
-        "entity": "user",
-        "fName": "Celestyna",
-        "lName": "Fletcher",
-        "email": "cfletcherb@com.com",
-        "dob": "23/12/2013",
-        "tagline": "fault-tolerant"
-      }, {
-        "id": "5027174b-09d2-4875-a6ba-42840f79d18d",
-        "entity": "user",
-        "fName": "Dalt",
-        "lName": "Dollman",
-        "email": "ddollmanc@miibeian.gov.cn",
-        "dob": "07/09/2017",
-        "tagline": "Graphical User Interface"
-      }, {
-        "id": "b9934e85-92d5-4358-81da-b1131b56b9e2",
-        "entity": "user",
-        "fName": "Blaire",
-        "lName": "Kidson",
-        "email": "bkidsond@bloglovin.com",
-        "dob": "30/06/2013",
-        "tagline": "zero tolerance"
-      }, {
-        "id": "62948686-c1fd-4c43-a22e-0658282d578d",
-        "entity": "user",
-        "fName": "Janeen",
-        "lName": "Bines",
-        "email": "jbinese@apple.com",
-        "dob": "05/03/2018",
-        "tagline": "attitude"
-      }, {
-        "id": "8bb9c76c-552d-486c-891b-bf587867dc0e",
-        "entity": "user",
-        "fName": "Giacinta",
-        "lName": "Needs",
-        "email": "gneedsf@un.org",
-        "dob": "31/05/2017",
-        "tagline": "portal"
-      }, {
-        "id": "fe998039-e634-4812-ae38-a01db87c8fb0",
-        "entity": "user",
-        "fName": "Sigvard",
-        "lName": "Redmell",
-        "email": "sredmellg@soup.io",
-        "dob": "19/03/2012",
-        "tagline": "Progressive"
-      }, {
-        "id": "abf4195f-c0c8-4f35-b09b-2877d8e80d50",
-        "entity": "user",
-        "fName": "Cordie",
-        "lName": "Tothe",
-        "email": "ctotheh@edublogs.org",
-        "dob": "19/09/2017",
-        "tagline": "database"
-      }, {
-        "id": "a53e9af3-54a8-40ee-92a3-7f1394509b81",
-        "entity": "user",
-        "fName": "Gaby",
-        "lName": "Moens",
-        "email": "gmoensi@ehow.com",
-        "dob": "25/01/2016",
-        "tagline": "responsive"
-      }, {
-        "id": "05a7479a-8745-421c-8ebb-25a451fda1ca",
-        "entity": "user",
-        "fName": "Chickie",
-        "lName": "Claesens",
-        "email": "cclaesensj@woothemes.com",
-        "dob": "19/10/2011",
-        "tagline": "project"
-      },
-    {
-        "id": "0b9931fe-8dd6-467b-97c9-d7c77d9d3509",
-        "entity": "job",
-        "title": "VP Marketing",
-        "employerName": "John Smith",
-        "dateDue": "05/21/2019",
-        "employerID": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
-        "description": "Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
-        "datePosted": "10/14/2017",
-        "payment": 30000,
-        "tags": [
-            {
-                "skillTitle":"Marketing"
-            },
-            {
-                "skillTitle":"Business Skills"
-            }
-        ],
-        "applicants":[
-            {
-                "id": "sad34324-d73fsadas-DAB4SATAN-b801-42069LOL",
-                "entity": "user",
-                "email": "killiankelly@elance.site",
-                "fName": "killian",
-                "lName": "kelly"
-            },
-            {
-                "id": "d813c1eb-d73f-482f-b801-9519b664e706",
-                "entity": "user",
-                "email": "paulkratz@elance.site",
-                "fName": "paul",
-                "lName": "kratz"
-            }
-        ]
-    },
-    {
-        "id": "93a3de47-7bc4-4c91-8963-6e478fc125e5",
-        "entity": "job",
-        "title": "Senior Quality Engineer",
-        "employerName": "Tazz",
-        "employerID": "77b3e033-c63f-4ae9-ba4a-37a5af01c378",
-        "location": "Indonesia",
-        "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
-        "datePosted": "09/09/2017",
-        "payment": 23141,
-        "dateDue": "05/21/2019",
-        "progress": 0
+        "email": "johnsmith@email.com"
+      }
+    }],
+    "skills": [{
+        "skillTitle": "C#",
+        "category": "Software"
       },
       {
-        "id": "3b774947-f361-4b62-b994-e9a84a99d863",
-        "entity": "job",
-        "title": "Structural Analysis Engineer",
-        "employerName": "Oodoo",
-        "employerID": "55db8acd-4206-474d-9752-ffcb63eba269",
-        "location": "China",
-        "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
-        "datePosted": "08/23/2017",
-        "payment": 37919,
-        "dateDue": "09/06/2019",
-        "progress": 0
+        "skillTitle": "Python",
+        "category": "Software"
       },
       {
-        "id": "9eeba864-b8ea-4ea8-9803-7ec67d04501e",
-        "entity": "job",
-        "title": "Professor",
-        "employerName": "Reallinks",
-        "employerID": "1c255b71-87f5-4961-ba59-8516abae65dc",
-        "location": "China",
-        "description": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
-        "datePosted": "02/16/2018",
-        "payment": 6737,
-        "dateDue": "05/19/2019",
-        "progress": 0
+        "skillTitle": "HTML",
+        "category": "Software"
+      }
+    ],
+    "avatarUrl": "",
+    "backgroundUrl": "",
+    "socialLinks": [{
+        "imageUrl": "http://logo.clearbit.com/github.com",
+        "url": "http://github.com"
       },
       {
-        "id": "3fe577fb-4680-4c64-a962-86059699781c",
-        "entity": "job",
-        "title": "Pharmacist",
-        "employerName": "Gabspot",
-        "employerID": "2c3b090f-6618-4a6a-8264-6e879c26e364",
-        "location": "Indonesia",
-        "description": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
-        "datePosted": "02/12/2018",
-        "payment": 18634,
-        "dateDue": "10/08/2019",
-        "progress": 0
+        "imageUrl": "http://logo.clearbit.com/facebook.com",
+        "url": "http://facebook.com"
       },
       {
-        "id": "eb61f947-19fe-409f-af60-508223e104c7",
-        "entity": "job",
-        "title": "Budget/Accounting Analyst I",
-        "employerName": "Shuffletag",
-        "employerID": "75d42b3e-1e9b-409c-95c5-4d552045bafc",
-        "location": "Greece",
-        "description": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
-        "datePosted": "08/05/2017",
-        "payment": 9370,
-        "dateDue": "03/03/2019",
-        "progress": 0
+        "imageUrl": "http://logo.clearbit.com/twitter.com",
+        "url": "http://twitter.com"
       },
       {
-        "id": "8af15026-44ae-4ad3-b7ef-8b1c33d514ae",
-        "entity": "job",
-        "title": "Office Assistant IV",
-        "employerName": "Gigazoom",
-        "employerID": "943a65c9-a1ec-4c41-a48a-b8b4c9174a9f",
-        "location": "Portugal",
-        "description": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
-        "datePosted": "05/09/2017",
-        "payment": 15630,
-        "dateDue": "03/10/2019",
-        "progress": 0
+        "imageUrl": "http://logo.clearbit.com/gitlab.com",
+        "url": "http://gitlab.com"
+      }
+    ],
+    "tagline": "Software Developer",
+    "contacts": [{
+      "id": "0e9c26d6-3da5-416c-a2c6-c45b02c4d5b5",
+      "entity": "user",
+      "fName": "Florentia",
+      "lName": "Goss",
+      "email": "fgoss4@washingtonpost.com",
+      "dob": "10/02/2012",
+      "tagline": "Right-sized"
+    }],
+    "profileCards": [{
+        "title": "About Me",
+        "type": "bio"
       },
       {
-        "id": "ee62cad5-eaa6-4ea7-9c3f-4220d335959e",
-        "entity": "job",
-        "title": "VP Product Management",
-        "employerName": "Oyonder",
-        "employerID": "390713af-02bc-4f78-a714-e045c29f1a46",
-        "location": "Portugal",
-        "description": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
-        "datePosted": "02/06/2018",
-        "payment": 9185,
-        "dateDue": "04/17/2019",
-        "progress": 0
+        "title": "Education",
+        "type": "edu"
       },
       {
-        "id": "aacb1696-5a67-4071-983b-fea3dc66239f",
-        "entity": "job",
-        "title": "Senior Financial Analyst",
-        "employerName": "Babbleblab",
-        "employerID": "831508a6-c586-478c-a302-fb7963ee4f43",
-        "location": "Guatemala",
-        "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-        "datePosted": "03/13/2017",
-        "payment": 8115,
-        "dateDue": "10/04/2019",
-        "progress": 0
+        "title": "Skills",
+        "type": "skills"
       },
       {
-        "id": "13993944-0ba5-42e3-96f3-c53ca0cc8f66",
-        "entity": "job",
-        "title": "Executive Secretary",
-        "employerName": "Buzzdog",
-        "employerID": "b39421d3-2fd1-40af-b54e-04c845bcf5d6",
-        "location": "China",
-        "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
-        "datePosted": "12/20/2017",
-        "payment": 46211,
-        "dateDue": "05/30/2019",
-        "progress": 0
+        "title": "Job History",
+        "type": "jobs"
       },
       {
-        "id": "1abc8837-344c-4f0e-adbb-559ea1d111a8",
-        "entity": "job",
-        "title": "Account Representative IV",
-        "employerName": "Layo",
-        "employerID": "6cef7918-0deb-4387-97b3-8bebca196569",
-        "location": "China",
-        "description": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-        "datePosted": "02/14/2018",
-        "payment": 44371,
-        "dateDue": "09/09/2019",
-        "progress": 0
-      },
-      {
-        "id": "6d7430dc-171d-4451-b6ad-9b478818481a",
-        "entity": "job",
-        "title": "Help Desk Technician",
-        "employerName": "Ntags",
-        "employerID": "7bd3b6e0-6913-42d0-9495-2b2c13f72d55",
-        "location": "Poland",
-        "description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
-        "datePosted": "06/06/2017",
-        "payment": 44525,
-        "dateDue": "02/22/2019",
-        "progress": 0
-      },
-      {
-        "id": "0643ee1d-b679-4827-a8ec-bf10c6c474d8",
-        "entity": "job",
-        "title": "Structural Engineer",
-        "employerName": "Janyx",
-        "employerID": "f704cc33-129a-49ac-a449-75f004eadd57",
-        "location": "China",
-        "description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-        "datePosted": "06/12/2017",
-        "payment": 19108,
-        "dateDue": "06/22/2019",
-        "progress": 0
-      },
-      {
-        "id": "137068d0-c82a-458c-998d-5d8e94aac185",
-        "entity": "job",
-        "title": "Research Nurse",
-        "employerName": "Fatz",
-        "employerID": "3db62473-a828-4021-a601-678903373fb9",
-        "location": "Indonesia",
-        "description": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-        "datePosted": "10/23/2017",
-        "payment": 42810,
-        "dateDue": "05/27/2019",
-        "progress": 0
-      },
-      {
-        "id": "1e74026b-a511-4963-8621-b20263c82452",
-        "entity": "job",
-        "title": "Actuary",
-        "employerName": "Tagtune",
-        "employerID": "03cf8916-d7ca-4192-943b-65aff3ec3a23",
-        "location": "Russia",
-        "description": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
-        "datePosted": "09/06/2017",
-        "payment": 47789,
-        "dateDue": "02/24/2019",
-        "progress": 0
-      },
-      {
-        "id": "7848199a-7a9c-4ae7-8ca0-3157d47b4f47",
+        "title": "Custom Card 1",
+        "type": "custom",
+        "content": "Custom card body with <h1>MARKDOWN</h1>"
+      }
+    ],
+    "jobHistory": [{
+        "id": "0a7d3ef1-00da-4bb9-9d10-61695207f8ca",
         "entity": "job",
         "title": "Product Engineer",
-        "employerName": "Bluejam",
-        "employerID": "e1e57278-1aa5-45cc-95a5-b44575cfa75c",
-        "location": "Poland",
-        "description": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
-        "datePosted": "12/17/2017",
-        "payment": 40387,
-        "dateDue": "10/14/2019",
-        "progress": 0
-      },
-      {
-        "id": "5388fbb3-b2fc-447b-95d0-8e766f2f4fa6",
-        "entity": "job",
-        "title": "Director of Sales",
-        "employerName": "Photobean",
-        "employerID": "6c2d71d8-e350-479f-babd-6325ad25b337",
-        "location": "United States",
-        "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
-        "datePosted": "03/13/2017",
-        "payment": 1042,
-        "dateDue": "06/01/2019",
-        "progress": 0
-      },
-      {
-        "id": "473371e2-8e3b-4623-ae5a-c1cbc8d041b8",
-        "entity": "job",
-        "title": "Project Manager",
-        "employerName": "Thoughtmix",
-        "employerID": "8d957f43-a6b9-46f6-98b0-313f683b8120",
-        "location": "Peru",
-        "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
-        "datePosted": "04/07/2017",
-        "payment": 38487,
-        "dateDue": "05/09/2019",
-        "progress": 0
-      },
-      {
-        "id": "071f7c12-ca33-4900-83b7-9e1ca421e240",
-        "entity": "job",
-        "title": "Software Test Engineer II",
-        "employerName": "Ntag",
-        "employerID": "85862915-8c48-49bc-8903-3b582347bac3",
-        "location": "China",
-        "description": "Fusce consequat. Nulla nisl. Nunc nisl.",
-        "datePosted": "02/13/2018",
-        "payment": 16578,
-        "dateDue": "02/25/2019",
-        "progress": 0
-      },
-      {
-        "id": "2d63a32d-5102-40ab-8d90-02961ac2c955",
-        "entity": "job",
-        "title": "VP Accounting",
-        "employerName": "Linkbridge",
-        "employerID": "275fe885-cb5c-4277-b0d1-a66085cf7524",
-        "location": "Indonesia",
-        "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
-        "datePosted": "06/09/2017",
-        "payment": 25805,
-        "dateDue": "04/02/2019",
-        "progress": 0
-      },
-      {
-        "id": "e8785fc8-e440-4184-8799-781b9c60bbb2",
-        "entity": "job",
-        "title": "Structural Analysis Engineer",
-        "employerName": "Photospace",
-        "employerID": "4e4ffd24-4709-4a71-bb3d-b91085cad9cf",
-        "location": "Portugal",
-        "description": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
-        "datePosted": "05/10/2017",
-        "payment": 42962,
-        "dateDue": "03/18/2019",
-        "progress": 0
-      },
-      {
-        "id": "fefcd5ed-f37b-4507-bd6a-4fceea40e2be",
-        "entity": "job",
-        "title": "Marketing Manager",
-        "employerName": "Photolist",
-        "employerID": "03558ae9-9eaa-4ddc-ad0b-f27a949ff9ed",
-        "location": "Finland",
-        "description": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
-        "datePosted": "05/07/2017",
-        "payment": 47878,
-        "dateDue": "07/04/2019",
-        "progress": 0
-      },
-      {
-        "id": "b18ce26d-3c85-4916-a73c-6e2db1004818",
-        "entity": "job",
-        "title": "Senior Developer",
-        "employerName": "Lazz",
-        "employerID": "7150a863-44a2-439d-9f96-f6cb84558394",
-        "location": "Brazil",
-        "description": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-        "datePosted": "08/23/2017",
-        "payment": 10829,
-        "dateDue": "09/12/2019",
-        "progress": 0
-      },
-      {
-        "id": "650497a5-ed2b-484d-be90-51c9a76f59b5",
-        "entity": "job",
-        "title": "Sales Representative",
-        "employerName": "Yacero",
-        "employerID": "575821d8-3999-4ba9-a9c3-647204dcf835",
-        "location": "Philippines",
-        "description": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-        "datePosted": "06/07/2017",
-        "payment": 27597,
-        "dateDue": "04/12/2019",
-        "progress": 0
-      },
-      {
-        "id": "6ad318dc-a249-4ae1-a217-2701cd270e16",
-        "entity": "job",
-        "title": "Sales Associate",
-        "employerName": "Pixonyx",
-        "employerID": "32498523-473c-4db7-8c45-cb3743972398",
-        "location": "Macedonia",
-        "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
-        "datePosted": "03/12/2017",
-        "payment": 36102,
-        "dateDue": "03/09/2019",
-        "progress": 0
-      },
-      {
-        "id": "b919051d-2abd-4cb0-840f-982732109a7f",
-        "entity": "job",
-        "title": "Geological Engineer",
-        "employerName": "Yabox",
-        "employerID": "372c350c-3f76-4855-a7d3-6e2694711554",
-        "location": "Portugal",
-        "description": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
-        "datePosted": "06/23/2017",
-        "payment": 7554,
-        "dateDue": "04/02/2019",
-        "progress": 0
-      },
-      {
-        "id": "c2df417e-64c0-4356-909e-0c56873195bf",
-        "entity": "job",
-        "title": "Junior Executive",
-        "employerName": "Snaptags",
-        "employerID": "ad632df6-ad71-4e08-a5ca-fa7b749ccf0f",
-        "location": "Czech Republic",
-        "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
-        "datePosted": "06/07/2017",
-        "payment": 8467,
-        "dateDue": "04/19/2019",
-        "progress": 0
-      },
-      {
-        "id": "a7fb88d8-5e2a-48e4-b8e7-d06f7b0f1446",
-        "entity": "job",
-        "title": "Business Systems Development Analyst",
-        "employerName": "Youopia",
-        "employerID": "d70b1015-e85a-4d1b-84e9-ad8fbc27e4ec",
-        "location": "China",
-        "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
-        "datePosted": "04/16/2017",
-        "payment": 7863,
-        "dateDue": "05/14/2019",
-        "progress": 0
-      },
-      {
-        "id": "0d93f6a0-f261-414c-bdf6-58a650ac9908",
-        "entity": "job",
-        "title": "Dental Hygienist",
-        "employerName": "Browsetype",
-        "employerID": "86a78a1d-d308-4189-a410-b8bb36dffcf7",
-        "location": "Vietnam",
-        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
-        "datePosted": "04/28/2017",
-        "payment": 24391,
-        "dateDue": "05/08/2019",
-        "progress": 0
-      },
-      {
-        "id": "90b2fb1c-b166-4db4-8e82-4e57866828f1",
-        "entity": "job",
-        "title": "Budget/Accounting Analyst I",
-        "employerName": "BlogXS",
-        "employerID": "5faa6051-70b4-4dda-af33-4fc0aebb631b",
-        "location": "Mexico",
-        "description": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
-        "datePosted": "10/28/2017",
-        "payment": 25029,
-        "dateDue": "09/07/2019",
-        "progress": 0
-      },
-      {
-        "id": "fb368b9f-5248-4442-a6e4-c6fc2a3babcb",
-        "entity": "job",
-        "title": "Operator",
-        "employerName": "Bubblebox",
-        "employerID": "aa5228fd-9c8c-4f7a-a5ac-ff86da1ac226",
-        "location": "Poland",
-        "description": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
-        "datePosted": "10/18/2017",
-        "payment": 26093,
-        "dateDue": "09/20/2019",
-        "progress": 0
-      },
-      {
-        "id": "ee843e86-13d7-42a8-aa18-13a03f6ce8b5",
-        "entity": "job",
-        "title": "Software Engineer II",
-        "employerName": "Vitz",
-        "employerID": "de922963-6989-4cf0-bc9b-88994eb5669f",
-        "location": "France",
-        "description": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
-        "datePosted": "10/14/2017",
-        "payment": 5806,
-        "dateDue": "05/21/2019",
-        "progress": 0
-      },
-      {
-        "id": "b82a297e-43bc-48e2-878f-c16cbf0d5f91",
-        "entity": "job",
-        "title": "Geological Engineer",
-        "employerName": "Bubbletube",
-        "employerID": "d122f5df-2672-4b48-9412-01b23d3cb0fe",
-        "location": "Nigeria",
-        "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
-        "datePosted": "12/18/2017",
-        "payment": 13650,
-        "dateDue": "08/30/2019",
-        "progress": 0
-      },
-      {
-        "id": "8b80feda-783f-4f70-a26c-2d75ee649618",
-        "entity": "job",
-        "title": "Community Outreach Specialist",
-        "employerName": "Topdrive",
-        "employerID": "8d91d09a-d3dd-4b3e-93cc-8de974f49119",
-        "location": "Ethiopia",
-        "description": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
-        "datePosted": "08/26/2017",
-        "payment": 32408,
-        "dateDue": "09/07/2019",
-        "progress": 0
-      },
-      {
-        "id": "380fb396-94ec-4068-8eef-ebdde812cc39",
-        "entity": "job",
-        "title": "Help Desk Technician",
-        "employerName": "Kwilith",
-        "employerID": "b008248f-896e-4934-8b50-fc97990ac423",
-        "location": "Finland",
-        "description": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
-        "datePosted": "06/24/2017",
-        "payment": 16216,
-        "dateDue": "03/22/2019",
-        "progress": 0
-      },
-      {
-        "id": "be38f1c9-b25d-40dc-b1c5-0d19e48e9faf",
-        "entity": "job",
-        "title": "Environmental Specialist",
-        "employerName": "Zooveo",
-        "employerID": "338e70fd-ea62-4f08-939a-5e1843545fd2",
-        "location": "China",
-        "description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
-        "datePosted": "03/17/2017",
-        "payment": 28295,
-        "dateDue": "03/23/2019",
-        "progress": 0
-      },
-      {
-        "id": "5e9dfee2-068d-4311-affa-af119d608e2f",
-        "entity": "job",
-        "title": "Programmer Analyst I",
-        "employerName": "Buzzbean",
-        "employerID": "4d9a5050-fdf7-416c-b2da-6a44bb2342ee",
-        "location": "New Zealand",
-        "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-        "datePosted": "07/15/2017",
-        "payment": 16579,
-        "dateDue": "09/06/2019",
-        "progress": 0
-      },
-      {
-        "id": "d6b3f223-e3a9-4bf9-a650-2c3d92e1d8c8",
-        "entity": "job",
-        "title": "Community Outreach Specialist",
-        "employerName": "Feedfire",
-        "employerID": "9c853634-34af-48ec-b7bb-fe340164e026",
-        "location": "United Kingdom",
-        "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-        "datePosted": "12/26/2017",
-        "payment": 11390,
-        "dateDue": "10/06/2019",
-        "progress": 0
-      },
-      {
-        "id": "a8dd4295-9fba-4d9e-bbbf-bf3e281a36f7",
-        "entity": "job",
-        "title": "Clinical Specialist",
-        "employerName": "Roodel",
-        "employerID": "a1fe8cb2-8bcf-4179-90ca-f180790e88ac",
-        "location": "Canada",
-        "description": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
-        "datePosted": "06/06/2017",
-        "payment": 8057,
-        "dateDue": "02/19/2019",
-        "progress": 0
-      },
-      {
-        "id": "33986e35-e1b3-466a-8d67-5a3ddd2ead3d",
-        "entity": "job",
-        "title": "Systems Administrator IV",
-        "employerName": "Gigazoom",
-        "employerID": "15cd7368-5217-4daa-bd14-5f890904800e",
-        "location": "China",
-        "description": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
-        "datePosted": "01/22/2018",
-        "payment": 17558,
-        "dateDue": "05/13/2019",
-        "progress": 0
-      },
-      {
-        "id": "05de4e33-7789-49d8-ad39-18bb4e610aa4",
-        "entity": "job",
-        "title": "Compensation Analyst",
-        "employerName": "JumpXS",
-        "employerID": "2b3b414b-6ccf-440e-b7c0-c0c79e126e19",
-        "location": "Japan",
-        "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
-        "datePosted": "06/16/2017",
-        "payment": 30302,
-        "dateDue": "09/23/2019",
-        "progress": 0
-      },
-      {
-        "id": "4be00595-ecdd-41c3-817b-d54108ed6297",
-        "entity": "job",
-        "title": "Graphic Designer",
-        "employerName": "Riffwire",
-        "employerID": "39ca7b85-d795-45f1-927a-ef26a8f2bd8a",
-        "location": "Chile",
-        "description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-        "datePosted": "06/18/2017",
-        "payment": 7516,
-        "dateDue": "08/30/2019",
-        "progress": 0
-      },
-      {
-        "id": "e44648de-1963-4d1f-b795-3340c13622ab",
-        "entity": "job",
-        "title": "Compensation Analyst",
-        "employerName": "Skidoo",
-        "employerID": "1bda6508-71ba-4a5e-ad6b-751aeedfb66c",
-        "location": "Sweden",
-        "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
-        "datePosted": "03/16/2017",
-        "payment": 41161,
-        "dateDue": "08/06/2019",
-        "progress": 0
-      },
-      {
-        "id": "8503d748-6f72-40be-aa08-4b595de41e0e",
-        "entity": "job",
-        "title": "Nurse Practicioner",
-        "employerName": "Skipfire",
-        "employerID": "b96dde17-49b8-4222-b96b-8e7117b75b1d",
-        "location": "China",
-        "description": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
-        "datePosted": "10/15/2017",
-        "payment": 10149,
-        "dateDue": "04/12/2019",
-        "progress": 0
-      },
-      {
-        "id": "c41b84a1-070b-4df9-81eb-4eb510166e9e",
-        "entity": "job",
-        "title": "Geologist IV",
-        "employerName": "DabZ",
-        "employerID": "b405bbb1-ef8a-4bcb-bc7f-9c4c0823dc8b",
-        "location": "China",
-        "description": "Phasellus in felis. Donec semper sapien a libero. Nam dui.",
-        "datePosted": "11/16/2017",
-        "payment": 9060,
-        "dateDue": "08/30/2019",
-        "progress": 0
-      },
-      {
-        "id": "cc61c689-267e-4981-b594-726d5b219fd4",
-        "entity": "job",
-        "title": "Assistant Media Planner",
-        "employerName": "Skibox",
-        "employerID": "b7eb4653-fdad-4d38-9209-2dd8a1118582",
-        "location": "Slovenia",
-        "description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-        "datePosted": "04/05/2017",
-        "payment": 30528,
-        "dateDue": "03/13/2019",
-        "progress": 0
-      },
-      {
-        "id": "2825f4ce-a93b-4de7-b7ca-9923e4fdf952",
-        "entity": "job",
-        "title": "Senior Cost Accountant",
-        "employerName": "Feedspan",
-        "employerID": "faa829aa-9608-47d3-980b-152ead6d2391",
-        "location": "Macedonia",
-        "description": "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
-        "datePosted": "09/02/2017",
-        "payment": 4700,
-        "dateDue": "02/25/2019",
-        "progress": 0
-      },
-      {
-        "id": "d5bbfe82-3247-466f-a0fb-d878a3ef7e0a",
-        "entity": "job",
-        "title": "Help Desk Operator",
-        "employerName": "Centimia",
-        "employerID": "3b24696b-8671-4158-a440-fcf70998103f",
-        "location": "Russia",
-        "description": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
-        "datePosted": "03/14/2017",
-        "payment": 15833,
-        "dateDue": "03/12/2019",
-        "progress": 0
-      },
-      {
-        "id": "f767bc73-a5b5-4b2f-874d-a29ed1565a86",
-        "entity": "job",
-        "title": "Food Chemist",
+        "employerID": "d813c1eb-d73f-482f-b801-9519b664e706",
         "employerName": "Wordware",
-        "employerID": "862ab9ab-2efe-470b-83cd-a459b13f5a9a",
-        "location": "Brazil",
-        "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
-        "datePosted": "04/17/2017",
-        "payment": 6503,
-        "dateDue": "03/09/2019",
-        "progress": 0
+        "description": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
+        "datePosted": "1907-09-08T00:25:21.000Z",
+        "dateAccepted": "1906-09-08T00:25:21.000Z",
+        "payment": 5629,
+        "progress": 100,
+        "tags": [{
+            "skillTitle": "Business Skills"
+          },
+          {
+            "skillTitle": "C#"
+          },
+          {
+            "skillTitle": "JavaScript"
+          },
+          {
+            "skillTitle": "HTML"
+          }
+        ]
       },
       {
-        "id": "27d600a1-6cbf-4db8-9d66-1b7896df28b4",
+        "id": "0a7d3ef1-00da-4bb9-9d10-sdadsadasd",
         "entity": "job",
-        "title": "Tax Accountant",
-        "employerName": "Blogtags",
-        "employerID": "49a72976-255e-4989-a257-830e146b3f54",
-        "location": "Indonesia",
-        "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
-        "datePosted": "05/06/2017",
-        "payment": 47246,
-        "dateDue": "04/09/2019",
-        "progress": 0
-      },
-      {
-        "id": "e458d044-2a7a-4329-bb76-38aee27004ee",
-        "entity": "job",
-        "title": "Marketing Manager",
-        "employerName": "Camimbo",
-        "employerID": "737ea122-cd0f-4d93-9b27-24445bb71251",
-        "location": "United States",
-        "description": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
-        "datePosted": "09/23/2017",
-        "payment": 4955,
-        "dateDue": "03/31/2019",
-        "progress": 0
+        "title": "Angular Application",
+        "employerID": "d813c1eb-d73f-482f-b801-ddddddd",
+        "employerName": "Facebook",
+        "description": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
+        "datePosted": "1907-09-08T00:25:21.000Z",
+        "dateAccepted": "1906-09-08T00:25:21.000Z",
+        "payment": 6969,
+        "progress": 100,
+        "tags": [{
+            "skillTitle": "Angular"
+          },
+          {
+            "skillTitle": "Python"
+          },
+          {
+            "skillTitle": "JavaScript"
+          },
+          {
+            "skillTitle": "HTML"
+          }
+        ]
       }
+    ],
+    "postedJobs": [{
+      "id": "0b9931fe-8dd6-467b-97c9-d7c77d9d3509",
+      "entity": "job",
+      "title": "VP Marketing",
+      "employerName": "John Smith",
+      "dateDue": "05/21/2019",
+      "employerID": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL"
+    }],
+    "activeJobs": [{
+      "id": "93a3de47-7bc4-4c91-8963-6e478fc125e5",
+      "entity": "job",
+      "title": "Senior Quality Engineer",
+      "employerName": "Paul Kratz",
+      "employerID": "d813c1eb-d73f-482f-b801-9519b664e706",
+      "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+      "datePosted": "09/09/2017",
+      "dateDue": "05/21/2019",
+      "progress": 0
+    }]
+  },
+  {
+    "id": "d813c1eb-d73f-482f-b801-9519b664e706",
+    "entity": "user",
+    "email": "paulkratz@elance.site",
+    "fName": "paul",
+    "lName": "kratz",
+    "dob": "18-12-1995",
+    "summary": "Me llamo Paulo, donde esta la mantequilla.",
+    "skills": [{
+        "skillTitle": "Java",
+        "category": "Software"
+      },
+      {
+        "skillTitle": "FORTRAN",
+        "category": "Software"
+      }
+    ],
+    "educationItems": [{
+      "degreeTitle": "Honours Computing",
+      "startYear": "2016",
+      "endYear": "2020",
+      "collegeName": "IT Sligo",
+      "grade": "1st Hons",
+      "description": "4 years of padraig"
+    }],
+    "profileCards": [{
+        "title": "About Me",
+        "type": "bio"
+      },
+      {
+        "title": "Education",
+        "type": "edu"
+      },
+      {
+        "title": "Skills",
+        "type": "skills"
+      },
+      {
+        "title": "Job History",
+        "type": "jobs"
+      },
+      {
+        "title": "Custom Card 1",
+        "type": "custom",
+        "content": "Custom card body with <h1>MARKDOWN</h1>"
+      }
+    ],
+    "avatarUrl": "www.facebook/paul",
+    "backgroundUrl": "background.png",
+    "socialLinks": [{
+        "imageUrl": "github",
+        "url": "http://github.com"
+      },
+      {
+        "imageUrl": "facebook",
+        "url": "http://facebook.com"
+      },
+      {
+        "imageUrl": "twitter",
+        "url": "http://twitter.com"
+      },
+      {
+        "imageUrl": "linkedin",
+        "url": "http://linkedin.com"
+      }
+    ],
+    "tagline": "My name a paul",
+    "postedJobs": [{
+      "id": "93a3de47-7bc4-4c91-8963-6e478fc125e5",
+      "entity": "job",
+      "title": "Senior Quality Engineer",
+      "employerName": "Paul Kratz",
+      "employerID": "d813c1eb-d73f-482f-b801-9519b664e706",
+      "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+      "datePosted": "09/09/2017",
+      "dateDue": "05/21/2019",
+      "progress": 0
+    }],
+    "activeJobs": []
+  },
+  {
+    "id": "sad34324-d73fsadas-DAB4SATAN-b801-42069LOL",
+    "entity": "user",
+    "email": "killiankelly@elance.site",
+    "fName": "killian",
+    "lName": "kelly",
+    "dob": "15-09-1998",
+    "summary": "Me llamo Killiana, donde esta la mantequilla.",
+    "skills": [{
+        "skillTitle": "C#",
+        "category": "Software"
+      },
+      {
+        "skillTitle": "Python",
+        "category": "Software"
+      },
+      {
+        "skillTitle": "HTML",
+        "category": "Software"
+      }
+    ],
+    "educationItems": [{
+      "degreeTitle": "Honours Computing",
+      "startYear": "2016",
+      "endYear": "2020",
+      "collegeName": "IT Sligo",
+      "grade": "1st Hons",
+      "description": "4 years of padraig"
+    }],
+    "avatarUrl": "www.facebook/killian",
+    "backgroundUrl": "background.png",
+    "profileCards": [{
+        "title": "About Me",
+        "type": "bio"
+      },
+      {
+        "title": "Education",
+        "type": "edu"
+      },
+      {
+        "title": "Skills",
+        "type": "skills"
+      },
+      {
+        "title": "Custom Card 1",
+        "type": "custom",
+        "content": "Custom card body with <h1>MARKDOWN</h1>"
+      }
+    ],
+    "tagline": "My name a killian"
+  },
+  {
+    "id": "c4041af3-edb5-4a4c-8e8a-f5d8c489a955",
+    "entity": "user",
+    "fName": "Nina",
+    "lName": "Williams",
+    "email": "dblaney0@oaic.gov.au",
+    "dob": "11/03/2018",
+    "tagline": "foreground"
+  }, {
+    "id": "a0a34fda-56ed-4006-b789-dfbf870c0eb2",
+    "entity": "user",
+    "fName": "Anna",
+    "lName": "Williams",
+    "email": "lspeare1@tiny.cc",
+    "dob": "19/09/2018",
+    "tagline": "real-time"
+  }, {
+    "id": "eabfc682-964a-48b5-8353-811776c7cf4a",
+    "entity": "user",
+    "fName": "Josie",
+    "lName": "Rizal",
+    "email": "srivel2@1und1.de",
+    "dob": "15/11/2017",
+    "tagline": "policy"
+  }, {
+    "id": "f9d1acf7-b38a-4d1c-8b40-b30283e69d51",
+    "entity": "user",
+    "fName": "Lili",
+    "lName": "DeRochefort",
+    "email": "aollett3@prweb.com",
+    "dob": "15/05/2018",
+    "tagline": "strategy"
+  }, {
+    "id": "0e9c26d6-3da5-416c-a2c6-c45b02c4d5b5",
+    "entity": "user",
+    "fName": "Florentia",
+    "lName": "Goss",
+    "email": "fgoss4@washingtonpost.com",
+    "dob": "10/02/2012",
+    "tagline": "Right-sized"
+  }, {
+    "id": "43797031-ef40-4fdc-9df0-0b0f0737986a",
+    "entity": "user",
+    "fName": "Julia",
+    "lName": "Chang",
+    "email": "dtongue5@elegantthemes.com",
+    "dob": "15/01/2016",
+    "tagline": "background"
+  }, {
+    "id": "a64998d6-cb0e-466d-a487-51c6ea4ef2ba",
+    "entity": "user",
+    "fName": "Gabrielle",
+    "lName": "Eilers",
+    "email": "geilers6@addtoany.com",
+    "dob": "19/02/2013",
+    "tagline": "system engine"
+  }, {
+    "id": "1b2d5544-8b04-4a5b-ac5a-5d443a2edbb6",
+    "entity": "user",
+    "fName": "Barbaraanne",
+    "lName": "O'Collopy",
+    "email": "bocollopy7@usnews.com",
+    "dob": "19/10/2014",
+    "tagline": "Pre-emptive"
+  }, {
+    "id": "1cf746d0-572f-43ad-9b24-6400003f036b",
+    "entity": "user",
+    "fName": "Sol",
+    "lName": "Beinisch",
+    "email": "sbeinisch8@ow.ly",
+    "dob": "06/02/2018",
+    "tagline": "productivity"
+  }, {
+    "id": "9a8d57dc-ceee-4765-b25b-b99ac02f614d",
+    "entity": "user",
+    "fName": "Dolli",
+    "lName": "Bowers",
+    "email": "dbowers9@tmall.com",
+    "dob": "03/09/2014",
+    "tagline": "intranet"
+  }, {
+    "id": "e30ac3f8-574f-4c0e-bd47-08e057ec7b2a",
+    "entity": "user",
+    "fName": "Barny",
+    "lName": "Zanni",
+    "email": "bzannia@fotki.com",
+    "dob": "08/08/2011",
+    "tagline": "contextually-based"
+  }, {
+    "id": "1e6dc15f-090c-4624-880e-94b94b4dae43",
+    "entity": "user",
+    "fName": "Celestyna",
+    "lName": "Fletcher",
+    "email": "cfletcherb@com.com",
+    "dob": "23/12/2013",
+    "tagline": "fault-tolerant"
+  }, {
+    "id": "5027174b-09d2-4875-a6ba-42840f79d18d",
+    "entity": "user",
+    "fName": "Dalt",
+    "lName": "Dollman",
+    "email": "ddollmanc@miibeian.gov.cn",
+    "dob": "07/09/2017",
+    "tagline": "Graphical User Interface"
+  }, {
+    "id": "b9934e85-92d5-4358-81da-b1131b56b9e2",
+    "entity": "user",
+    "fName": "Blaire",
+    "lName": "Kidson",
+    "email": "bkidsond@bloglovin.com",
+    "dob": "30/06/2013",
+    "tagline": "zero tolerance"
+  }, {
+    "id": "62948686-c1fd-4c43-a22e-0658282d578d",
+    "entity": "user",
+    "fName": "Janeen",
+    "lName": "Bines",
+    "email": "jbinese@apple.com",
+    "dob": "05/03/2018",
+    "tagline": "attitude"
+  }, {
+    "id": "8bb9c76c-552d-486c-891b-bf587867dc0e",
+    "entity": "user",
+    "fName": "Giacinta",
+    "lName": "Needs",
+    "email": "gneedsf@un.org",
+    "dob": "31/05/2017",
+    "tagline": "portal"
+  }, {
+    "id": "fe998039-e634-4812-ae38-a01db87c8fb0",
+    "entity": "user",
+    "fName": "Sigvard",
+    "lName": "Redmell",
+    "email": "sredmellg@soup.io",
+    "dob": "19/03/2012",
+    "tagline": "Progressive"
+  }, {
+    "id": "abf4195f-c0c8-4f35-b09b-2877d8e80d50",
+    "entity": "user",
+    "fName": "Cordie",
+    "lName": "Tothe",
+    "email": "ctotheh@edublogs.org",
+    "dob": "19/09/2017",
+    "tagline": "database"
+  }, {
+    "id": "a53e9af3-54a8-40ee-92a3-7f1394509b81",
+    "entity": "user",
+    "fName": "Gaby",
+    "lName": "Moens",
+    "email": "gmoensi@ehow.com",
+    "dob": "25/01/2016",
+    "tagline": "responsive"
+  }, {
+    "id": "05a7479a-8745-421c-8ebb-25a451fda1ca",
+    "entity": "user",
+    "fName": "Chickie",
+    "lName": "Claesens",
+    "email": "cclaesensj@woothemes.com",
+    "dob": "19/10/2011",
+    "tagline": "project"
+  },
+  {
+    "id": "0b9931fe-8dd6-467b-97c9-d7c77d9d3509",
+    "entity": "job",
+    "title": "VP Marketing",
+    "employerName": "John Smith",
+    "dateDue": "05/21/2019",
+    "employerID": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+    "description": "Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+    "datePosted": "10/14/2017",
+    "payment": 30000,
+    "tags": [{
+        "skillTitle": "Marketing"
+      },
+      {
+        "skillTitle": "Business Skills"
+      }
+    ],
+    "applicants": [{
+      "id": "d813c1eb-d73f-482f-b801-9519b664e706",
+      "entity": "user",
+      "email": "paulkratz@paul.com",
+      "fName": "paul",
+      "lName": "kratz"
+    }]
+  },
+  {
+    "id": "93a3de47-7bc4-4c91-8963-6e478fc125e5",
+    "entity": "job",
+    "title": "Senior Quality Engineer",
+    "employerName": "Tazz",
+    "employerID": "77b3e033-c63f-4ae9-ba4a-37a5af01c378",
+    "location": "Indonesia",
+    "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+    "datePosted": "09/09/2017",
+    "payment": 23141,
+    "dateDue": "05/21/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": "Angular"
+      },
+      {
+        "skillTitle": "Python"
+      },
+      {
+        "skillTitle": "JavaScript"
+      },
+      {
+        "skillTitle": "HTML"
+      }
+    ]
+  },
+  {
+    "id": "3b774947-f361-4b62-b994-e9a84a99d863",
+    "entity": "job",
+    "title": "Structural Analysis Engineer",
+    "employerName": "Oodoo",
+    "employerID": "55db8acd-4206-474d-9752-ffcb63eba269",
+    "location": "China",
+    "description": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+    "datePosted": "08/23/2017",
+    "payment": 37919,
+    "dateDue": "09/06/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": "Angular"
+      },
+      {
+        "skillTitle": "TypeScript"
+      },
+      {
+        "skillTitle": "JavaScript"
+      },
+      {
+        "skillTitle": "Nodejs"
+      }
+    ]
+  },
+  {
+    "id": "9eeba864-b8ea-4ea8-9803-7ec67d04501e",
+    "entity": "job",
+    "title": "Professor",
+    "employerName": "Reallinks",
+    "employerID": "1c255b71-87f5-4961-ba59-8516abae65dc",
+    "location": "China",
+    "description": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+    "datePosted": "02/16/2018",
+    "payment": 6737,
+    "dateDue": "05/19/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": "F#"
+      },
+      {
+        "skillTitle": "Python"
+      },
+      {
+        "skillTitle": "CSS"
+      },
+      {
+        "skillTitle": "SASS"
+      }
+    ]
+  },
+  {
+    "id": "3fe577fb-4680-4c64-a962-86059699781c",
+    "entity": "job",
+    "title": "Pharmacist",
+    "employerName": "Gabspot",
+    "employerID": "2c3b090f-6618-4a6a-8264-6e879c26e364",
+    "location": "Indonesia",
+    "description": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
+    "datePosted": "02/12/2018",
+    "payment": 18634,
+    "dateDue": "10/08/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": "Lua"
+      },
+      {
+        "skillTitle": "R"
+      },
+      {
+        "skillTitle": "Agile"
+      },
+      {
+        "skillTitle": "Kanban"
+      }
+    ]
+  },
+  {
+    "id": "eb61f947-19fe-409f-af60-508223e104c7",
+    "entity": "job",
+    "title": "Budget/Accounting Analyst I",
+    "employerName": "Shuffletag",
+    "employerID": "75d42b3e-1e9b-409c-95c5-4d552045bafc",
+    "location": "Greece",
+    "description": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+    "datePosted": "08/05/2017",
+    "payment": 9370,
+    "dateDue": "03/03/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": "React"
+      },
+      {
+        "skillTitle": "C++"
+      },
+      {
+        "skillTitle": "C"
+      },
+      {
+        "skillTitle": "Perl"
+      }
+    ]
+  },
+  {
+    "id": "8af15026-44ae-4ad3-b7ef-8b1c33d514ae",
+    "entity": "job",
+    "title": "Office Assistant IV",
+    "employerName": "Gigazoom",
+    "employerID": "943a65c9-a1ec-4c41-a48a-b8b4c9174a9f",
+    "location": "Portugal",
+    "description": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+    "datePosted": "05/09/2017",
+    "payment": 15630,
+    "dateDue": "03/10/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": "FORTRAN"
+      },
+      {
+        "skillTitle": "COBOL"
+      },
+      {
+        "skillTitle": "C"
+      },
+      {
+        "skillTitle": "C++"
+      }
+    ]
+  },
+  {
+    "id": "ee62cad5-eaa6-4ea7-9c3f-4220d335959e",
+    "entity": "job",
+    "title": "VP Product Management",
+    "employerName": "Oyonder",
+    "employerID": "390713af-02bc-4f78-a714-e045c29f1a46",
+    "location": "Portugal",
+    "description": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
+    "datePosted": "02/06/2018",
+    "payment": 9185,
+    "dateDue": "04/17/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": "Rust"
+      },
+      {
+        "skillTitle": "Go"
+      },
+      {
+        "skillTitle": "JavaScript"
+      },
+      {
+        "skillTitle": "HTML"
+      }
+    ]
+  },
+  {
+    "id": "aacb1696-5a67-4071-983b-fea3dc66239f",
+    "entity": "job",
+    "title": "Senior Financial Analyst",
+    "employerName": "Babbleblab",
+    "employerID": "831508a6-c586-478c-a302-fb7963ee4f43",
+    "location": "Guatemala",
+    "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+    "datePosted": "03/13/2017",
+    "payment": 8115,
+    "dateDue": "10/04/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": "Polymer"
+      },
+      {
+        "skillTitle": "Vue"
+      },
+      {
+        "skillTitle": "Angular"
+      },
+      {
+        "skillTitle": "React"
+      }
+    ]
+  },
+  {
+    "id": "13993944-0ba5-42e3-96f3-c53ca0cc8f66",
+    "entity": "job",
+    "title": "Executive Secretary",
+    "employerName": "Buzzdog",
+    "employerID": "b39421d3-2fd1-40af-b54e-04c845bcf5d6",
+    "location": "China",
+    "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+    "datePosted": "12/20/2017",
+    "payment": 46211,
+    "dateDue": "05/30/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": "JSON"
+      },
+      {
+        "skillTitle": "Lua"
+      },
+      {
+        "skillTitle": "SQL"
+      },
+      {
+        "skillTitle": "MongoDB"
+      }
+    ]
+  },
+  {
+    "id": "1abc8837-344c-4f0e-adbb-559ea1d111a8",
+    "entity": "job",
+    "title": "Account Representative IV",
+    "employerName": "Layo",
+    "employerID": "6cef7918-0deb-4387-97b3-8bebca196569",
+    "location": "China",
+    "description": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
+    "datePosted": "02/14/2018",
+    "payment": 44371,
+    "dateDue": "09/09/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": "COBOL"
+      },
+      {
+        "skillTitle": "Assembly"
+      },
+      {
+        "skillTitle": "Monogame"
+      },
+      {
+        "skillTitle": "F#"
+      }
+    ]
+  },
+  {
+    "id": "6d7430dc-171d-4451-b6ad-9b478818481a",
+    "entity": "job",
+    "title": "Help Desk Technician",
+    "employerName": "Ntags",
+    "employerID": "7bd3b6e0-6913-42d0-9495-2b2c13f72d55",
+    "location": "Poland",
+    "description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
+    "datePosted": "06/06/2017",
+    "payment": 44525,
+    "dateDue": "02/22/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": "Monogame"
+      },
+      {
+        "skillTitle": "Unity"
+      },
+      {
+        "skillTitle": "SignalR"
+      },
+      {
+        "skillTitle": "HTML"
+      }
+    ]
+  },
+  {
+    "id": "0643ee1d-b679-4827-a8ec-bf10c6c474d8",
+    "entity": "job",
+    "title": "Structural Engineer",
+    "employerName": "Janyx",
+    "employerID": "f704cc33-129a-49ac-a449-75f004eadd57",
+    "location": "China",
+    "description": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
+    "datePosted": "06/12/2017",
+    "payment": 19108,
+    "dateDue": "06/22/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": ".NET"
+      },
+      {
+        "skillTitle": "MVC"
+      },
+      {
+        "skillTitle": "Agile"
+      },
+      {
+        "skillTitle": "ASP"
+      }
+    ]
+  },
+  {
+    "id": "137068d0-c82a-458c-998d-5d8e94aac185",
+    "entity": "job",
+    "title": "Research Nurse",
+    "employerName": "Fatz",
+    "employerID": "3db62473-a828-4021-a601-678903373fb9",
+    "location": "Indonesia",
+    "description": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+    "datePosted": "10/23/2017",
+    "payment": 42810,
+    "dateDue": "05/27/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": "Lua"
+      },
+      {
+        "skillTitle": "Python"
+      },
+      {
+        "skillTitle": "JavaScript"
+      },
+      {
+        "skillTitle": "HTML"
+      }
+    ]
+  },
+  {
+    "id": "1e74026b-a511-4963-8621-b20263c82452",
+    "entity": "job",
+    "title": "Actuary",
+    "employerName": "Tagtune",
+    "employerID": "03cf8916-d7ca-4192-943b-65aff3ec3a23",
+    "location": "Russia",
+    "description": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
+    "datePosted": "09/06/2017",
+    "payment": 47789,
+    "dateDue": "02/24/2019",
+    "progress": 0,
+    "tags": [{
+        "skillTitle": "Angular"
+      },
+      {
+        "skillTitle": "TypeScript"
+      },
+      {
+        "skillTitle": "NodeJs"
+      },
+      {
+        "skillTitle": "HTML"
+      }
+    ]
+  }
 ]
