@@ -133,7 +133,6 @@ export async function sendMessagesToUser(event, context) {
         const results = event.Records.map(async record => {
             if (record.dynamodb.Keys.entity.S === "fucc|connection") {
                 if (record.eventName == 'INSERT') {
-                    throw new Error(record.dynamodb.NewImage)
                     var who = JSON.stringify(record.dynamodb.NewImage.id.S);
                     var where = JSON.stringify(record.dynamodb.NewImage.connectionId.S)
 
@@ -176,6 +175,10 @@ export async function doFucc(event, context) {
         return success
     } catch (error) {
         console.error(error)
+        wsClient._send({
+            action: 'Error',
+            content: error.message
+        }, event.requestContext.connectionId, endpoint)
         return success
     }
 }
