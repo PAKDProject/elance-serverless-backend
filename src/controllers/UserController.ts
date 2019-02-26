@@ -104,7 +104,7 @@ export class UserController implements BaseRouter {
                     }
 
                     if (oldImageUrl !== undefined) {
-                        let imageId = oldImageUrl.split("https://s3-eu-west-1.amazonaws.com/elance-profile-images/")[1]
+                        let imageId = oldImageUrl.split("https://s3-eu-west-1.amazonaws.com/intellilance-profile-images/")[1]
 
                         if (imageId === undefined) {
                             throw new Error("Passed in image url is incorrect")
@@ -129,7 +129,7 @@ export class UserController implements BaseRouter {
                     // }
 
                     let data = await addToS3(id, buffer)
-                    let url = `https://s3-eu-west-1.amazonaws.com/elance-profile-images/${data}`
+                    let url = `https://s3-eu-west-1.amazonaws.com/intellilance-profile-images/${data}`
                     res.status(201).json({
                         message: 'File uploaded successfully',
                         url
