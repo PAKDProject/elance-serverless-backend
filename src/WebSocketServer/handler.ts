@@ -133,8 +133,9 @@ export async function sendMessagesToUser(event, context) {
         const results = event.Records.map(async record => {
             if (record.dynamodb.Keys.entity.S === "fucc|connection") {
                 if (record.eventName == 'INSERT') {
+                    throw new Error(record.dynamodb.NewImage)
                     var who = JSON.stringify(record.dynamodb.NewImage.id.S);
-                    var where = JSON.stringify(record.dynamodb.NewImage.connectionId.S).toString()
+                    var where = JSON.stringify(record.dynamodb.NewImage.connectionId.S)
 
                     if (who === undefined) {
                         throw new Error('Nyet people in record')
@@ -165,11 +166,12 @@ export async function sendMessagesToUser(event, context) {
 export async function doFucc(event, context) {
     endpoint = `${event.requestContext.apiId}.execute-api.eu-west-1.amazonaws.com/dev`
     try {
-        let jobs = await fuccMaster(event, context)
+        let { userId } = JSON.parse(event.body)
+        let jobs = await fuccMaster(userId)
 
         wsClient._send({
             action: "fuccJobs",
-            data: jobs,
+            content: jobs,
         }, event.requestContext.connectionId, endpoint)
         return success
     } catch (error) {

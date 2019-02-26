@@ -2,27 +2,25 @@ import { findDocumentById, findDocumentsByType } from '../models/tableModel'
 import { isNullOrUndefined } from 'util';
 
 // Master function for neural network
-export async function fuccMaster(event: any, context: any) {
+export async function fuccMaster(id: string) {
     const allJobs = await findDocumentsByType('job');
     const inactiveJobs = allJobs.data.filter((job) => {
         return job.chosenApplicant === undefined;
     });
-    const user = await findDocumentById(event.pathParameters.id, 'user');
+    const user = await findDocumentById(id, 'user');
     let sortedJobs = [];
     let pointsForJob = 0;
     inactiveJobs.forEach(async job => {
-        pointsForJob += await jobHistoryNode(job, user);
-        pointsForJob += await userSkillsNode(job, user);
-        pointsForJob += await educationNode(job, user);
-        pointsForJob += await summaryNode(job, user);
+        pointsForJob += jobHistoryNode(job, user);
+        pointsForJob += userSkillsNode(job, user);
+        pointsForJob += educationNode(job, user);
+        pointsForJob += summaryNode(job, user);
         sortedJobs.push({ job, pointsForJob });
         pointsForJob = 0;
     });
     sortedJobs.sort((a, b) => a.pointsForJob - b.pointsForJob);
-    return {
-        status: 200,
-        body: JSON.stringify(sortedJobs)
-    }
+    sortedJobs = sortedJobs.slice(0, 3)
+    return sortedJobs
 }
 
 // FOR TESTING ONLY
@@ -56,11 +54,11 @@ export async function fuccMasterTest(userId: string) {
     In each job it checks its tags and matches them to the tags on the jobs being processed
 */
 export function jobHistoryNode(inactiveJob: any, user: any): number {
-    if(!isNullOrUndefined(user.data.jobHistory)) {
+    if (!isNullOrUndefined(user.data.jobHistory)) {
         const userJobHistory = user.data.jobHistory;
         let jobHistoryTags = [];
         userJobHistory.forEach(job => {
-            if(!isNullOrUndefined(job.tags)) {
+            if (!isNullOrUndefined(job.tags)) {
                 job.tags.forEach(tag => {
                     if (!jobHistoryTags.includes(tag.skillTitle)) {
                         jobHistoryTags.push(tag.skillTitle);
@@ -107,7 +105,7 @@ export function educationNode(inactiveJob: any, user: any): number {
                 const desc = edu.description.split(' ');
                 const commonEdu = inactiveJob.tags.filter(tag => desc.includes(tag.skillTitle));
                 commonEdu.forEach(tag => {
-                    if(!commonTags.includes(tag)){
+                    if (!commonTags.includes(tag)) {
                         commonTags.push(tag);
                     }
                 });
