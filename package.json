@@ -9,7 +9,8 @@
     "start:dev": "nodemon --exec yarn start",
     "build:dev": "ts-node src/local.ts",
     "build": "tsc",
-    "deploy": "yarn build && serverless deploy",
+    "deploy": "yarn build && serverless deploy && yarn runSeedData",
+    "runSeedData": "ts-node test-data/runSampleDataToDb.ts --resolveJsonModule",
     "test": "mocha dist/tests/**/*.spec.js",
     "postinstall": "sed -i '4s/.*/var fetch = require(\"node-fetch\")/' ./node_modules/amazon-cognito-identity-js/lib/Client.js"
   },

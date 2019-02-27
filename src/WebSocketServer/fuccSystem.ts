@@ -18,7 +18,7 @@ export async function fuccMaster(id: string) {
         sortedJobs.push({ job, pointsForJob });
         pointsForJob = 0;
     });
-    sortedJobs.sort((a, b) => a.pointsForJob - b.pointsForJob);
+    sortedJobs.sort((a, b) => b.pointsForJob - a.pointsForJob);
     sortedJobs = sortedJobs.slice(0, 3)
     return sortedJobs
 }

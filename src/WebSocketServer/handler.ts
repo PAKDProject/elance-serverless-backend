@@ -135,7 +135,7 @@ export async function sendMessagesToUser(event, context) {
                 if (record.eventName == 'INSERT') {
                     var who = JSON.stringify(record.dynamodb.NewImage.id.S);
                     var where = JSON.stringify(record.dynamodb.NewImage.connectionId.S)
-
+                    console.error(record)
                     if (who === undefined) {
                         throw new Error('Nyet people in record')
                     }
@@ -147,7 +147,7 @@ export async function sendMessagesToUser(event, context) {
                             action: "message",
                             content: element.im
                         }
-                        return wsClient._send(message, where, endpoint)
+                        return await wsClient._send(message, where, endpoint)
                     })
                     await Promise.all(results);
                 }
@@ -167,16 +167,18 @@ export async function doFucc(event, context) {
     try {
         let { userId } = JSON.parse(event.body)
         let jobs = await fuccMaster(userId)
+        console.log('Im doing shit')
 
-        wsClient._send({
+        await wsClient._send({
             action: "fuccJobs",
             content: jobs,
         }, event.requestContext.connectionId, endpoint)
         return success
     } catch (error) {
         console.error(error)
+        console.error(error.message)
         wsClient._send({
-            action: 'Error',
+            action: 'error',
             content: error.message
         }, event.requestContext.connectionId, endpoint)
         return success
