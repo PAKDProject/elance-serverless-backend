@@ -1,6 +1,7 @@
 import { WebSocketClient } from './connectionManager'
 import { fuccMaster } from './fuccSystem'
 import * as TableModel from '../models/tableModel'
+import * as AWS from 'aws-sdk'
 
 let success = {
     statusCode: 200
@@ -133,9 +134,10 @@ export async function sendMessagesToUser(event, context) {
         const results = event.Records.map(async record => {
             if (record.dynamodb.Keys.entity.S === "fucc|connection") {
                 if (record.eventName == 'INSERT') {
-                    var who = JSON.stringify(record.dynamodb.NewImage.id.S);
-                    var where = JSON.stringify(record.dynamodb.NewImage.connectionId.S)
-                    console.error(record)
+                    let image = AWS.DynamoDB.Converter.unmarshall(record.dynamodb.NewImage)
+                    var who = image.id
+                    var where = image.connectionId
+                    console.error(image)
                     if (who === undefined) {
                         throw new Error('Nyet people in record')
                     }
