@@ -39,6 +39,23 @@ export async function disconnect(event, context) {
 
         let userId = user.data[0].id
         await wsClient._disconnectClient(userId, endpoint)
+
+        let onlineUsers = await TableModel.findDocumentsByType("fucc|connection")
+        let foundUser = await TableModel.findDocumentById(user.data[0].id, "user")
+        let result = onlineUsers.data.map(async onlineUser => {
+            if (foundUser.data.contacts.map(x => x.id).includes(onlineUser.id)) {
+                let message = {
+                    action: "notify|user_offline",
+                    content: {
+                        id: foundUser.data.id,
+                        fName: foundUser.data.fName,
+                        lName: foundUser.data.lName
+                    }
+                }
+                return await wsClient._send(message, onlineUser.connectionId, endpoint)
+            }
+        })
+        await Promise.all(result)
         return success
     }
     catch (error) {
@@ -126,7 +143,7 @@ export async function defaultMessage(event, context) {
     }
 }
 
-export async function sendMessagesToUser(event, context) {
+export async function passContentOnConnection(event, context) {
     try {
         let configRes = await wsClient._getConfig()
         let endpoint = configRes.data.endpoint
@@ -135,9 +152,9 @@ export async function sendMessagesToUser(event, context) {
             if (record.dynamodb.Keys.entity.S === "fucc|connection") {
                 if (record.eventName == 'INSERT') {
                     let image = AWS.DynamoDB.Converter.unmarshall(record.dynamodb.NewImage)
+                    console.log(JSON.stringify(image))
                     var who = image.id
                     var where = image.connectionId
-                    console.error(image)
                     if (who === undefined) {
                         throw new Error('Nyet people in record')
                     }
@@ -146,12 +163,30 @@ export async function sendMessagesToUser(event, context) {
 
                     const results = userMessages.data.map(async element => {
                         let message = {
-                            action: "message",
+                            action: "message|old",
                             content: element.im
                         }
                         return await wsClient._send(message, where, endpoint)
                     })
-                    await Promise.all(results);
+
+                    let onlineUsers = await TableModel.findDocumentsByType('fucc|connection')
+                    let currentUser = await TableModel.findDocumentById(who, "user")
+
+                    const notifyPeople = onlineUsers.data.map(async onlineUser => {
+                        if (currentUser.data.contacts.map(x => x.id).includes(onlineUser.id)) {
+                            let message = {
+                                action: "notify|user_online",
+                                content: {
+                                    id: currentUser.data.id,
+                                    fName: currentUser.data.fName,
+                                    lName: currentUser.data.lName
+                                }
+                            }
+                            return await wsClient._send(message, onlineUser.connectionId, endpoint)
+                        }
+                    })
+                    await Promise.all(results)
+                    await Promise.all(notifyPeople);
                 }
             }
         })

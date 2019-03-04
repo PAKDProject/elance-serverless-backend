@@ -19,7 +19,7 @@ export class TableModel {
   avatarUrl: string;
   backgroundUrl: string;
   socialLinks: SocialLink[];
-  contacts: String[];
+  contacts: IContact[];
   profileCards: IProfileCard[];
   organisations: object[];
   orgInvitations: object[];
@@ -75,6 +75,14 @@ export interface IInstantMessage {
   action?: string
 }
 
+interface IContact {
+  id: string
+  fName: string
+  lName: string
+  avatarUrl: string
+  email: string
+  tagline: string
+}
 
 interface ISkills {
   skillTitle: string;

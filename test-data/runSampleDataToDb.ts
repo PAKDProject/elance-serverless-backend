@@ -7,263 +7,299 @@ let db = new DynamoDB({
 
 let arr = [
     {
-        "id": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
-        "entity": "user",
-        "email": "johnsmith418@email.com",
-        "fName": "John",
-        "lName": "Smith",
-        "dob": "1970-01-01T00:00:00.000Z",
-        "summary": "I love Angular and Python. HTML is the most advanced thing i know!",
-        "educationItems": [{
-            "degreeTitle": "BSc Hons in Computing",
-            "startYear": "2016",
-            "endYear": "2020",
-            "collegeName": "IT Sligo",
-            "grade": "A+",
-            "description": "Angular JavaScript Python sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
-        },
-        {
-            "degreeTitle": "BSc Hons in Computer Science",
-            "startYear": "2020",
-            "endYear": "2023",
-            "collegeName": "IT Sligo",
-            "grade": "D-",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
-        },
-        {
-            "degreeTitle": "Phd in Business",
-            "startYear": "2014",
-            "endYear": "2016",
-            "collegeName": "IT Sligo",
-            "grade": "C",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros."
-        }
-        ],
-        "organisations": [{
-            "orgName": "Facebook",
-            "email": "zuck@facebook.com",
-            "tagline": "### This is Facebook ",
-            "websiteUrl": "facebook.com",
-            "adminUser": {
-                "id": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
-                "entity": "user",
-                "email": "johnsmith@email.com"
+        "activeJobs": [
+            {
+                "dateDue": "05/21/2019",
+                "datePosted": "09/09/2017",
+                "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+                "employerID": "d813c1eb-d73f-482f-b801-9519b664e706",
+                "employerName": "Paul Kratz",
+                "entity": "job",
+                "id": "93a3de47-7bc4-4c91-8963-6e478fc125e5",
+                "progress": 0,
+                "title": "Senior Quality Engineer"
             }
-        }],
-        "skills": [{
-            "skillTitle": "C#",
-            "category": "Software"
-        },
-        {
-            "skillTitle": "Python",
-            "category": "Software"
-        },
-        {
-            "skillTitle": "HTML",
-            "category": "Software"
-        }
         ],
         "avatarUrl": "null",
         "backgroundUrl": "null",
-        "socialLinks": [{
-            "imageUrl": "http://logo.clearbit.com/github.com",
-            "url": "http://github.com"
-        },
-        {
-            "imageUrl": "http://logo.clearbit.com/facebook.com",
-            "url": "http://facebook.com"
-        },
-        {
-            "imageUrl": "http://logo.clearbit.com/twitter.com",
-            "url": "http://twitter.com"
-        },
-        {
-            "imageUrl": "http://logo.clearbit.com/gitlab.com",
-            "url": "http://gitlab.com"
-        }
-        ],
-        "tagline": "Software Developer",
-        "contacts": [{
-            "id": "0e9c26d6-3da5-416c-a2c6-c45b02c4d5b5",
-            "entity": "user",
-            "fName": "Florentia",
-            "lName": "Goss",
-            "email": "fgoss4@washingtonpost.com",
-            "dob": "10/02/2012",
-            "tagline": "Right-sized"
-        }],
-        "profileCards": [{
-            "title": "About Me",
-            "type": "bio"
-        },
-        {
-            "title": "Education",
-            "type": "edu"
-        },
-        {
-            "title": "Skills",
-            "type": "skills"
-        },
-        {
-            "title": "Job History",
-            "type": "jobs"
-        },
-        {
-            "title": "Custom Card 1",
-            "type": "custom",
-            "content": "Custom card body with <h1>MARKDOWN</h1>"
-        }
-        ],
-        "jobHistory": [{
-            "id": "0a7d3ef1-00da-4bb9-9d10-61695207f8ca",
-            "entity": "job",
-            "title": "Product Engineer",
-            "employerID": "d813c1eb-d73f-482f-b801-9519b664e706",
-            "employerName": "Wordware",
-            "description": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
-            "datePosted": "1907-09-08T00:25:21.000Z",
-            "dateAccepted": "1906-09-08T00:25:21.000Z",
-            "payment": 5629,
-            "progress": 100,
-            "tags": [{
-                "skillTitle": "Business Skills"
+        "contacts": [
+            {
+                "email": "paulkratz@elance.site",
+                "fName": "Paul",
+                "id": "d813c1eb-d73f-482f-b801-9519b664e706",
+                "lName": "Kratz"
             },
             {
+                "dob": "10/02/2012",
+                "email": "fgoss4@washingtonpost.com",
+                "entity": "user",
+                "fName": "Florentia",
+                "id": "0e9c26d6-3da5-416c-a2c6-c45b02c4d5b5",
+                "lName": "Goss",
+                "tagline": "Right-sized"
+            }
+        ],
+        "dob": "1970-01-01T00:00:00.000Z",
+        "educationItems": [
+            {
+                "collegeName": "IT Sligo",
+                "degreeTitle": "BSc Hons in Computing",
+                "description": "Angular JavaScript Python sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros.",
+                "endYear": "2020",
+                "grade": "A+",
+                "startYear": "2016"
+            },
+            {
+                "collegeName": "IT Sligo",
+                "degreeTitle": "BSc Hons in Computer Science",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros.",
+                "endYear": "2023",
+                "grade": "D-",
+                "startYear": "2020"
+            },
+            {
+                "collegeName": "IT Sligo",
+                "degreeTitle": "Phd in Business",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non eros viverra, fringilla massa rhoncus, dictum nulla. In rhoncus nunc sed ante maximus tincidunt. Praesent ut lectus nisl. Etiam elementum dictum elit at aliquet. Sed vitae vehicula massa, sed luctus velit. Morbi aliquam sodales tempor. Praesent tempus, felis et luctus porttitor, quam lectus elementum nulla, sit amet pretium nisi dolor vel eros. Nulla vestibulum eu velit ac semper. Morbi gravida rhoncus libero, a rhoncus sapien. Morbi non sem a ligula viverra fermentum elementum ac odio. Fusce eget justo eros.",
+                "endYear": "2016",
+                "grade": "C",
+                "startYear": "2014"
+            }
+        ],
+        "email": "johnsmith418@email.com",
+        "entity": "user",
+        "fName": "John",
+        "id": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+        "jobHistory": [
+            {
+                "dateAccepted": "1906-09-08T00:25:21.000Z",
+                "datePosted": "1907-09-08T00:25:21.000Z",
+                "description": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
+                "employerID": "d813c1eb-d73f-482f-b801-9519b664e706",
+                "employerName": "Wordware",
+                "entity": "job",
+                "id": "0a7d3ef1-00da-4bb9-9d10-61695207f8ca",
+                "payment": 5629,
+                "progress": 100,
+                "tags": [
+                    {
+                        "skillTitle": "Business Skills"
+                    },
+                    {
+                        "skillTitle": "C#"
+                    },
+                    {
+                        "skillTitle": "JavaScript"
+                    },
+                    {
+                        "skillTitle": "HTML"
+                    }
+                ],
+                "title": "Product Engineer"
+            },
+            {
+                "dateAccepted": "1906-09-08T00:25:21.000Z",
+                "datePosted": "1907-09-08T00:25:21.000Z",
+                "description": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
+                "employerID": "d813c1eb-d73f-482f-b801-ddddddd",
+                "employerName": "Facebook",
+                "entity": "job",
+                "id": "0a7d3ef1-00da-4bb9-9d10-sdadsadasd",
+                "payment": 6969,
+                "progress": 100,
+                "tags": [
+                    {
+                        "skillTitle": "Angular"
+                    },
+                    {
+                        "skillTitle": "Python"
+                    },
+                    {
+                        "skillTitle": "JavaScript"
+                    },
+                    {
+                        "skillTitle": "HTML"
+                    }
+                ],
+                "title": "Angular Application"
+            }
+        ],
+        "lName": "Smith",
+        "organisations": [
+            {
+                "adminUser": {
+                    "email": "johnsmith@email.com",
+                    "entity": "user",
+                    "id": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL"
+                },
+                "email": "zuck@facebook.com",
+                "orgName": "Facebook",
+                "tagline": "### This is Facebook ",
+                "websiteUrl": "facebook.com"
+            }
+        ],
+        "postedJobs": [
+            {
+                "dateDue": "05/21/2019",
+                "employerID": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+                "employerName": "John Smith",
+                "entity": "job",
+                "id": "0b9931fe-8dd6-467b-97c9-d7c77d9d3509",
+                "title": "VP Marketing"
+            }
+        ],
+        "profileCards": [
+            {
+                "title": "About Me",
+                "type": "bio"
+            },
+            {
+                "title": "Education",
+                "type": "edu"
+            },
+            {
+                "title": "Skills",
+                "type": "skills"
+            },
+            {
+                "title": "Job History",
+                "type": "jobs"
+            },
+            {
+                "content": "Custom card body with <h1>MARKDOWN</h1>",
+                "title": "Custom Card 1",
+                "type": "custom"
+            }
+        ],
+        "skills": [
+            {
+                "category": "Software",
                 "skillTitle": "C#"
             },
             {
-                "skillTitle": "JavaScript"
-            },
-            {
-                "skillTitle": "HTML"
-            }
-            ]
-        },
-        {
-            "id": "0a7d3ef1-00da-4bb9-9d10-sdadsadasd",
-            "entity": "job",
-            "title": "Angular Application",
-            "employerID": "d813c1eb-d73f-482f-b801-ddddddd",
-            "employerName": "Facebook",
-            "description": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
-            "datePosted": "1907-09-08T00:25:21.000Z",
-            "dateAccepted": "1906-09-08T00:25:21.000Z",
-            "payment": 6969,
-            "progress": 100,
-            "tags": [{
-                "skillTitle": "Angular"
-            },
-            {
+                "category": "Software",
                 "skillTitle": "Python"
             },
             {
-                "skillTitle": "JavaScript"
-            },
-            {
+                "category": "Software",
                 "skillTitle": "HTML"
             }
-            ]
-        }
         ],
-        "postedJobs": [{
-            "id": "0b9931fe-8dd6-467b-97c9-d7c77d9d3509",
-            "entity": "job",
-            "title": "VP Marketing",
-            "employerName": "John Smith",
-            "dateDue": "05/21/2019",
-            "employerID": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL"
-        }],
-        "activeJobs": [{
-            "id": "93a3de47-7bc4-4c91-8963-6e478fc125e5",
-            "entity": "job",
-            "title": "Senior Quality Engineer",
-            "employerName": "Paul Kratz",
-            "employerID": "d813c1eb-d73f-482f-b801-9519b664e706",
-            "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
-            "datePosted": "09/09/2017",
-            "dateDue": "05/21/2019",
-            "progress": 0
-        }]
+        "socialLinks": [
+            {
+                "imageUrl": "http://logo.clearbit.com/github.com",
+                "url": "http://github.com"
+            },
+            {
+                "imageUrl": "http://logo.clearbit.com/facebook.com",
+                "url": "http://facebook.com"
+            },
+            {
+                "imageUrl": "http://logo.clearbit.com/twitter.com",
+                "url": "http://twitter.com"
+            },
+            {
+                "imageUrl": "http://logo.clearbit.com/gitlab.com",
+                "url": "http://gitlab.com"
+            }
+        ],
+        "summary": "I love Angular and Python. HTML is the most advanced thing i know!",
+        "tagline": "Software Developer"
     },
     {
-        "id": "d813c1eb-d73f-482f-b801-9519b664e706",
-        "entity": "user",
-        "email": "paulkratz@elance.site",
-        "fName": "paul",
-        "lName": "kratz",
-        "dob": "18-12-1995",
-        "summary": "Me llamo Paulo, donde esta la mantequilla.",
-        "skills": [{
-            "skillTitle": "Java",
-            "category": "Software"
-        },
-        {
-            "skillTitle": "FORTRAN",
-            "category": "Software"
-        }
-        ],
-        "educationItems": [{
-            "degreeTitle": "Honours Computing",
-            "startYear": "2016",
-            "endYear": "2020",
-            "collegeName": "IT Sligo",
-            "grade": "1st Hons",
-            "description": "4 years of padraig"
-        }],
-        "profileCards": [{
-            "title": "About Me",
-            "type": "bio"
-        },
-        {
-            "title": "Education",
-            "type": "edu"
-        },
-        {
-            "title": "Skills",
-            "type": "skills"
-        },
-        {
-            "title": "Job History",
-            "type": "jobs"
-        },
-        {
-            "title": "Custom Card 1",
-            "type": "custom",
-            "content": "Custom card body with <h1>MARKDOWN</h1>"
-        }
-        ],
+        "activeJobs": [],
         "avatarUrl": "www.facebook/paul",
         "backgroundUrl": "background.png",
-        "socialLinks": [{
-            "imageUrl": "github",
-            "url": "http://github.com"
-        },
-        {
-            "imageUrl": "facebook",
-            "url": "http://facebook.com"
-        },
-        {
-            "imageUrl": "twitter",
-            "url": "http://twitter.com"
-        },
-        {
-            "imageUrl": "linkedin",
-            "url": "http://linkedin.com"
-        }
+        "contacts": [
+            {
+                "email": "johnsmith418@hotmail.com",
+                "fName": "John",
+                "id": "sad34324-d73fsadas-DAB4GSUS-b801-42069LOL",
+                "lName": "Smith"
+            }
         ],
-        "tagline": "My name a paul",
-        "postedJobs": [{
-            "id": "93a3de47-7bc4-4c91-8963-6e478fc125e5",
-            "entity": "job",
-            "title": "Senior Quality Engineer",
-            "employerName": "Paul Kratz",
-            "employerID": "d813c1eb-d73f-482f-b801-9519b664e706",
-            "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
-            "datePosted": "09/09/2017",
-            "dateDue": "05/21/2019",
-            "progress": 0
-        }],
-        "activeJobs": []
+        "dob": "18-12-1995",
+        "educationItems": [
+            {
+                "collegeName": "IT Sligo",
+                "degreeTitle": "Honours Computing",
+                "description": "4 years of padraig",
+                "endYear": "2020",
+                "grade": "1st Hons",
+                "startYear": "2016"
+            }
+        ],
+        "email": "paulkratz@elance.site",
+        "entity": "user",
+        "fName": "paul",
+        "id": "d813c1eb-d73f-482f-b801-9519b664e706",
+        "lName": "kratz",
+        "postedJobs": [
+            {
+                "dateDue": "05/21/2019",
+                "datePosted": "09/09/2017",
+                "description": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
+                "employerID": "d813c1eb-d73f-482f-b801-9519b664e706",
+                "employerName": "Paul Kratz",
+                "entity": "job",
+                "id": "93a3de47-7bc4-4c91-8963-6e478fc125e5",
+                "progress": 0,
+                "title": "Senior Quality Engineer"
+            }
+        ],
+        "profileCards": [
+            {
+                "title": "About Me",
+                "type": "bio"
+            },
+            {
+                "title": "Education",
+                "type": "edu"
+            },
+            {
+                "title": "Skills",
+                "type": "skills"
+            },
+            {
+                "title": "Job History",
+                "type": "jobs"
+            },
+            {
+                "content": "Custom card body with <h1>MARKDOWN</h1>",
+                "title": "Custom Card 1",
+                "type": "custom"
+            }
+        ],
+        "skills": [
+            {
+                "category": "Software",
+                "skillTitle": "Java"
+            },
+            {
+                "category": "Software",
+                "skillTitle": "FORTRAN"
+            }
+        ],
+        "socialLinks": [
+            {
+                "imageUrl": "github",
+                "url": "http://github.com"
+            },
+            {
+                "imageUrl": "facebook",
+                "url": "http://facebook.com"
+            },
+            {
+                "imageUrl": "twitter",
+                "url": "http://twitter.com"
+            },
+            {
+                "imageUrl": "linkedin",
+                "url": "http://linkedin.com"
+            }
+        ],
+        "summary": "Me llamo Paulo, donde esta la mantequilla.",
+        "tagline": "My name a paul"
     },
     {
         "id": "sad34324-d73fsadas-DAB4SATAN-b801-42069LOL",

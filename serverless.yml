@@ -95,7 +95,7 @@ functions:
       - websocket:
           routeKey: $default
   sendMessagesToUser:
-    handler: dist/WebSocketServer/handler.sendMessagesToUser
+    handler: dist/WebSocketServer/handler.passContentOnConnection
     events:
       - stream:
           type: dynamodb
