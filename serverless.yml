@@ -4,11 +4,11 @@ service: elance-serverless-backend
 
 custom:
   customDomain:
-    domainName: api.elance.site
+    domainName: api.intellilance.com
     basePath: ''
     stage: ${self:provider.stage}
     createRoute53Record: true
-    certificateName: '*.elance.site'
+    certificateName: '*.intellilance.com'
   appTable: 'app-table-${self:provider.stage}'
   dynamodb:
     stages:
@@ -120,8 +120,8 @@ resources:
           - AttributeName: entity
             KeyType: RANGE
         ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
         GlobalSecondaryIndexes:
           - IndexName: entityIndex
             KeySchema:
@@ -130,11 +130,12 @@ resources:
             Projection:
               ProjectionType: ALL
             ProvisionedThroughput:
-              ReadCapacityUnits: 1
-              WriteCapacityUnits: 1
+              ReadCapacityUnits: 5
+              WriteCapacityUnits: 5
         TableName: ${self:custom.appTable}
 
 plugins:
   - serverless-websockets-plugin
   - serverless-dynamodb-local
   - serverless-offline
+  - serverless-domain-manager

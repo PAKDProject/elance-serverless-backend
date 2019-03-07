@@ -24,7 +24,24 @@ export async function connect(event, context) {
             throw new Error('ConnectionId or UserId are missing!')
         }
 
+        try { //do a deploy
+            let user = await TableModel.findDocumentById(userId, "fucc|connection")
+            if (user.data !== undefined) {
+                wsClient._send({
+                    action: "fucc|logout",
+                    content: ""
+                }, user.data.connectionId, endpoint).then(async () => {
+                    await wsClient._send({
+                        action: "fucc|refresh",
+                        content: ''
+                    }, connectionId, endpoint)
+                })
+            }
+        } catch (error) {
+            console.log('No concurrent user or other error: ' + error)
+        }
         await wsClient._connectClient(connectionId, userId, endpoint)
+
         return success
     } catch (error) {
         console.error(error)
@@ -185,7 +202,21 @@ export async function passContentOnConnection(event, context) {
                             return await wsClient._send(message, onlineUser.connectionId, endpoint)
                         }
                     })
+
+                    const setOnlineContacts = onlineUsers.data.map(async onlineUser => {
+                        if (currentUser.data.contacts.map(x => x.id).includes(onlineUser.id)) {
+                            let message = {
+                                action: "notify|user_already_online",
+                                content: {
+                                    id: onlineUser.id
+                                }
+                            }
+                            return await wsClient._send(message, where, endpoint)
+                        }
+                    })
+
                     await Promise.all(results)
+                    await Promise.all(setOnlineContacts)
                     await Promise.all(notifyPeople);
                 }
             }

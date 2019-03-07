@@ -241,7 +241,7 @@ export const addToS3 = (id, file): Promise<any> => {
     const s3 = new S3()
     let stamp = id + "-" + Date.now().toString() + ".png"
     const params = {
-        Bucket: "elance-profile-images",
+        Bucket: "intellilance-profile-images",
         Key: stamp,
         Body: file,
         ACL: "public-read",
@@ -265,7 +265,7 @@ export const removeFromS3 = (id): Promise<any> => {
 
     const params = {
         Key: id,
-        Bucket: "elance-profile-images"
+        Bucket: "intellilance-profile-images"
     }
 
     return new Promise((resolve, reject) => {
