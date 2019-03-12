@@ -47,6 +47,7 @@ export let ValidateToken = (token: string, tokenType: TokenTypes): boolean => {
         }
     })
     let tokenParsed = jwt.decode(token) as IToken
+    console.log(tokenParsed)
     if (tokenParsed.aud !== process.env.APP_CLIENT_ID && tokenType === TokenTypes.ID_TOKEN) {
         isValid = false
     } else if (tokenParsed.iss !== process.env.JWT_ISS) {

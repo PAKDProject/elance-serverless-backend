@@ -32,12 +32,10 @@ export const CheckAccessToken = async (req: Request, res: Response, next: NextFu
                     next()
                 } catch (error) {
                     res.status(403).clearCookie('inf_check').send()
-                    next(error)
                 }
             }
             else next()
         }
-    next()
     }
     else {
         next()
