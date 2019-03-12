@@ -5,6 +5,7 @@ import { CheckAccessToken } from '../middleware/checkToken';
 import { addToS3, removeFromS3 } from '../lib/userCheck'
 import { elasticSearch } from '../lib/createES';
 import { ValidateUser } from '../lib/validator';
+import uuid = require( 'uuid' );
 
 /**
 * @class UserController used to control the user route
@@ -67,6 +68,17 @@ export class UserController implements BaseRouter {
                     partialUser.entity = entityType;
                     if (!ValidateUser(partialUser)) throw "User is invalid, try again scrub."
                     const user = await TableModel.createNewDocument(req.body);
+                    await elasticSearch.create({
+                        index: 'users',
+                        type: '_doc',
+                        id: uuid.v4(),
+                        body: {
+                            id: user.data.id,
+                            fName: user.data.fName,
+                            lName: user.data.lName,
+                            avatarUrl: user.data.avatarUrl
+                        }
+                    })
                     res.status(201).json({ message: 'User created', user: user.data });
                 } catch (error) {
                     res.status(400).json({ message: 'Something went wrong. User not created', error: error });
